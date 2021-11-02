@@ -4,7 +4,7 @@
  * Dependencies and other variables should be listed out here.
  */
 const gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     sourcemaps = require('gulp-sourcemaps'),
     imagemin = require('gulp-imagemin'),
     args = require('yargs').argv,

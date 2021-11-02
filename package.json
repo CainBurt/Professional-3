@@ -34,11 +34,12 @@
         "gulp-postcss": "^8.0.0",
         "gulp-rename": "^2.0.0",
         "gulp-replace": "^1.0.0",
-        "gulp-sass": "^4.1.0",
+        "gulp-sass": "^5.0.0",
         "gulp-sourcemaps": "^2.6.5",
         "jshint-stylish": "^2.2.1",
+        "sass": "^1.43.4",
         "webpack-entry-plus": "^1.0.18",
-        "webpack-stream": "^5.2.1",
+        "webpack-stream": "^7.0.0",
         "yargs": "^15.4.1"
     },
     "dependencies": {
