@@ -183,6 +183,7 @@ class StarterSite extends TimberSite {
             $context['options'] = get_fields('option');
         }
         $context['page_stats'] = TimberHelper::start_timer();
+        $context['share_links'] = get_social_share_links();
         return $context;
     }
 
@@ -570,3 +571,23 @@ function social_links_shortcode($atts) {
     if (!empty($output)) return join($atts['delim'], $output);
 }
 add_shortcode('social_links', 'social_links_shortcode');
+
+function get_social_share_links() {
+    global $post;
+        
+        // Get page details
+    $share_url = urlencode(get_permalink());
+    $share_thumb = get_the_post_thumbnail_url(get_the_post_thumbnail());
+    $share_title = str_replace( ' ', '%20', get_the_title());        
+
+    // Construct sharing URL
+    $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$share_url;
+    $twitterURL = 'https://twitter.com/intent/tweet?text='.$share_title.'&amp;url='.$share_url.'&amp;via='.get_the_author_meta('twitter');        
+    $whatsappURL = 'whatsapp://send?text='.$share_title . ' ' . $share_url;
+
+    return array(
+        'facebook' => $facebookURL,
+        'twitter' => $twitterURL,
+        'whatsapp' => $whatsappURL
+    );
+}
