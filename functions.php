@@ -591,3 +591,11 @@ function get_social_share_links() {
         'whatsapp' => $whatsappURL
     );
 }
+
+function inline_script($src) {
+    if ( $src ) {
+        wp_register_script( $src, '' );
+        wp_enqueue_script( $src, '', array(), get_cache_ver(), true );
+        wp_add_inline_script( $src, file_get_contents($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path']) );
+    }
+}
