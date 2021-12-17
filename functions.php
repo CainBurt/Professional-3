@@ -592,10 +592,18 @@ function get_social_share_links() {
     );
 }
 
-function inline_script($src) {
+function inline_script($src,$deps = array(),$footer = true) {
     if ( $src ) {
         wp_register_script( $src, '' );
-        wp_enqueue_script( $src, '', array(), get_cache_ver(), true );
+        wp_enqueue_script( $src, '', $deps, get_cache_ver(), $footer );
         wp_add_inline_script( $src, file_get_contents($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path']) );
+    }
+}
+
+function inline_style($src) {
+    if ( $src ) {
+        wp_register_style( $src, '' );
+        wp_enqueue_style( $src, '', array(), get_cache_ver(), 'all' );
+        wp_add_inline_style( $src, file_get_contents($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path']) );
     }
 }
