@@ -607,3 +607,7 @@ function inline_style($src) {
         wp_add_inline_style( $src, file_get_contents($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path']) );
     }
 }
+
+if ( !function_exists( 'wp_password_change_notification' ) ) {
+    function wp_password_change_notification() {}
+}
