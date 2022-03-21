@@ -611,3 +611,21 @@ function inline_style($src) {
 if ( !function_exists( 'wp_password_change_notification' ) ) {
     function wp_password_change_notification() {}
 }
+
+function replace_empty_image_alt($metadata, $object_id, $meta_key, $single){
+
+    // make sure we're getting the alt meta
+    if ($meta_key == '_wp_attachment_image_alt') {
+
+        // if the alt is empty, return the title of the current post
+        if ($metadata == '') {
+            global $post;
+            return $post->post_title;
+        }
+    }
+
+    // Return original if the check does not pass
+    return $metadata;
+
+}
+add_filter( 'get_post_metadata', 'replace_empty_image_alt', 100, 4 );
