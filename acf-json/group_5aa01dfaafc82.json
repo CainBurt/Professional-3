@@ -20,6 +20,92 @@
             "esc_html": 1
         },
         {
+            "key": "field_62399405524c2",
+            "label": "Google Analytics",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_623995cd524c3",
+            "label": "Google Analytics ID",
+            "name": "google_analytics",
+            "type": "text",
+            "instructions": "Add the GA ID here",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "UA-XXXXX-Y",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_623995f6524c5",
+            "label": "Google Tag Manager",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_623996985437d",
+            "label": "Google Tag Manager",
+            "name": "googletagmanager",
+            "type": "text",
+            "instructions": "Put the GTM Id in here",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "XXXXXXX",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_623996bd5437e",
+            "label": "Scripts",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1
+        },
+        {
             "key": "field_5cfe5de6150d5",
             "label": "Head Scripts",
             "name": "head_scripts",
@@ -94,5 +180,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1560174425
+    "modified": 1647941342
 }

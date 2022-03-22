@@ -191,6 +191,8 @@ class StarterSite extends TimberSite {
         // Add your own twig functions
         $twig->addFunction( new Twig_SimpleFunction('query_cat', array($this, 'query_cat')));
         $twig->addFilter(new Twig_SimpleFilter('json', array($this, 'json')));
+        $twig->addFunction( new Twig_SimpleFunction( 'load_ga', array($this, 'load_ga')));
+        $twig->addFunction( new Twig_SimpleFunction( 'load_gtm', array($this, 'load_gtm')));
         return $twig;
     }
 
@@ -208,7 +210,6 @@ class StarterSite extends TimberSite {
 
         wp_enqueue_script( 'essential.js', BUNDLE_JS_SRC, array(), $cache_ver, false); // These will appear at the top of the page
         wp_enqueue_script( 'deferred.js', DEFERRED_BUNDLE_JS_SRC, array(), $cache_ver, true); // These will appear in the footer
-
         // Enqueue a main stylesheet as a sensible default
         wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
     }
@@ -290,6 +291,14 @@ class StarterSite extends TimberSite {
      */
     function json($o) {
         return str_replace(array('\r', '\n'), '', str_replace("\u0022","\\\\\"", json_encode($o, JSON_NUMERIC_CHECK | JSON_HEX_QUOT)));
+    }
+
+    function load_ga() {
+        wp_enqueue_script( 'google-analytics.js', get_template_directory_uri() . '/dist/js/google-analytics.js', array(), $cache_ver, false);
+    }
+
+    function load_gtm() {
+        wp_enqueue_script( 'google-tag-manager.js', get_template_directory_uri() . '/dist/js/google-tag-manager.js', array(), $cache_ver, false);
     }
 
 }
@@ -467,7 +476,10 @@ add_filter('login_errors', 'no_wordpress_errors');
 *   Add the async attribute to loaded script tags.
 */
 function add_async_attribute($tag, $handle) {
-    $scripts_to_async = array('iss-suggest', 'iss', 'addthis');
+    $scripts_to_async = array(
+        'google-analytics.js',
+        'google-tag-manager.js'
+    );
     foreach($scripts_to_async as $async_script) {
         if($async_script === $handle) {
             return str_replace('src', 'async="async" src', $tag);

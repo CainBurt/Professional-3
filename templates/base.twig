@@ -51,6 +51,14 @@
         {{ function('stop_timber_timer') }}
 
 		{{options.body_end_scripts}}
+
+		{% if options.googletagmanager %}
+			<!-- Google Tag Manager (noscript) -->
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{options.googletagmanager}}"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+			<!-- End Google Tag Manager (noscript) -->
+		{% endif %}
+		
 		<script type='application/ld+json'>
 			{
 				"@context": "https://schema.org",

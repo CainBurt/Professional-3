@@ -30,7 +30,7 @@ const gulp = require('gulp'),
                 src: 'src/sass/deferred/**/*.scss',
                 name: 'deferred.css',
                 dist: 'dist/styles'
-            }
+            },
         },
         js: {
             src: [
@@ -45,6 +45,14 @@ const gulp = require('gulp'),
                 {
                     entryFiles: glob.sync('./src/js/deferred/**/*.js'),
                     outputName: 'deferred'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/google-analytics.js'),
+                    outputName: 'google-analytics'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/google-tag-mangaer.js'),
+                    outputName: 'google-tag-manager'
                 },
             ]
         },
