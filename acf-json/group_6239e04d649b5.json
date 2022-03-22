@@ -1,0 +1,44 @@
+{
+    "key": "group_6239e04d649b5",
+    "title": "RSS Feeds",
+    "fields": [
+        {
+            "key": "field_6239e0565e62e",
+            "label": "Enable RSS",
+            "name": "enable_rss",
+            "type": "true_false",
+            "instructions": "Toggle this to enable RSS feeds. Leave disabled to redirect \/feed to home",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Enable",
+            "ui_off_text": "Disable"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-theme"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1647960330
+}
