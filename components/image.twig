@@ -1,0 +1,58 @@
+{% set img = TimberImage(image) %}
+{% set width = img.width %}
+{% set height = img.height %}
+{% if override_width %}
+    {% set width = override_width %}
+    {% set height = (img.height/img.width) * override_width %}
+{% endif %}
+{% if override_height %}
+    {% set height = override_height %}
+{% endif %}
+
+
+<picture>
+    <source
+    media="screen and (min-width:1000px)"
+    data-srcset="
+    {{img.src|resize(1400, (height/width) * 1400)|towebp}} 1000w,
+    {{img.src|resize(2500, (height/width) * 2500)|towebp}} 2x" />
+    <source
+    media="screen and (min-width:1000px)"
+    data-srcset="
+    {{img.src|resize(1400, (height/width) * 1400)}} 1000w,
+    {{img.src|resize(2500, (height/width) * 2500)}} 2x" />
+
+    <source
+    media="screen and (max-width:1000px)"
+    data-srcset="
+    {{img.src|resize(500, (height/width) * 500)|towebp}} 500w,
+    {{img.src|resize(1000, (height/width) * 1000)|towebp}} 2x" />
+    <source
+    media="screen and (max-width:1000px)"
+    data-srcset="
+    {{img.src|resize(500, (height/width) * 500)}} 500w,
+    {{img.src|resize(1000, (height/width) * 1000)}} 2x" />
+
+    <source
+    media="screen and (max-width:500px)"
+    data-srcset="
+    {{img.src|resize(500, (height/width) * 500)|towebp}} 2x" />
+    <source
+    media="screen and (max-width:500px)"
+    data-srcset="
+    {{img.src|resize(500, (height/width) * 500)}} 2x" />
+    <img
+        width='{{width}}'
+        height='{{ height }}'
+        class='{{ class }}'
+        {% if not_lazy %}
+            src='{{ img.src|resize(300 + 1,((height/width) * 300) + 1 )}}'
+        {% else %}
+            loading='lazy'
+            src='{{ img.src|resize((width/width) + 1,(height/width) + 1) }}'
+        {% endif %}
+        data-src='{{ img.src|resize(width,height) }}'
+        
+        alt='{{ img.alt }}'
+    />
+</picture>
