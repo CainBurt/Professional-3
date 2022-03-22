@@ -13,4 +13,20 @@
     <meta name="msapplication-navbutton-color" content="{{options.android_navigation_bar_colour}}">
 
     {{function('wp_head')}}
+    
+    {% if options.google_analytics %}
+        <script>
+            window.GOOGLEANALYTICSCODE = '{{options.google_analytics}}';
+        </script>
+        <script defer src="https://www.google-analytics.com/analytics.js"></script>
+        {{load_ga()}}
+    {% endif %}
+    {% if options.googletagmanager %}
+        <script>
+            window.GOOGLETAGMANAGERCODE = '{{options.googletagmanager}}';
+        </script>
+        <link rel="dns-prefetch" href="//googletagmanager.com"/>
+        {{load_gtm()}}
+    {% endif %}
+    
     {{ options.head_scripts }}
