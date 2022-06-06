@@ -441,7 +441,18 @@ add_action('_admin_menu', 'remove_editor_menu', 1);
 *   Remove Gutenburg CSS
 */
 function remove_block_css(){
-    wp_dequeue_style( 'wp-block-library' );
+    global $wp_styles;
+    $block_style = $wp_styles->registered['wp-block-library']->src; // get block styles src url
+    $block_library_style = $wp_styles->registered['wp-block-library-theme']->src; // get block styles src url
+    $woo_block_style = $wp_styles->registered['wc-blocks-style']->src; // get block styles src url
+
+    wp_dequeue_style( 'wp-block-library' ); // dequeue default style
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
+    
+    inline_style($block_style); // inline it ourselves
+    inline_style($block_library_style); // inline it ourselves
+    inline_style($woo_block_style); // inline it ourselves
 }
 add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
 
