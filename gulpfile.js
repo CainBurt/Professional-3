@@ -54,6 +54,10 @@ const gulp = require('gulp'),
                     entryFiles: glob.sync('./src/js/google-tag-manager.js'),
                     outputName: 'google-tag-manager'
                 },
+                {
+                    entryFiles: glob.sync('./src/js/partytown.js'),
+                    outputName: 'partytown'
+                },
             ]
         },
         images: {

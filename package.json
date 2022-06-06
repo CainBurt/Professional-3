@@ -44,6 +44,7 @@
         "yargs": "^15.4.1"
     },
     "dependencies": {
+        "@builder.io/partytown": "^0.6.1",
         "@fdaciuk/ajax": "^3.0.4",
         "gulp": "^4.0.2"
     }

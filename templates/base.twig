@@ -71,5 +71,18 @@
 				]
 			}
 		</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				let scriptSrcs = [].slice.call(document.querySelectorAll('script[data-src]:not(loaded)'))
+				if (scriptSrcs) {
+					scriptSrcs.forEach(el => {
+						setTimeout(() => {
+							el.src = el.dataset.src
+							el.classList.add('loaded')
+						},200)
+					})
+				}
+			}, false)
+		</script>
 	</body>
 </html>

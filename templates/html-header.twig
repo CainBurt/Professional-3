@@ -15,14 +15,14 @@
     {{function('wp_head')}}
     
     {% if options.google_analytics %}
-        <script>
+        <script type="text/partytown">
             window.GOOGLEANALYTICSCODE = '{{options.google_analytics}}';
         </script>
-        <script defer src="https://www.google-analytics.com/analytics.js"></script>
+        <script type="text/partytown" defer data-src="https://www.google-analytics.com/analytics.js"></script>
         {{load_ga()}}
     {% endif %}
     {% if options.googletagmanager %}
-        <script>
+        <script type="text/partytown">
             window.GOOGLETAGMANAGERCODE = '{{options.googletagmanager}}';
         </script>
         <link rel="dns-prefetch" href="//googletagmanager.com"/>
