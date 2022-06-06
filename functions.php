@@ -710,7 +710,8 @@ function custom_render_block_core_image (
 
         $data = $block['attrs'];
         $data['image'] = $block['attrs']['id'];
-        $data['class'] = $block['attrs']['className'];
+        $data['class'] = $block['attrs']['className'] . ' wp-block-image';
+        $data['figure'] = true;
 
 		return Timber::compile('image.twig',$data);
 	}
