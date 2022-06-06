@@ -449,7 +449,7 @@ function remove_block_css(){
     wp_dequeue_style( 'wp-block-library' ); // dequeue default style
     wp_dequeue_style( 'wp-block-library-theme' );
     wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
-    
+
     inline_style($block_style); // inline it ourselves
     inline_style($block_library_style); // inline it ourselves
     inline_style($woo_block_style); // inline it ourselves
@@ -695,3 +695,27 @@ if (function_exists('get_field') && !get_field('enable_rss','option')) {
     remove_action( 'wp_head', 'feed_links',       2 );
     remove_action( 'wp_head', 'feed_links_extra', 3 );
 }
+
+function custom_render_block_core_image (
+	string $block_content, 
+	array $block
+): string 
+{
+	if (
+		$block['blockName'] === 'core/image' && 
+		!is_admin() &&
+		!wp_is_json_request()
+	) {
+		$html = '';
+
+        $data = $block['attrs'];
+        $data['image'] = $block['attrs']['id'];
+        $data['class'] = $block['attrs']['className'];
+
+		return Timber::compile('image.twig',$data);
+	}
+
+	return $block_content;
+}
+
+add_filter('render_block', 'custom_render_block_core_image', null, 2);
