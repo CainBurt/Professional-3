@@ -212,6 +212,7 @@ class StarterSite extends TimberSite {
         wp_enqueue_script( 'deferred.js', DEFERRED_BUNDLE_JS_SRC, array(), $cache_ver, true); // These will appear in the footer
         // Enqueue a main stylesheet as a sensible default
         wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
+        inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
     }
 
     /**
@@ -294,10 +295,12 @@ class StarterSite extends TimberSite {
     }
 
     function load_ga() {
+        require('includes/cache_bust.php');
         wp_enqueue_script( 'google-analytics.js', get_template_directory_uri() . '/dist/js/google-analytics.js', array(), $cache_ver, false);
     }
 
     function load_gtm() {
+        require('includes/cache_bust.php');
         wp_enqueue_script( 'google-tag-manager.js', get_template_directory_uri() . '/dist/js/google-tag-manager.js', array(), $cache_ver, false);
     }
 
@@ -477,8 +480,7 @@ add_filter('login_errors', 'no_wordpress_errors');
 */
 function add_async_attribute($tag, $handle) {
     $scripts_to_async = array(
-        'google-analytics.js',
-        'google-tag-manager.js'
+        
     );
     foreach($scripts_to_async as $async_script) {
         if($async_script === $handle) {
@@ -489,6 +491,23 @@ function add_async_attribute($tag, $handle) {
 }
 
 add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+
+function add_lazy_script($tag, $handle) {
+    $scripts_to_async = array(
+        'essential.js',
+        'deferred.js',
+        'google-analytics.js',
+        'google-tag-manager.js',
+    );
+    foreach($scripts_to_async as $async_script) {
+        if($async_script === $handle) {
+            return str_replace('src', 'async="async" data-src', $tag);
+        }
+    }
+    return $tag;
+}
+
+add_filter('script_loader_tag', 'add_lazy_script', 10, 2);
 
 /*
 *   Replaces the WP logo in the admin bar.

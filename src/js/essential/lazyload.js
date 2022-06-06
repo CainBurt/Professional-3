@@ -1,8 +1,10 @@
+import EntryTrigger from "../helpers/entry-trigger"
+
 function init() {
     let srcsets = [].slice.call(document.querySelectorAll('[data-srcset]:not(.loaded)'))
     if (srcsets) {
         srcsets.forEach(el => {
-            requestAnimationFrame(() => {
+            new EntryTrigger(el.parentElement.querySelector('img'),() => {
                 el.addEventListener('load', () => el.classList.add('loaded'),false)
                 el.srcset = el.dataset.srcset
             })
@@ -11,7 +13,7 @@ function init() {
     let srcs = [].slice.call(document.querySelectorAll('img[data-src]:not(.loaded)'))
     if (srcs) {
         srcs.forEach(el => {
-            requestAnimationFrame(() => {
+            new EntryTrigger(el,() => {
                 el.addEventListener('load', () => el.classList.add('loaded'),false)
                 el.src = el.dataset.src
             })
@@ -21,7 +23,7 @@ function init() {
     let videoSrcs = [].slice.call(document.querySelectorAll('video:not(.loaded) source[data-src]'))
     if (videoSrcs) {
         videoSrcs.forEach(el => {
-            requestAnimationFrame(() => {
+            new EntryTrigger(el.parentElement,() => {
                 el.addEventListener('load', () => {
                     el.parentElement.classList.add('loaded')
                 },false)
