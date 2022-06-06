@@ -9,13 +9,12 @@ export default class EntryTrigger {
         this.element = element
         this.callback = callback
         this.observer = new IntersectionObserver((e,o) => this._callback(e,o))
-        this.observer.observe(this.element)     
+        this.observer.observe(this.element)
     }
 
     _callback(entries,observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                console.log('intersecting!');
                 this.callback()
                 if (this.options.disconnect) {
                     observer.disconnect(this.element)
