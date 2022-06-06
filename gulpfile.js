@@ -51,7 +51,7 @@ const gulp = require('gulp'),
                     outputName: 'google-analytics'
                 },
                 {
-                    entryFiles: glob.sync('./src/js/google-tag-mangaer.js'),
+                    entryFiles: glob.sync('./src/js/google-tag-manager.js'),
                     outputName: 'google-tag-manager'
                 },
             ]

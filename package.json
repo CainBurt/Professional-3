@@ -38,6 +38,7 @@
         "gulp-sourcemaps": "^2.6.5",
         "jshint-stylish": "^2.2.1",
         "sass": "^1.43.4",
+        "webpack": "^5.73.0",
         "webpack-entry-plus": "^1.0.18",
         "webpack-stream": "^7.0.0",
         "yargs": "^15.4.1"
