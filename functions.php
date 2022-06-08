@@ -54,7 +54,7 @@ function register_plugins () {
             'name' => 'WPS Hide Login',
             'slug' => 'wps-hide-login',
             'required' => false
-        )
+        ),
 	);
 	register_required_plugins ($plugins);
 }
@@ -72,6 +72,8 @@ function get_cache_ver() {
     include 'includes/cache_bust.php';
     return $cache_ver;
 }
+
+require_once('includes/edit-strings/edit-strings.php');
 
 if ( ! class_exists( 'Timber' ) ) {
     add_action( 'admin_notices', function() {

@@ -1,10 +1,10 @@
 <dialog id='trackingConsent'>
     <form method="dialog">
-        <p>We want to use cookies to better understand our users and improve the experience on our site, but first, we need your permission.</p>
-        <small>These cookies are disabled by default. <a href='{{ fn('get_privacy_policy_url') }}'>Read more in our privacy policy</a></small>
+        <p>{{ __('We want to use cookies to better understand our users and improve the experience on our site, but first, we need your permission.','crowd') }}</p>
+        <small>{{ __('These cookies are disabled by default.','crowd') }} <a href='{{ fn('get_privacy_policy_url') }}'>{{ __('Read more in our privacy policy','crowd') }}</a></small>
         <fieldset>
-            <button id='blockTracking'>No thanks</button>
-            <button id='allowTracking'>Okay!</button>
+            <button id='blockTracking'>{{ __('No thanks','crowd') }}</button>
+            <button id='allowTracking'>{{ __('Okay!','crowd') }}</button>
         </fieldset>
     </form>
 </dialog>
