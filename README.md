@@ -1,13 +1,5 @@
 # Crowd base build
 
-
-## Now includes Crowd's gulpfile.js!
-
-Crowd uses [Gulp](http://gulpjs.com/) for managing front-end build tooling and
-workflow. Find out [more about
-gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) and
-the [plugins available for it](http://gulpjs.com/plugins/).
-
 This version of the Crowd Base Build includes Gulp version 4.
 This means you must be using the latest version of Node (or at lease version 10).
 
