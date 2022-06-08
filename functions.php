@@ -184,6 +184,8 @@ class StarterSite extends TimberSite {
         }
         $context['page_stats'] = TimberHelper::start_timer();
         $context['share_links'] = get_social_share_links();
+        $context['allow_ga'] = isset($_COOKIE["allow_ga"]) && $_COOKIE['allow_ga'];
+        $context['block_ga'] = isset($_COOKIE["block_ga"]) && $_COOKIE['block_ga'];
         return $context;
     }
 
@@ -211,8 +213,10 @@ class StarterSite extends TimberSite {
         wp_enqueue_script( 'essential.js', BUNDLE_JS_SRC, array(), $cache_ver, false); // These will appear at the top of the page
         wp_enqueue_script( 'deferred.js', DEFERRED_BUNDLE_JS_SRC, array(), $cache_ver, true); // These will appear in the footer
         // Enqueue a main stylesheet as a sensible default
-        wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
+        // wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
         inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
     }
 
     /**
@@ -519,6 +523,21 @@ function add_lazy_script($tag, $handle) {
 }
 
 add_filter('script_loader_tag', 'add_lazy_script', 10, 2);
+
+function add_partytown_script($tag, $handle) {
+    $scripts_to_async = array(
+        'google-analytics.js',
+        'google-tag-manager.js',
+    );
+    foreach($scripts_to_async as $async_script) {
+        if($async_script === $handle) {
+            return str_replace('<script', '<script type="text/partytown"', $tag);
+        }
+    }
+    return $tag;
+}
+
+add_filter('script_loader_tag', 'add_partytown_script', 10, 2);
 
 /*
 *   Replaces the WP logo in the admin bar.

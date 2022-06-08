@@ -1,0 +1,23 @@
+<dialog id='trackingConsent'>
+    <form method="dialog">
+        <p>We want to use cookies to better understand our users and improve the experience on our site, but first, we need your permission.</p>
+        <small>These cookies are disabled by default. <a href='{{ fn('get_privacy_policy_url') }}'>Read more in our privacy policy</a></small>
+        <fieldset>
+            <button id='blockTracking'>No thanks</button>
+            <button id='allowTracking'>Okay!</button>
+        </fieldset>
+    </form>
+</dialog>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#trackingConsent').show()
+
+        document.querySelector('#trackingConsent #blockTracking').addEventListener('click', () => {
+            document.cookie = 'block_ga=true;max-age=2592000'
+        })
+
+        document.querySelector('#trackingConsent #allowTracking').addEventListener('click', () => {
+            document.cookie = 'allow_ga=true;max-age=2592000'
+        })
+    })
+</script>

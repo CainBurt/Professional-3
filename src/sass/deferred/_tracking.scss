@@ -1,0 +1,12 @@
+#trackingConsent {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    left: auto;
+    max-width: 25ch;
+    &::backdrop {
+        background: none;
+        pointer-events: none;
+        display: none;
+    }
+}
