@@ -13,20 +13,21 @@
     <meta name="msapplication-navbutton-color" content="{{options.android_navigation_bar_colour}}">
 
     {{function('wp_head')}}
-    
-    {% if options.google_analytics %}
-        <script type="text/partytown">
-            window.GOOGLEANALYTICSCODE = '{{options.google_analytics}}';
-        </script>
-        <script type="text/partytown" defer data-src="https://www.google-analytics.com/analytics.js"></script>
-        {{load_ga()}}
-    {% endif %}
-    {% if options.googletagmanager %}
-        <script type="text/partytown">
-            window.GOOGLETAGMANAGERCODE = '{{options.googletagmanager}}';
-        </script>
-        <link rel="dns-prefetch" href="//googletagmanager.com"/>
-        {{load_gtm()}}
+    {% if allow_ga %}
+        {% if options.google_analytics %}
+            <script type="text/partytown">
+                window.GOOGLEANALYTICSCODE = '{{options.google_analytics}}';
+            </script>
+            <script type="text/partytown" defer data-src="https://www.google-analytics.com/analytics.js"></script>
+            {{load_ga()}}
+        {% endif %}
+        {% if options.googletagmanager %}
+            <script type="text/partytown">
+                window.GOOGLETAGMANAGERCODE = '{{options.googletagmanager}}';
+            </script>
+            <link rel="dns-prefetch" href="//googletagmanager.com"/>
+            {{load_gtm()}}
+        {% endif %}
     {% endif %}
     
     {{ options.head_scripts }}

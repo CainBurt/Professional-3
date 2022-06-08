@@ -1,8 +1,8 @@
 <div class="left">
-	Copyright {{"now"|date('Y')}}
+	{{ __('Copyright', 'crowd') }} {{site.title}} {{"now"|date('Y')}}
 </div>
 <div class="center">
-	<a href="#">Privacy Policy</a>
+	<a href="{{ fn('get_privacy_policy_url') }}">{{ __('Privacy Policy','crowd') }}</a>
 </div>
 <div class="right">
 	Site by <a href="https://thisiscrowd.com" target="_blank">Crowd</a>

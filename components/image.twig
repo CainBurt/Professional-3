@@ -9,6 +9,10 @@
     {% set height = override_height %}
 {% endif %}
 
+{% if figure %}
+    <figure class='{{ class }}'>
+{% endif %}
+
 
 <picture>
     <source
@@ -44,7 +48,10 @@
     <img
         width='{{width}}'
         height='{{ height }}'
-        class='{{ class }}'
+        {% if not figure %}
+            class='{{ class }}'
+        {% endif %}
+        id='{{ anchor }}'
         {% if not_lazy %}
             src='{{ img.src|resize(300 + 1,((height/width) * 300) + 1 )}}'
         {% else %}
@@ -56,3 +63,7 @@
         alt='{{ img.alt }}'
     />
 </picture>
+
+{% if figure %}
+    </figure>
+{% endif %}

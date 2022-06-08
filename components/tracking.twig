@@ -1,0 +1,23 @@
+<dialog id='trackingConsent'>
+    <form method="dialog">
+        <p>{{ __('We want to use cookies to better understand our users and improve the experience on our site, but first, we need your permission.','crowd') }}</p>
+        <small>{{ __('These cookies are disabled by default.','crowd') }} <a href='{{ fn('get_privacy_policy_url') }}'>{{ __('Read more in our privacy policy','crowd') }}</a></small>
+        <fieldset>
+            <button id='blockTracking'>{{ __('No thanks','crowd') }}</button>
+            <button id='allowTracking'>{{ __('Okay!','crowd') }}</button>
+        </fieldset>
+    </form>
+</dialog>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#trackingConsent').show()
+
+        document.querySelector('#trackingConsent #blockTracking').addEventListener('click', () => {
+            document.cookie = 'block_ga=true;max-age=2592000'
+        })
+
+        document.querySelector('#trackingConsent #allowTracking').addEventListener('click', () => {
+            document.cookie = 'allow_ga=true;max-age=2592000'
+        })
+    })
+</script>

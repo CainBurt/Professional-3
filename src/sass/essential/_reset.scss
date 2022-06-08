@@ -4,6 +4,13 @@
     padding: 0;
 }
 
+picture {
+    display: contents;
+    source {
+        display: none;
+    }
+}
+
 img {
     display: block;
     max-width: 100%;

@@ -54,7 +54,7 @@ function register_plugins () {
             'name' => 'WPS Hide Login',
             'slug' => 'wps-hide-login',
             'required' => false
-        )
+        ),
 	);
 	register_required_plugins ($plugins);
 }
@@ -72,6 +72,8 @@ function get_cache_ver() {
     include 'includes/cache_bust.php';
     return $cache_ver;
 }
+
+require_once('includes/edit-strings/edit-strings.php');
 
 if ( ! class_exists( 'Timber' ) ) {
     add_action( 'admin_notices', function() {
@@ -184,6 +186,8 @@ class StarterSite extends TimberSite {
         }
         $context['page_stats'] = TimberHelper::start_timer();
         $context['share_links'] = get_social_share_links();
+        $context['allow_ga'] = isset($_COOKIE["allow_ga"]) && $_COOKIE['allow_ga'];
+        $context['block_ga'] = isset($_COOKIE["block_ga"]) && $_COOKIE['block_ga'];
         return $context;
     }
 
@@ -211,8 +215,10 @@ class StarterSite extends TimberSite {
         wp_enqueue_script( 'essential.js', BUNDLE_JS_SRC, array(), $cache_ver, false); // These will appear at the top of the page
         wp_enqueue_script( 'deferred.js', DEFERRED_BUNDLE_JS_SRC, array(), $cache_ver, true); // These will appear in the footer
         // Enqueue a main stylesheet as a sensible default
-        wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
+        // wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
         inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
     }
 
     /**
@@ -441,7 +447,18 @@ add_action('_admin_menu', 'remove_editor_menu', 1);
 *   Remove Gutenburg CSS
 */
 function remove_block_css(){
-    wp_dequeue_style( 'wp-block-library' );
+    global $wp_styles;
+    $block_style = $wp_styles->registered['wp-block-library']->src; // get block styles src url
+    $block_library_style = $wp_styles->registered['wp-block-library-theme']->src; // get block styles src url
+    $woo_block_style = $wp_styles->registered['wc-blocks-style']->src; // get block styles src url
+
+    wp_dequeue_style( 'wp-block-library' ); // dequeue default style
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
+
+    inline_style($block_style); // inline it ourselves
+    inline_style($block_library_style); // inline it ourselves
+    inline_style($woo_block_style); // inline it ourselves
 }
 add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
 
@@ -508,6 +525,21 @@ function add_lazy_script($tag, $handle) {
 }
 
 add_filter('script_loader_tag', 'add_lazy_script', 10, 2);
+
+function add_partytown_script($tag, $handle) {
+    $scripts_to_async = array(
+        'google-analytics.js',
+        'google-tag-manager.js',
+    );
+    foreach($scripts_to_async as $async_script) {
+        if($async_script === $handle) {
+            return str_replace('<script', '<script type="text/partytown"', $tag);
+        }
+    }
+    return $tag;
+}
+
+add_filter('script_loader_tag', 'add_partytown_script', 10, 2);
 
 /*
 *   Replaces the WP logo in the admin bar.
@@ -684,3 +716,28 @@ if (function_exists('get_field') && !get_field('enable_rss','option')) {
     remove_action( 'wp_head', 'feed_links',       2 );
     remove_action( 'wp_head', 'feed_links_extra', 3 );
 }
+
+function custom_render_block_core_image (
+	string $block_content, 
+	array $block
+): string 
+{
+	if (
+		$block['blockName'] === 'core/image' && 
+		!is_admin() &&
+		!wp_is_json_request()
+	) {
+		$html = '';
+
+        $data = $block['attrs'];
+        $data['image'] = $block['attrs']['id'];
+        $data['class'] = $block['attrs']['className'] . ' wp-block-image';
+        $data['figure'] = true;
+
+		return Timber::compile('image.twig',$data);
+	}
+
+	return $block_content;
+}
+
+add_filter('render_block', 'custom_render_block_core_image', null, 2);
