@@ -3,7 +3,8 @@
 This version of the Crowd Base Build includes Gulp version 4.
 This means you must be using the latest version of Node (or at lease version 10).
 
-### Setup
+---
+## Setup
 
 1. Install [Node + NPM](https://www.npmjs.com/get-npm).
 2. Run `npm install -g gulp` to install gulp globally.
@@ -11,25 +12,16 @@ This means you must be using the latest version of Node (or at lease version 10)
 4. Run `npm install`.
 5. Have a kitkat 🍫
 
-### Updating Node and NPM
-
-If you installed Node with homebrew then just run `brew upgrade node`. If you
-used a binary installer then download the [latest version of
-Node](https://nodejs.org/en/) from the website.
-
-To update NPM run `npm install npm@latest -g`.
-
-To update packages from old gulpfiles run `npm outdated` to see local packages
-that are out of date. Then run `npm install packageName@latest` to bring that
-package up to date.
-
-### Crowd's standard tasks
+---
+## Crowd's standard tasks
 
 `gulp` Will run and then watch sass, js, and images tasks.
 
 `gulp package` will product a package in the directory above that contains
 whitelisted files. This is used to generate a 'package' version of the theme
 that can be deployed to developement environments.
+
+If you've made any changes to `gulpfile.js`, or added some new sas or js paths, then you'll need to restart the `gulp` task.
 
 #### NPM scripts
 
@@ -50,7 +42,36 @@ environments and live environments.
 
 `--pipeline` is for use only if the task is being run from a pipeline. All this does is change the name of the packaged folder to 'pipeline' so that bitbucket can save it as an artifact for automated deployment.
 
+---
+## File and folder structure
 
+### `functions.php`
+
+The engine room of any WordPress install. This is where Timber is initialised, and any modifications to the default WordPress behaviour are made.
+
+We also use hooks to include any extras, like new Custom Post Types, Taxonomies, ACF Options Pages, and Page Blocks.
+
+#### `includes/`
+
+If you've got a lot of things added in `functions.php`, you might want to split it off into a separate file. Use the `includes` folder to add new .php files and then use `require_once` in `functions.php` to include them.
+
+### `templates/` and `components/`
+
+In these folders we put our `.twig` templates. The `templates` folder is best used for page and post templates. Basically anything that receives data directly from a .php template like `single.php` or `page.php`.
+
+The `components` folder is where reusable element templates are. Things like `image.twig` or `menu.twig` that get passed data and can be used anywhere in the site. You might also want to save your block templates here too.
+
+### `src/`
+
+This is where all our raw static assets are saved for development. Use `gulp` to generate built files from `js` or `sass` which get saved in `dist`, ready to use in the browser.
+There are also tasks set up for `images` and `fonts` folders within `src` that minify and serve image and font files into `dist`.
+
+### Extra Directories
+
+You might want to create or include many extra directories in the theme - that's great!
+But remember to add anything you'll need in your packaged theme into the `packageWhitelist` constant in `gulpfile.js`, otherwise it'll be ignored in the build process.
+
+---
 ## Setting up CI (Bitbucket Pipelines) for your project
 
 The Crowd base build now comes with a `bitbucket-pipelines.yml` file which is a
@@ -85,50 +106,7 @@ sftp://crowdinfrastructure:crowd-infra-pass@sftp.flywheelsites.com
 ```
 
 The flywheel deployment uses our `crowdinfrastructure` Flywheel account. You'll
-need to contact Matt to get the password for this account.
-
-### Branch Configuration
-
-In the file there are build steps configured for two branches based on the Crowd
-standards, `develop` and `master`. Feel free to rename these in the yml file if
-you have a different branching structure in your repo.
-
-#### Develop Branch CI Configuration
-
-The develop branch has 1 automated step configured by default named `Build
-Package`. You can see the actions this step will run in the `script` section of
-this step in the `bitbucket-pipelines.yml` file. Essentially, it's similar to
-building a package on your local environment with `gulp package --production`.
-
-There is some __required configuration__. The second step, 'Deploy to UAT', is
-commented out by default as it requires you to specifiy the path in the
-destination filesystem you would like to deploy to. See the line below:
-
-```
-- "lftp $LFTP_infrastructure_user_string -e 'set sftp:auto-confirm yes; mirror -R --parallel=5 --delete --verbose=1 pipeline/ path/to/my/basebuild_theme-package; exit'"
-```
-This line references the mock path `path/to/my/basebuild_theme-package` where
-`path/to/my/` is the destination path of the files, usually something like
-`public_html/wp-content/themes/`. `basebuild_theme-package` is the name of the
-folder which gets made when you run the `gulp package` task, __if you have
-changed this name you will need to reflect this change here__.
-
-'Deploy to UAT' is a manual step, which means when the build has run in
-BitBucket, __you will have to go into the BitBucket pipelines area in the repo
-and click a button marked 'Deploy'__ to actually deploy to UAT.
-
-#### Master Branch CI Configuration
-
-Master branch is largely the same as develop branch, so follow the steps above
-to get mostly setup.
-
-Master branch also has an additional manual step which allows you to 'Deploy to
-Production'. Obviously __this should only be triggered when you've tested the
-UAT environment thoroughly__.
-
-You must adjust the lftp path like develop branch above, but this time put the
-path of your production environment.
-
+need to contact Nathan to get the password for this account.
 
 ### Known Hosts
 
