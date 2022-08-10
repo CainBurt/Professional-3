@@ -84,6 +84,11 @@ if ( ! class_exists( 'Timber' ) ) {
 
 Timber::$dirname = array('templates', 'components');
 
+/**
+ * StarterSite
+ * 
+ * The start point for Timber. It's a good idea to run any initial hooks and filters here that you need globally across the site.
+ */
 class StarterSite extends TimberSite {
 
     function __construct() {
