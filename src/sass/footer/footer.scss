@@ -1,12 +1,16 @@
 footer{
     // display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: var(--black);
+    padding: 20px 0;
     .left{
         max-height: 66px;
         max-width: 66px;
         img{
             height: 100%;
-            padding: 15px;
+            padding: 10px;
             filter: grayscale(100%);
         }
     }

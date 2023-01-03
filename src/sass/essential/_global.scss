@@ -1,3 +1,7 @@
+html, body{
+    font-family: Gotham-Medium;
+}
+
 .container{
     position: relative;
     max-width: var(--max-width);
@@ -5,10 +9,6 @@
     margin: 0 auto;
     padding-left: 24px;
     padding-right: 24px;
-}
-
-body{
-    height: 100vh;
 }
 
 #content{
