@@ -1,0 +1,30 @@
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 8px 0;
+    background-color: var(--black);
+    z-index: 99;
+
+    .header-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--orange);
+        .header-logo{
+            max-height: 66px;
+            max-width: 66px;
+            display: flex;
+            align-items: center;
+            img{
+                height: 100%;  
+                padding: 15px;
+            }
+            p{
+                margin-left: 1em;
+            }
+        }
+    }
+
+}

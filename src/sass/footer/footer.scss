@@ -1,0 +1,13 @@
+footer{
+    // display: flex;
+    background-color: var(--black);
+    .left{
+        max-height: 66px;
+        max-width: 66px;
+        img{
+            height: 100%;
+            padding: 15px;
+            filter: grayscale(100%);
+        }
+    }
+}

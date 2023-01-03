@@ -1,0 +1,12 @@
+<nav>
+    <div class="header-row container">
+        <a class="header-logo">
+        {% set image = TimberImage(options.site_logo) %}
+            <img src='{{ image.src }}' alt='{{ image.alt }}' /><p>{{__('HUB', 'crowd')}}</p>
+        </a>
+        <p class="employee-name">NAME</p>
+        <a class="burger-menu">
+            <p>BURGER</p>
+        </a>
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+.container{
+    position: relative;
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+body{
+    height: 100vh;
+}
+
+#content{
+    padding-top: 82px;
+    width: 100%;
+}

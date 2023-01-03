@@ -18,7 +18,7 @@ const gulp = require('gulp'),
     changed = require('gulp-changed'),
     debug = require('gulp-debug'),
     replace = require('gulp-replace'),
-    theme = 'crowd-base-build', // Define the theme name for packaging
+    theme = 'employee-hub', // Define the theme name for packaging
     paths = {
         sass: {
             essential: {
@@ -29,6 +29,16 @@ const gulp = require('gulp'),
             deferred: {
                 src: 'src/sass/deferred/**/*.scss',
                 name: 'deferred.css',
+                dist: 'dist/styles'
+            },
+            deferred: {
+                src: 'src/sass/header/**/*.scss',
+                name: 'header.css',
+                dist: 'dist/styles'
+            },
+            deferred: {
+                src: 'src/sass/footer/**/*.scss',
+                name: 'footer.css',
                 dist: 'dist/styles'
             },
         },
