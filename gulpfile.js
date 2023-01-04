@@ -31,14 +31,14 @@ const gulp = require('gulp'),
                 name: 'deferred.css',
                 dist: 'dist/styles'
             },
-            deferred: {
-                src: 'src/sass/header/**/*.scss',
-                name: 'header.css',
-                dist: 'dist/styles'
-            },
-            deferred: {
+            footer: {
                 src: 'src/sass/footer/**/*.scss',
                 name: 'footer.css',
+                dist: 'dist/styles'
+            },
+            header: {
+                src: 'src/sass/header/**/*.scss',
+                name: 'header.css',
                 dist: 'dist/styles'
             },
         },
@@ -67,6 +67,10 @@ const gulp = require('gulp'),
                 {
                     entryFiles: glob.sync('./src/js/partytown.js'),
                     outputName: 'partytown'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/header/header.js'),
+                    outputName: 'header'
                 },
             ]
         },

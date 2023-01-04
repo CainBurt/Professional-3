@@ -11,6 +11,16 @@ html, body{
     padding-right: 24px;
 }
 
+.dropdown-container{
+    position: relative;
+    max-width: var(--inner-width);
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 100vh;
+}
+
 #content{
     padding-top: 82px;
     width: 100%;

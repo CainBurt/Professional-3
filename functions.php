@@ -222,6 +222,7 @@ class StarterSite extends TimberSite {
         // Enqueue a main stylesheet as a sensible default
         // wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
         inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
+        inline_script(get_template_directory_uri() . '/dist/js/header.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');

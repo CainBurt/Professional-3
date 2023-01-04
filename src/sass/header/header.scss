@@ -17,12 +17,59 @@ header{
             max-width: 66px;
             display: flex;
             align-items: center;
+            text-decoration: none;
+            &:link, &:visited{
+                color: unset;
+            }
             img{
                 height: 100%;  
                 padding: 10px;
             }
             p{
                 margin-left: 1em;
+            }
+            .burger-menu{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu{
+        display: none;
+        align-items: center;
+        margin-top: -82px;
+        ul{
+            font-size: 32px;
+            margin: 0 auto;
+            color: var(--white);
+            text-decoration: none;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px;
+            li{
+                flex: 1 1 400px;
+                margin: 10px;
+                &:not(:last-child){
+                    margin-bottom: 24px;
+                }
+                a{
+                    display: block;
+                    text-decoration: none;
+                    transition: 0.3s ease-in-out;
+                    &:link, &:visited{
+                        color: unset;
+                    }
+
+                    &:hover{
+                        
+                        color: var(--orange);
+                        transform: translateX(3%);
+                    }
+                }
+                
             }
         }
     }

@@ -1,12 +1,19 @@
 <nav>
     <div class="header-row container">
-        <a class="header-logo">
+        <a class="header-logo" href="/">
         {% set image = TimberImage(options.site_logo) %}
             <img src='{{ image.src }}' alt='{{ image.alt }}' /><p>{{__('HUB', 'crowd')}}</p>
         </a>
-        <p class="employee-name">NAME</p>
-        <a class="burger-menu">
-            <i class="fa-solid fa-bars"></i>
+        <p class="employee-name">{% if user %}{{ user.user_nicename }}{% endif %}</p>
+        <a id="dropdown" class="burger-menu">
+            <i id="dropdown_icon" class="fa-solid fa-bars fa-2x"></i>
         </a>
+    </div>
+    <div id='dropdown_menu' class="dropdown-menu dropdown-container">
+        <ul>
+        {% for item in menu.items %}
+            <li class=" {{ item.classes|join(' ') }}"><a href="{{item.link}}">{{item.title}}</a></li>
+        {% endfor %}
+        </ul>
     </div>
 </nav>
