@@ -1,0 +1,18 @@
+<section class="nav-grid">
+    <h1>Hello {% if user %}{{ user }}{% endif %}</h1>
+    <div class="grid container">
+        <ul>
+            {% for item in fields.grid %}
+            <a id="grid-item" href="{{item.link}}" data-id="{{loop.index}}">
+                <li class=" {{ item.classes|join(' ') }}">
+                    
+                        <img id="icon" class="" src="{{item.icon}}" alt=""/>
+                        <h3>{{item.title}}</h3>
+                    
+                 </li>
+            </a>
+            {% endfor %}
+        </ul>
+        
+    </div>
+</section>

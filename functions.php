@@ -181,6 +181,7 @@ class StarterSite extends TimberSite {
         // require_once custom acf blocks here
         
         // require_once('includes/blocks/example.php');
+        require_once('includes/blocks/landing-page/nav-grid.php');
     }
 
     function add_to_context( $context ) {
@@ -223,10 +224,12 @@ class StarterSite extends TimberSite {
         // wp_enqueue_style( 'main.css', MAIN_CSS_SRC, array(), $cache_ver, 'all' );
         inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
         inline_script(get_template_directory_uri() . '/dist/js/header.js');
+        inline_script(get_template_directory_uri() . '/dist/js/nav-grid.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/footer.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/landing-page.css');
     }
 
     /**
