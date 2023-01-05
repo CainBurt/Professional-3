@@ -753,3 +753,18 @@ function custom_render_block_core_image (
 }
 
 add_filter('render_block', 'custom_render_block_core_image', null, 2);
+
+
+// Redirect users who arent logged in
+function login_redirect() {
+
+    // Current Page
+    global $pagenow;
+
+    // Check to see if user in not logged in and not on the login page
+    if(!is_user_logged_in() && $pagenow != 'wp-login.php')
+          // If user is, Redirect to Login form.
+          auth_redirect();
+}
+// add the block of code above to the WordPress template
+add_action( 'wp', 'login_redirect' );
