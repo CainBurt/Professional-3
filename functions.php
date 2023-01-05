@@ -182,6 +182,7 @@ class StarterSite extends TimberSite {
         
         // require_once('includes/blocks/example.php');
         require_once('includes/blocks/landing-page/nav-grid.php');
+        require_once('includes/blocks/landing-page/latest-updates.php');
     }
 
     function add_to_context( $context ) {

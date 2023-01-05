@@ -4,13 +4,13 @@ acf_register_block( array(
     'name'            => 'nav_grid',
     'title'           => __( 'Navigation Grid', 'your-text-domain' ),
     'description'     => __( 'Landing page navigation grid', 'your-text-domain' ),
-    'render_callback' => 'my_acf_block_render_callback',
+    'render_callback' => 'nav_grid_render_callback',
     'category'        => 'formatting',
     'icon'            => 'admin-comments',
     'keywords'        => array( 'navigation' ),
 ) );
 
-function my_acf_block_render_callback( $block, $content = '', $is_preview = false ) {
+function nav_grid_render_callback( $block, $content = '', $is_preview = false ) {
     $context = Timber::context();
 
     // Store block values.
