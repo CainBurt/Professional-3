@@ -3,7 +3,6 @@ header{
     width: 100%;
     top: 0;
     left: 0;
-    padding: 8px 0;
     background-color: var(--black);
     z-index: 99;
 
@@ -12,6 +11,8 @@ header{
         justify-content: space-between;
         align-items: center;
         color: var(--orange);
+        padding-top: 8px;
+        padding-bottom: 8px;
         .header-logo{
             max-height: 66px;
             max-width: 66px;
@@ -70,6 +71,16 @@ header{
                     }
                 }
                 
+            }
+        }
+    }
+
+    .sub-nav{
+        background-color: var(--grey);
+        .container{
+            h1{
+                margin: 0;
+                padding: 1em 10px;
             }
         }
     }

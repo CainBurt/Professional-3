@@ -16,4 +16,15 @@
         {% endfor %}
         </ul>
     </div>
+    {% if fn('is_front_page')%}
+    {% else %}
+    <div class="sub-nav">
+        <div class="container">
+            <h1>
+                {{ post.title }}
+            
+            </h1>
+        </div>
+    </div>
+    {% endif %}
 </nav>
