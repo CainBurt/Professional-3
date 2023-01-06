@@ -1,0 +1,33 @@
+.resources{
+    .inner-container{
+        .resource-container{
+            display: flex;
+            flex-direction: row;
+            &:not(:last-child){
+                padding-bottom: 2em;
+            }
+            .resource-icon{
+                color: var(--orange) ;
+            }
+            div{
+                padding-left: 1em;
+                h2{
+                    font-size: 32px;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+                p{
+                    margin: 0.5em 0;
+                    font-size: 16px;
+                    font-family: Gotham-Book;
+                    line-height: 1.5;
+                }
+                a{
+                    color: var(--orange);
+                    font-size: 20px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<section class="resources">
+    <div class="inner-container">
+        {% for resource in fields.resources %}
+        <div class="resource-container">
+            <i class="resource-icon {{resource.icon}} fa-2x"></i>
+            <div>
+                <h2>{{resource.content.title}}</h2>
+                <p>{{resource.content.body_text}}</p>
+                <a href="{{resource.content.link}}" >{{resource.content.link}}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

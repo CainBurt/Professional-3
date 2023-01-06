@@ -181,6 +181,7 @@ class StarterSite extends TimberSite {
         // require_once custom acf blocks here
         
         // require_once('includes/blocks/example.php');
+        require_once('includes/blocks/resource.php');
         require_once('includes/blocks/landing-page/nav-grid.php');
         require_once('includes/blocks/landing-page/latest-updates.php');
     }
@@ -231,6 +232,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/footer.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/landing-page.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/resource.css');
     }
 
     /**

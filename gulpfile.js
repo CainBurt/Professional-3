@@ -46,6 +46,11 @@ const gulp = require('gulp'),
                 name: 'landing-page.css',
                 dist: 'dist/styles'
             },
+            resource: {
+                src: 'src/sass/blocks/resource.scss',
+                name: 'resource.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [
