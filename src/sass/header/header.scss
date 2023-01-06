@@ -59,15 +59,23 @@ header{
                 a{
                     display: block;
                     text-decoration: none;
-                    transition: 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
                     &:link, &:visited{
                         color: unset;
                     }
 
                     &:hover{
-                        
                         color: var(--orange);
-                        transform: translateX(3%);
+                        transform: translateX(10%);
+                        i{
+                            display: inline-block;
+                            color: var(--orange);
+                        }
+                    }
+                    
+                    i{
+                        color: var(--black);
+                        padding-right: 0.3em;
                     }
                 }
                 
