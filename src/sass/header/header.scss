@@ -35,6 +35,9 @@ header{
                 }
             }
         }
+        .employee-name{
+            color: var(--white);
+        }
     }
 
     .dropdown-menu{
@@ -107,6 +110,9 @@ header{
                 
                 &::-ms-expand{
                     display: none;
+                }
+                &:focus-visible{
+                    outline: none;
                 }
             }
 
