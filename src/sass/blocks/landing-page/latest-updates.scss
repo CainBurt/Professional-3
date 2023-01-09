@@ -1,6 +1,55 @@
 .latest-updates{
     background-color: var(--grey);
+    background-clip: content-box;
     .inner-container{
+        margin-top: 2.5em;
+        margin-bottom: 2.5em;
         max-width: var(--inner-width);
+        h1{
+            padding-top: 5%;
+            padding-bottom: 2%;
+            margin: 0;
+            font-size: 44px;
+        }
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1.5px solid #D3D2D2;
+            font-family: Gotham-Book;
+            padding: 5px 0;
+            &:last-child{
+                padding-bottom: 3%;
+            }
+            p{
+                a{
+                    color: var(--black);
+                    font-weight: bold;
+                    &:hover{
+                        color: var(--orange);
+                    }
+                }
+                &:first-child{
+                    width: 5em;
+                    flex-grow: 0.5;
+                }
+                
+            }
+            .link{
+                background-color: var(--orange);
+                color: var(--white);
+                text-decoration: none;
+                padding: 5px 15px;
+                border-radius: 2px;
+                &:hover{
+                    filter: brightness(90%);
+                }
+            }
+            
+            
+        }
+  
     }
 }

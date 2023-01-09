@@ -41,9 +41,14 @@ const gulp = require('gulp'),
                 name: 'header.css',
                 dist: 'dist/styles'
             },
-            landing_page: {
-                src: 'src/sass/blocks/landing-page/**/*.scss',
-                name: 'landing-page.css',
+            nav_grid: {
+                src: 'src/sass/blocks/landing-page/nav-grid.scss',
+                name: 'nav-grid.css',
+                dist: 'dist/styles'
+            },
+            latest_updates: {
+                src: 'src/sass/blocks/landing-page/latest-updates.scss',
+                name: 'latest-updates.css',
                 dist: 'dist/styles'
             },
             resource: {

@@ -1,7 +1,13 @@
 <section class="latest-updates container">
     <div class="inner-container">
-        <h1>{{__('Latest Updates', 'crowd')}}</h1>
-        
+            <h1>{{__('Latest Updates', 'crowd')}}</h1>           
+            {% for update in fields.updates %}
+                <div class="row">
+                   {{update.update_text}}
+                    <p>{{update.date}}</p>
+                    <a class="link" href="{{update.link}}">{{__('View', 'crowd')}}</a>
+                </div>  
+            {% endfor %}
     </div>
     
 </section>

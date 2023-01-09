@@ -231,7 +231,8 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/footer.css');
-        inline_style(get_template_directory_uri(  ) . '/dist/styles/landing-page.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/nav-grid.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/latest-updates.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/resource.css');
     }
 
