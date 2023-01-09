@@ -21,15 +21,8 @@ window.onload = (event) => {
     var yourHeight = 160;
 
     dropDownValue.onchange = function() {
-    if (this.selectedIndex !== 0) {
         window.location.href = this.value;
-        // var scrolledY = window.scrollY;
-        // if(scrolledY){
-        //     window.scroll(0, scrolledY - yourHeight)
-        // }
         console.log(dropDownValue)
-        // window.scrollBy(0, 70)
-    }
     };
     
 
