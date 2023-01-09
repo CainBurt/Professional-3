@@ -71,3 +71,63 @@
         }
     }
 }
+
+.wpcf7-form{
+    
+    input[type="text"],
+    textarea{
+        font-family: Gotham-Book;
+        width: 100%;
+        border: 1px solid var(--black);
+        border-radius: 4px;
+        &:focus-visible{
+            outline: 2px solid var(--orange);
+            
+        }
+    }
+
+    input[type="text"]{
+        height: 50px;
+        padding-left: 15px;
+        margin-bottom: 1em;
+
+    }
+
+    textarea{
+        padding-left: 15px;
+        padding-top: 10px;
+       
+    }
+    p{
+        margin-bottom: 0;
+        margin-top: 0;
+        &:last-child{
+            
+        }
+    }
+    button {
+        border: none;
+        background-color: white;
+    }
+    
+    input[type="submit"]{
+
+        border-width: none;
+        border-style: none;
+        border-color: none;
+        border-image: none;
+
+        background-color: var(--orange);
+        color: var(--white);
+        text-decoration: none;
+        padding: 5px 15px;
+        border-radius: 3px;
+        float: right;
+        width: 10em;
+        height: 3em;
+        &:hover{
+            filter: brightness(90%);
+            cursor: pointer;
+        }
+    }
+}

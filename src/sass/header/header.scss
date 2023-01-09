@@ -29,14 +29,13 @@ header{
             p{
                 margin-left: 1em;
             }
-            .burger-menu{
-                &:hover{
-                    cursor: pointer;
-                }
-            }
+            
         }
         .employee-name{
             color: var(--white);
+        }
+        .burger-menu{
+            cursor: pointer;
         }
     }
 
@@ -69,7 +68,7 @@ header{
 
                     &:hover{
                         color: var(--orange);
-                        transform: translateX(10%);
+                        transform: translateX(7%);
                         i{
                             display: inline-block;
                             color: var(--orange);

@@ -167,7 +167,8 @@ class StarterSite extends TimberSite {
 
     function register_post_types() {
         // require_once custom post types here
-        require_once('includes/post-types/form.php');
+        // require_once('includes/post-types/form.php');
+        require_once('includes/post-types/suggestion.php');
     }
 
     function register_taxonomies() {
@@ -771,3 +772,26 @@ function login_redirect() {
 }
 // add the block of code above to the WordPress template
 add_action( 'wp', 'login_redirect' );
+
+function save_posted_data( $posted_data ) {
+    $args = array(
+      'post_type' => 'suggestion',
+      'post_status'=>'publish',
+      'post_title'=>$posted_data['your-name'],
+      'post_content'=>$posted_data['your-message'],
+    );
+    $post_id = wp_insert_post($args);
+
+    if(!is_wp_error($post_id)){
+      if( isset($posted_data['your-name']) ){
+        update_post_meta($post_id, 'your-name', $posted_data['your-name']);
+      }
+
+      if( isset($posted_data['your-message']) ){
+        update_post_meta($post_id, 'your-message', $posted_data['your-message']);
+      }
+   return $posted_data;
+  }
+}
+
+add_filter( 'wpcf7_posted_data', 'save_posted_data' );
