@@ -3,6 +3,23 @@
     "title": "Block: Navigation Grid",
     "fields": [
         {
+            "key": "field_63bbf7f79efb0",
+            "label": "Navigation Grid",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_63b5862cfcc69",
             "label": "Grid",
             "name": "grid",
@@ -104,5 +121,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1672841570
+    "modified": 1673263160
 }

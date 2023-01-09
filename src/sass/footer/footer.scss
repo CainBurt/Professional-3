@@ -4,14 +4,28 @@ footer{
     bottom: 0;
     width: 100%;
     background-color: var(--black);
-    padding: 20px 0;
-    .left{
-        max-height: 66px;
-        max-width: 66px;
-        img{
-            height: 100%;
-            padding: 10px;
-            filter: grayscale(100%);
+    
+    .top-anchor{
+        background-color: var(--grey);
+        .inner-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
     }
+    .container{
+        padding: 20px 0 20px;
+        .bottom{
+        
+            max-height: 66px;
+            max-width: 66px;
+            img{
+                height: 100%;
+                padding: 10px;
+                filter: grayscale(100%);
+            }
+        }
+    }
+    
 }

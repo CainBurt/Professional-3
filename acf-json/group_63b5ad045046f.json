@@ -3,6 +3,23 @@
     "title": "Block: Latest Updates",
     "fields": [
         {
+            "key": "field_63bbf84077eb5",
+            "label": "Latest Updates",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_63b5ad1d6c7ee",
             "label": "Updates",
             "name": "updates",
@@ -94,5 +111,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673259145
+    "modified": 1673263181
 }

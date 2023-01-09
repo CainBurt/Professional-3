@@ -22,8 +22,14 @@
         <div class="container">
             <h1>
                 {{ post.title }}
-            
             </h1>
+                {% if post.title == 'Employee Handbook' %}
+                    <select name="section" id="section">
+                        {% for anchor in anchors %}
+                            <option value="#{{anchor.anchor}}">{{loop.index}} - {{anchor.heading}}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
         </div>
     </div>
     {% endif %}

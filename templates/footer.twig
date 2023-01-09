@@ -1,8 +1,19 @@
-<div class="container">
-	<div class="left">
-		<a class="footer-logo ">
-		{% set image = TimberImage(options.site_logo) %}
-			<img src='{{ image.src }}' alt='{{ image.alt }}' />
-		</a>
+<div >
+	{% if post.title == 'Employee Handbook'%}
+		<div class="top-anchor">
+			<div class="inner-container">
+				<i class="fa-solid fa-chevron-left"></i>
+				<h4>Test</h4>
+				<i class="fa-solid fa-chevron-right"></i>
+			</div>
+		</div>
+	{% endif %}
+	<div class="container">
+		<div class="bottom">
+			<a class="footer-logo ">
+			{% set image = TimberImage(options.site_logo) %}
+				<img src='{{ image.src }}' alt='{{ image.alt }}' />
+			</a>
+		</div>
 	</div>
 </div>
