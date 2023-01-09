@@ -17,4 +17,51 @@
         font-family: Gotham-Book;
         line-height: 1.6;
     }
+    ul{
+        padding-left: 2%;
+        color: rgba($color: #000000, $alpha: 0.6);
+        li{
+            padding: 10px 0;
+            line-height: 1.45;
+            &::marker{
+                color: var(--orange);
+            }
+        }
+    }
+    table{
+        font-family: Gotham-Book;
+        border-collapse: separate !important; 
+        border-spacing: 0 10px;
+
+        thead{
+            
+            tr{
+                background-color: black;
+                color: var(--orange);
+                font-weight: bold;
+                th{
+                    border: 0px;
+                    &:first-child{
+                        text-align: left;
+                        padding-left: 20px;
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    text-align: center;
+                    background-color: var(--grey);
+                    border: 0px;
+                    &:first-child{
+                        text-align: left;
+                        font-weight: bold;
+                        padding-left: 20px;
+                    }
+                }
+            }
+            
+        }
+    }
 }
