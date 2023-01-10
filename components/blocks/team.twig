@@ -1,0 +1,53 @@
+<section class="team ">
+    <div class="search-section container">
+        <div class="title inner-container">
+            <h1><span>Welcome </span>to<br/>our team</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="search-form">
+        {# TODO: SEARCH FORM HERE #}
+        </div>
+    </div>
+    <div class="team-section">
+        {# {% set users = function('get_user_meta', )%}
+        {{ users | json_encode(constant('JSON_PRETTY_PRINT')) }} #}
+        {% for teams in fields.teams %}
+        <div class="team-row">
+            <p class="team-name">{{teams.team_name}}</p>
+            <div class="members-list glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        {% for member in teams.team_members %}
+                            <li class="glide__slide team-member">
+                                {# {% set user = function('get_user_meta', member.id )%}
+                                {{ user | json_encode(constant('JSON_PRETTY_PRINT')) }} #}
+                                {# {{ member | json_encode(constant('JSON_PRETTY_PRINT')) }} #}
+                                
+                                <img src="{{function('wp_get_attachment_image_url', member.image, 'full')}}" alt="">
+                                <p class="name">{{member.nickname}}</p>
+                                <p>{{member.job_title}} <span style="color: var(--orange)">&#x2022; </span>{{member.location}}</p>
+                                <i class="fa-regular fa-envelope tooltip">
+                                    <span class="tooltiptext">
+                                        {{ member.user_email }}
+                                    </span>
+                                </i>
+                                <i class="fa-brands fa-linkedin-in tooltip">
+                                    <span class="tooltiptext">
+                                        {{member.linkedin}}
+                                    </span>
+                                </i>
+                                <i class="fa-solid fa-brain tooltip">
+                                    <span class="tooltiptext">
+                                        {{member.skills}}
+                                    </span>
+                                </i>
+                            </li>
+                        {% endfor %} 
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>

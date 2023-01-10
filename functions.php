@@ -185,6 +185,7 @@ class StarterSite extends TimberSite {
         require_once('includes/blocks/resource.php');
         require_once('includes/blocks/landing-page/nav-grid.php');
         require_once('includes/blocks/landing-page/latest-updates.php');
+        require_once('includes/blocks/team.php');
     }
 
     function add_to_context( $context ) {
@@ -228,6 +229,7 @@ class StarterSite extends TimberSite {
         inline_script(get_template_directory_uri() . '/dist/js/partytown.js');
         inline_script(get_template_directory_uri() . '/dist/js/header.js');
         inline_script(get_template_directory_uri() . '/dist/js/nav-grid.js');
+        inline_script(get_template_directory_uri() . '/dist/js/team.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
@@ -235,6 +237,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/nav-grid.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/latest-updates.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/resource.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/team.css');
     }
 
     /**
@@ -759,18 +762,15 @@ function custom_render_block_core_image (
 add_filter('render_block', 'custom_render_block_core_image', null, 2);
 
 
-// Redirect users who arent logged in
-function login_redirect() {
 
-    // Current Page
+function login_redirect() {
     global $pagenow;
 
-    // Check to see if user in not logged in and not on the login page
-    if(!is_user_logged_in() && $pagenow != 'wp-login.php')
-          // If user is, Redirect to Login form.
-          auth_redirect();
+    if(!is_user_logged_in() && $pagenow != 'wp-login.php'){
+        auth_redirect();
+    }
+          
 }
-// add the block of code above to the WordPress template
 add_action( 'wp', 'login_redirect' );
 
 function save_posted_data( $posted_data ) {

@@ -94,7 +94,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
+                    "post_type": [
+                        "page"
+                    ],
                     "taxonomy": "",
                     "allow_null": 0,
                     "allow_archives": 1,
@@ -121,5 +123,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673263160
+    "modified": 1673284315
 }

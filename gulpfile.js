@@ -56,6 +56,11 @@ const gulp = require('gulp'),
                 name: 'resource.css',
                 dist: 'dist/styles'
             },
+            team: {
+                src: 'src/sass/blocks/team.scss',
+                name: 'team.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [
@@ -90,6 +95,10 @@ const gulp = require('gulp'),
                 {
                     entryFiles: glob.sync('./src/js/blocks/landing-page/nav-grid.js'),
                     outputName: 'nav-grid'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/blocks/team.js'),
+                    outputName: 'team'
                 },
             ]
         },
