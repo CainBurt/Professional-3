@@ -5,6 +5,7 @@
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 .team{
+    overflow-x: hidden ;
     .search-section{
         .title{
             h1{
@@ -22,9 +23,51 @@
             }
             
         }
+        form{
+            padding-top: 4em;
+            label{
+                color: var(--orange);
+                
+            }
+            input[type="text"]{
+                font-family: Gotham-Book;
+                width: 100%;
+                border: 1px solid var(--black);
+                border-radius: 4px 0 0 4px;
+                height: 50px;
+                padding-left: 15px;
+                margin: 10px 0 2em;
+                background: url("https://icons8.com/icon/59878/search") #ffffff no-repeat 98% !important;
+                width: 95%;
+                border-right: none;
+                &:focus-visible{
+                    outline: none;
+                }
+            }
+            button{
+                width: 5%;
+                height: 50px;
+                float: right;
+                padding: 6px 10px;
+                margin-top: 10px;
+                // margin-right: 16px;
+                background: var(--white);
+                font-size: 17px;
+                border-radius: 0 4px 4px 0;
+                border: 1px solid var(--black);
+                border-left: none;
+                cursor: pointer;
+                &:hover{
+                    i{
+                        color: var(--orange);
+                    }
+                }
+            }
+        }
     }
 
     .team-section{
+        overflow-x: hidden ;
         background-color: #F2F2F2;
         .team-row{
             display: flex;
@@ -40,10 +83,6 @@
                 padding: 60px 0;
                 border-bottom: 2px solid #D3D2D2;
                 
-                .glide__track{
-                    .glide__slides{
-                    }
-                }
                 .team-member{
                     overflow: visible ;
                     img{
