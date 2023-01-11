@@ -9,7 +9,7 @@
         <form class="filter-form" action="">
             <div class="location-container">
                 <label for="location">{{__('Location', 'crowd')}}</label><br>
-                <select name="section" id="section">
+                <select name="location" id="location">
                     {% set location_field = function('get_field_object', 'field_63bd699227799' )%}
                     {% set locations = location_field['choices'] %}
                     <option value="All">{{__('All', 'crowd')}}</option>
@@ -20,7 +20,7 @@
             </div>
             <div class="department-container">
                 <label for="department">{{__('Department', 'crowd')}}</label><br>
-                <select name="section" id="section">
+                <select name="department" id="department">
                     <option value="All">{{__('All', 'crowd')}}</option>
                     {% for teams in fields.teams %}
                         <option value="{{teams.team_name}}">{{teams.team_name}}</option>

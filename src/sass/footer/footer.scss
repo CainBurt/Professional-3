@@ -24,6 +24,9 @@ footer{
                 height: 100%;
                 padding: 10px;
                 filter: grayscale(100%);
+                &:hover{
+                    filter: grayscale(0%); 
+                }
             }
         }
     }
