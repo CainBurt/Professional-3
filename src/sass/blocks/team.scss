@@ -12,6 +12,7 @@
                 font-size: 96px;
                 color: transparent;
                 -webkit-text-stroke: 1px var(--black);
+                margin-bottom: 0.3em;
                 span{
                     color: var(--black);
                 }
@@ -23,8 +24,10 @@
             }
             
         }
-        form{
+        .filter-form{
             padding-top: 4em;
+            display: flex;
+            align-items: flex-end;
             label{
                 color: var(--orange);
                 
@@ -33,18 +36,90 @@
                 font-family: Gotham-Book;
                 width: 100%;
                 border: 1px solid var(--black);
+                border-radius: 4px;
+                height: 50px;
+                padding-left: 15px;
+                margin: 10px 0 0;
+                width: 95%;
+            }
+            select{
+                font-family: Gotham-Book;
+                width: 100%;
+                border: 1px solid var(--black);
+                border-radius: 4px;
+                height: 50px;
+                padding-left: 15px;
+                margin: 10px 0 0;
+                width: 95%;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") #ffffff no-repeat 96% !important;
+
+                &:focus-visible{
+                    outline: none;
+                }
+            }
+            .location-container{
+                width: 40%;
+            }
+            .department-container,
+            .skill-container{
+                width: 25%;
+                
+            }
+
+            button{
+                width: 10%;
+                height: 50px;
+                padding: 6px 10px;
+                margin-top: 10px;
+    
+                font-size: 17px;
+                border-radius: 4px;
+                border: 1px solid var(--orange);
+
+                background-image: 
+                linear-gradient(to top, var(--white) 50%, var(--orange) 50%),
+                linear-gradient(to top, var(--orange) 50%, var(--white) 50%);
+            
+                -webkit-background-clip: text,padding-box;
+                background-clip: text,padding-box;
+                -webkit-text-fill-color: transparent;
+                color: transparent;  
+                background-size: 100% 200%;
+                background-position: top;
+                transition: background-position 0.2s ease-in-out;
+                cursor: pointer;
+                &:hover{
+                    background-position: bottom;
+                }
+            }
+            
+
+        }
+        .search-form{
+            padding-top: 2em;
+            padding-bottom: 2em;
+            >label{
+                color: var(--orange);
+                
+            }
+            >input[type="text"]{
+                font-family: Gotham-Book;
+                width: 100%;
+                border: 1px solid var(--black);
                 border-radius: 4px 0 0 4px;
                 height: 50px;
                 padding-left: 15px;
-                margin: 10px 0 2em;
-                background: url("https://icons8.com/icon/59878/search") #ffffff no-repeat 98% !important;
+                margin: 10px 0 0;
                 width: 95%;
                 border-right: none;
                 &:focus-visible{
                     outline: none;
                 }
             }
-            button{
+            >button{
                 width: 5%;
                 height: 50px;
                 float: right;
