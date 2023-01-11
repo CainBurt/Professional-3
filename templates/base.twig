@@ -1,3 +1,4 @@
+
 {% block html_head_container %}
 
 {% include 'html-header.twig' %}
@@ -5,6 +6,10 @@
 	{% endblock %}
 	</head>
 {% endblock %}
+
+{% if function('wp_is_mobile') %}
+	{% include 'mobile.twig'%}
+{% else %}
 
 	<body class="{{body_class}}" data-template="base.twig">
 		{{ options.body_start_scripts }}
@@ -90,4 +95,6 @@
 			}, false)
 		</script>
 	</body>
+{% endif %}
 </html>
+

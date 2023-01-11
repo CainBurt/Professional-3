@@ -1,0 +1,35 @@
+.mobile-body{
+    background-image: url('../images/crowd-background.png');
+    background-color: #cccccc;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    >.fa-stack{
+        font-size: 4em;
+        
+        i:first-child{
+            color: var(--orange);
+        }
+        i:last-child{
+            color: var(--white);
+        }
+        
+    }
+    h1{
+        font-size: 47px;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--black);
+        margin-bottom: 0.3em;
+        span{
+            color: var(--black);
+        }
+    }
+    p{
+        font-family: Gotham-Book;
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
