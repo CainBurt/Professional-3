@@ -20,11 +20,12 @@ window.onload = (event) => {
     var dropDownValue = document.getElementById("section");
     var yourHeight = 160;
 
-    dropDownValue.onchange = function() {
-        window.location.href = this.value;
-        console.log(dropDownValue)
-    };
+    if(dropDownValue){
+        dropDownValue.onchange = function() {
+            window.location.href = this.value;
+            console.log(dropDownValue)
+        };
+    }
     
-
 }
       
