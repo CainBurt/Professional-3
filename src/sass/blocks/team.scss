@@ -159,7 +159,7 @@
                 text-transform: uppercase;
             }
             .members-list{
-                padding: 60px 0;
+                padding: 60px 0 30px;
                 border-bottom: 2px solid #D3D2D2;
                 
                 .team-member{
@@ -224,8 +224,8 @@
                     }
                     
                     .skills{
-                        display: none;
-                        // visibility: hidden;
+                        // display: none;
+                        visibility: hidden;
                         padding-top: 1em;
                     }
                 }

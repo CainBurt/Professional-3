@@ -118,14 +118,14 @@ function clickSkills(element, userId){
         element.classList.add("icon-clicked")
         Array.from(skills)
             .forEach(function(val) {
-                val.style.display = 'block';
+                val.style.visibility = 'visible';
         });
         // skills.style.display = 'block';
     }else{
         element.classList.remove("icon-clicked")
         Array.from(skills)
             .forEach(function(val) {
-                val.style.display = 'none';
+                val.style.visibility = 'hidden';
         });
         
         // skills.style.display = 'none';
