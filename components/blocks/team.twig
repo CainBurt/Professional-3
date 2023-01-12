@@ -31,13 +31,13 @@
             </div>
             <div class="skill-container">
                 <label for="skill">{{__('Expert In', 'crowd')}}</label><br>
-                <input type="text" id="skill" name="skill" placeholder="All">
+                <input type="text" id="skill" name="skill" placeholder="All" value="{{request.get.skill}}">
             </div>
             <button type="submit">{{__('Filter', 'crowd')}}</button>
         </form>
         <form class="search-form" action="">
             <label for="search">{{__('Staff Search', 'crowd')}}</label><br>
-            <input type="text" id="search" name="search" placeholder="Name goes here">
+            <input type="text" id="search" name="search" placeholder="Name goes here" value="{{request.get.search}}">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         </div>
