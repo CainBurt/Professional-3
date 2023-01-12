@@ -145,6 +145,9 @@
         overflow-x: hidden ;
         background-color: #F2F2F2;
         .team-row{
+            // &:has(.glide__slides:empty){
+            //     display: none !important;
+            // }
             display: flex;
             .team-name{
                 display: flex;
