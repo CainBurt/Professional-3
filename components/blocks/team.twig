@@ -44,11 +44,13 @@
     </div>
     {# <h1>LOCATION:{{ request.get.location }}</h1>
     <h1>DEPARTMENT:{{ request.get.department }}</h1>
-    <h1>SEARCH:{{ request.get.search }}</h1> #}
+    <h1>SEARCH:{{ request.get.search }}</h1>
+    <h1>SKILL:{{ request.get.skill }}</h1> #}
 
     {% set loc = request.get.location %}
     {% set depart = request.get.department %}
     {% set ser = request.get.search %}
+    {% set expert = request.get.skill %}
 
 
     <div class="team-section">
@@ -63,33 +65,35 @@
                             <ul class="glide__slides">
                                 {% for member in teams.team_members %}
                                     {% if (loc == member.location) or (loc == 'All') or (loc == '') %}
-                                        {% if (ser|lower in member.nickname|lower)%}
-                                        <li id="slide" class="glide__slide team-member">
-                                            <img src="{{function('wp_get_attachment_image_url', member.image, 'full')}}" alt="">
-                                            <p class="name">{{member.nickname}}</p>
-                                            <p class="job">{{member.job_title}} <span style="color: var(--orange)">&#x2022; </span>{{member.location}}</p>
-                                            <div class="icons">
-                                                <a href="mailto:{{ member.user_email }}" target="_BLANK">
-                                                    <span id="email_btn" class="fa-stack fa-lg" style="vertical-align: top;">
-                                                        <i id="email_icon" class="fa-solid fa-circle fa-stack-2x "></i>
-                                                        <i class="fa-solid fa-envelope fa-stack-1x tooltip"></i>
-                                                    </span>
-                                                </a>
-                                                <a href="{{ member.linkedin }}" target="_BLANK">
-                                                    <span id="linkedin_btn" class="fa-stack fa-lg" style="vertical-align: top;">
+                                        {% if (expert|lower in member.skills|lower) or (expert == '')%}
+                                            {% if (ser|lower in member.nickname|lower)%}
+                                            <li id="slide" class="glide__slide team-member">
+                                                <img src="{{function('wp_get_attachment_image_url', member.image, 'full')}}" alt="">
+                                                <p class="name">{{member.nickname}}</p>
+                                                <p class="job">{{member.job_title}} <span style="color: var(--orange)">&#x2022; </span>{{member.location}}</p>
+                                                <div class="icons">
+                                                    <a href="mailto:{{ member.user_email }}" target="_BLANK">
+                                                        <span id="email_btn" class="fa-stack fa-lg" style="vertical-align: top;">
+                                                            <i id="email_icon" class="fa-solid fa-circle fa-stack-2x "></i>
+                                                            <i class="fa-solid fa-envelope fa-stack-1x tooltip"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="{{ member.linkedin }}" target="_BLANK">
+                                                        <span id="linkedin_btn" class="fa-stack fa-lg" style="vertical-align: top;">
+                                                            <i class="fa-solid fa-circle fa-stack-2x "></i>
+                                                            <i class="fa-brands fa-linkedin-in fa-stack-1x tooltip"></i>
+                                                        </span>
+                                                    </a>
+                                                    <span id="skills_btn" class="fa-stack fa-lg" style="vertical-align: top;" onclick="clickSkills(this, {{member.id}})">
                                                         <i class="fa-solid fa-circle fa-stack-2x "></i>
-                                                        <i class="fa-brands fa-linkedin-in fa-stack-1x tooltip"></i>
+                                                        <i class="fa-solid fa-brain fa-stack-1x tooltip"></i>
                                                     </span>
-                                                </a>
-                                                <span id="skills_btn" class="fa-stack fa-lg" style="vertical-align: top;" onclick="clickSkills(this, {{member.id}})">
-                                                    <i class="fa-solid fa-circle fa-stack-2x "></i>
-                                                    <i class="fa-solid fa-brain fa-stack-1x tooltip"></i>
-                                                </span>
-                                            </div>
-                                            <div id="skills_{{member.id}}" class="skills">
-                                                {{ member.skills }}
-                                            </div>
-                                        </li>
+                                                </div>
+                                                <div id="skills_{{member.id}}" class="skills">
+                                                    {{ member.skills }}
+                                                </div>
+                                            </li>
+                                            {% endif %}
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %} 
