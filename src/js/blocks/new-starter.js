@@ -2,6 +2,7 @@ import Glide from '@glidejs/glide'
 
 var slider = document.getElementById('start-slider');
 // for (var i = 0; i < sliders.length; i++) {
+if(slider){
     var glide = new Glide(slider, {
         type: 'carousel',
         perView: 9,
@@ -14,5 +15,7 @@ var slider = document.getElementById('start-slider');
         }
     })
     glide.mount()
+}
+
 
 
