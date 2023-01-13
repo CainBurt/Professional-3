@@ -1,6 +1,6 @@
 import Glide from '@glidejs/glide'
 
-var sliders = document.querySelectorAll('.glide');
+var sliders = document.querySelectorAll('#team-sliders');
 for (var i = 0; i < sliders.length; i++) {
     var glide = new Glide(sliders[i], {
         type: 'carousel',
@@ -29,6 +29,4 @@ for (var i = 0; i < sliders.length; i++) {
     })
     glide.mount()
 }
-
-
 

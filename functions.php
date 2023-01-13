@@ -187,6 +187,7 @@ class StarterSite extends TimberSite {
         require_once('includes/blocks/landing-page/latest-updates.php');
         require_once('includes/blocks/team.php');
         require_once('includes/blocks/hero.php');
+        require_once('includes/blocks/start.php');
     }
 
     function add_to_context( $context ) {
@@ -231,6 +232,7 @@ class StarterSite extends TimberSite {
         inline_script(get_template_directory_uri() . '/dist/js/header.js');
         inline_script(get_template_directory_uri() . '/dist/js/nav-grid.js');
         inline_script(get_template_directory_uri() . '/dist/js/team.js');
+        inline_script(get_template_directory_uri() . '/dist/js/new-starter.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
@@ -240,6 +242,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/resource.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/team.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/hero.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/start.css');
     }
 
     /**

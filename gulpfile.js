@@ -66,6 +66,11 @@ const gulp = require('gulp'),
                 name: 'hero.css',
                 dist: 'dist/styles'
             },
+            start: {
+                src: 'src/sass/blocks/start.scss',
+                name: 'start.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [
@@ -104,6 +109,10 @@ const gulp = require('gulp'),
                 {
                     entryFiles: glob.sync('./src/js/blocks/team.js'),
                     outputName: 'team'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/blocks/new-starter.js'),
+                    outputName: 'new-starter'
                 },
             ]
         },

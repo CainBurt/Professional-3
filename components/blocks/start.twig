@@ -1,0 +1,19 @@
+<section class="start" id="start">
+    <div class="inner-container">
+        <h1>{{fields.title}}</h1>
+        <div class="undertitle-text">
+            <h3>{{fields.subtitle}}</h3>
+            <p>{{fields.text}}</p>
+            <a href="{{fields.button_link}}">{{__('Begin', 'crowd')}}</a>
+        </div>
+    </div>
+    <div class="start-slider" id="start-slider">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for slide in fields.slider %}
+                    <li class="glide__slide"><img src="{{slide.slider_image}}" alt=""></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+.start{
+    h1{
+        font-size: 96px;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--black);
+        margin-bottom: 0.3em;
+        span{
+            color: var(--black);
+        }
+    }
+
+    .undertitle-text{
+        max-width: 750px;
+        margin: 0 auto;
+        h3{
+            font-size: 32px;
+        }
+        p{
+            font-size: 16px;
+            font-family: Gotham-Book;
+            line-height: 1.5;
+            padding-bottom: 1em;
+        }
+        a{
+            font-family: Gotham-Book;
+            text-decoration: none;
+            background-color: var(--orange);
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 30px;
+            margin-bottom: 2em;
+            border-radius: 2px;
+            width: 50px;
+            &:hover{
+                filter: brightness(90%);
+            }
+        }
+    }
+
+    .start-slider{
+        padding: 5em 0;
+    }
+}

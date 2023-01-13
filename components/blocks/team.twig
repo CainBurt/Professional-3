@@ -2,7 +2,7 @@
     <div class="search-section container">
         <div class="title inner-container">
             <h1>{{__('<span>Welcome </span>to<br/>our team', 'crowd')}}</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>{{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'crowd')}}</p>
         </div>
         <div class="search-form">
         {# TODO: SEARCH FORM HERE #}
@@ -60,7 +60,7 @@
                 {# {{ teams.team_members | json_encode(constant('JSON_PRETTY_PRINT')) }} #}
                 <div class="team-row">
                     <p class="team-name">{{teams.team_name}} {{hideTrack}}</p>
-                    <div class="members-list glide">
+                    <div class="members-list glide" id="team-sliders">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
                                 {% for member in teams.team_members %}
