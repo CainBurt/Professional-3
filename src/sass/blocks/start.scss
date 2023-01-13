@@ -39,5 +39,10 @@
 
     .start-slider{
         padding: 5em 0;
+        .glide__slide{
+            &:nth-child(3n){
+                margin-top: auto;
+            }
+        }
     }
 }
