@@ -767,8 +767,8 @@ add_filter('render_block', 'custom_render_block_core_image', null, 2);
 
 function login_redirect() {
     global $pagenow;
-
-    if(!is_user_logged_in() && $pagenow != 'wp-login.php'){
+    // $page_title = $post->post_title;
+    if((!is_user_logged_in() && $pagenow != 'wp-login.php') && !is_page('new-starter')){
         auth_redirect();
     }
           
