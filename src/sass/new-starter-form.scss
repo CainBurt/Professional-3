@@ -31,3 +31,31 @@
     }
 }
 
+.glide__slides{
+    .glide__slide{
+        &:nth-child(1){
+            input{
+                border-color: var(--orange);
+            }
+        }
+        &:nth-child(2){
+            input{
+                border-color: #00E300;
+            }
+        }
+        &:nth-child(3){
+            input{
+                border-color: #00D2E2;
+            }
+        }
+        &:nth-child(4){
+            input{
+                border-color: var(--orange);
+            }
+        }
+    }
+    
+}
+
+
+
