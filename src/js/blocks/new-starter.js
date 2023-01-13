@@ -17,5 +17,14 @@ if(slider){
     glide.mount()
 }
 
+var formSlider = document.getElementById('new_starter_form');
+if(formSlider){
+    var sliderForm = new Glide(formSlider, {
+        type: 'slider',
+        focusAt: 'center',
+    })
+    sliderForm.mount()
+}
+
 
 

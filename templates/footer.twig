@@ -1,5 +1,5 @@
 <div >
-	{% if post.title == 'Employee Handbook'%}
+	{# {% if post.title == 'Employee Handbook'%}
 		<div class="top-anchor">
 			<div class="inner-container">
 				<i class="fa-solid fa-chevron-left"></i>
@@ -7,13 +7,19 @@
 				<i class="fa-solid fa-chevron-right"></i>
 			</div>
 		</div>
-	{% endif %}
+	{% endif %} #}
 	<div class="container">
-		<div class="bottom">
-			<a class="footer-logo" href="https://thisiscrowd.com/">
-			{% set image = TimberImage(options.site_logo) %}
-				<img src='{{ image.src }}' alt='{{ image.alt }}' />
-			</a>
-		</div>
+		{% if post.title == 'New Starter Form'%}
+			<div class="starter-form-footer">
+				<p>{{__('PERSONAL DETAILS', 'crowd')}}</p>
+			</div>
+		{% else %}
+			<div class="bottom">
+				<a class="footer-logo" href="https://thisiscrowd.com/">
+				{% set image = TimberImage(options.site_logo) %}
+					<img src='{{ image.src }}' alt='{{ image.alt }}' />
+				</a>
+			</div>
+		{% endif %}
 	</div>
 </div>

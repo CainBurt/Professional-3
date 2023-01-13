@@ -243,6 +243,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/team.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/hero.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/start-form.css');
     }
 
     /**

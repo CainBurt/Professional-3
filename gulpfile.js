@@ -71,6 +71,11 @@ const gulp = require('gulp'),
                 name: 'start.css',
                 dist: 'dist/styles'
             },
+            start_form: {
+                src: 'src/sass/new-starter-form.scss',
+                name: 'start-form.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [
