@@ -61,6 +61,11 @@ const gulp = require('gulp'),
                 name: 'team.css',
                 dist: 'dist/styles'
             },
+            hero: {
+                src: 'src/sass/blocks/hero.scss',
+                name: 'hero.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [

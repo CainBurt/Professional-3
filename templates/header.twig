@@ -15,9 +15,8 @@
             <li class=" {{ item.classes|join(' ') }}"><a href="{{item.link}}"><i class="fa-solid fa-chevron-right"></i>{{item.title}}</a></li>
         {% endfor %}
         </ul>
-    </div>
-    {% if fn('is_front_page')%}
-    {% else %}
+    </div>    
+    {% if (fn('get_post_field', 'post_parent') == 9) %}
     <div class="sub-nav">
         <div class="container">
             <h1>

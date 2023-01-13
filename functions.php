@@ -186,6 +186,7 @@ class StarterSite extends TimberSite {
         require_once('includes/blocks/landing-page/nav-grid.php');
         require_once('includes/blocks/landing-page/latest-updates.php');
         require_once('includes/blocks/team.php');
+        require_once('includes/blocks/hero.php');
     }
 
     function add_to_context( $context ) {
@@ -238,6 +239,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/latest-updates.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/resource.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/team.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/hero.css');
     }
 
     /**
