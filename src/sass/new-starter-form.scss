@@ -27,7 +27,23 @@
         font-size: 32px;
     }
     .wpcf7-form-control{
-        min-width: 750px;
+        // min-width: 750px;
+    }
+    .next-btn{
+        width: 150px;
+        padding: 15px 20px;
+        border-radius: 5%;
+        color: var(--white);
+        position: relative;
+        float: right;
+        text-align: center;
+    }
+    #back_btn{
+        position: relative;
+        color: #838383;
+    }
+    p{
+        width: 1000px;
     }
 }
 
@@ -36,21 +52,59 @@
         &:nth-child(1){
             input{
                 border-color: var(--orange);
+                width: 83%;
+            }
+            .next-btn{
+                background-color: var(--orange);
             }
         }
         &:nth-child(2){
             input{
                 border-color: #00E300;
+                
+            }
+            span{
+                &:nth-child(5),&:nth-child(6){
+                    input{
+                        width: 49.75%;
+                    }
+                }
+                &:nth-child(5){
+                    margin-right: 0.5%;
+                }
+            }
+            .next-btn{
+                background-color: #00E300;
             }
         }
         &:nth-child(3){
             input{
                 border-color: #00D2E2;
+                width: 83%;
+            }
+            .next-btn{
+                background-color: #00D2E2;
             }
         }
         &:nth-child(4){
+            .intl-tel-input{
+                margin-right: 0;
+                // width: 83%;
+            }
             input{
                 border-color: var(--orange);
+                // width: 83%;
+            }
+            .next-btn{
+                background-color: var(--orange);
+            }
+        }
+        &:nth-child(5){
+            input{
+                border-color: #00E300;
+            }
+            .next-btn{
+                background-color: #00E300;
             }
         }
     }
