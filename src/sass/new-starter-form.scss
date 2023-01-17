@@ -237,16 +237,41 @@
                     &:last-child{
                         p{
                             width: 750px !important;
+                            
                             .wpcf7-submit{
                                 display: block;
                                 margin: 0 auto;
                                 float: unset;
+                            }
+                            .wpcf7-form-control-wrap{
+                                >.wpcf7-acceptance{
+                                    width: 100%;
+                                    >.wpcf7-list-item{
+                                        
+                                        margin: 0 18% 0 18%;
+                                        >label{
+                                            display: inline-block ;
+                                            font-size: 16px;
+                                            border: 2px solid var(--orange);
+                                            border-radius: 5px;
+                                            // width: 70%;
+                                            margin: 2em auto 1em;
+                                            padding: 15px 20px;
+                                            color: var(--orange);
+                                            >input{
+                                                accent-color: var(--orange);
+                                            }
+                                        }
+                                    }
+                                    
+                                }
                             }
                         }
                        
                     }
                    
                 }
+
             }
         }
     }
