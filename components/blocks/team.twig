@@ -1,6 +1,6 @@
-<section class="team ">
+<section class="team" id="top">
     <div class="search-section container">
-        <div class="title inner-container">
+        <div class="title inner-container" >
             <h1>{{__('<span>Welcome </span>to<br/>our team', 'crowd')}}</h1>
             <p>{{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'crowd')}}</p>
         </div>
@@ -75,7 +75,7 @@
                                                     <a href="mailto:{{ member.user_email }}" target="_BLANK">
                                                         <span id="email_btn" class="fa-stack fa-lg" style="vertical-align: top;">
                                                             <i id="email_icon" class="fa-solid fa-circle fa-stack-2x "></i>
-                                                            <i class="fa-solid fa-envelope fa-stack-1x tooltip"></i>
+                                                            <i class="fa-light fa-envelope fa-stack-1x tooltip"></i>
                                                         </span>
                                                     </a>
                                                     <a href="{{ member.linkedin }}" target="_BLANK">
@@ -86,7 +86,7 @@
                                                     </a>
                                                     <span id="skills_btn" class="fa-stack fa-lg" style="vertical-align: top;" onclick="clickSkills(this, {{member.id}})">
                                                         <i class="fa-solid fa-circle fa-stack-2x "></i>
-                                                        <i class="fa-solid fa-brain fa-stack-1x tooltip"></i>
+                                                        <i class="fa-light fa-head-side-brain fa-stack-1x tooltip"></i>
                                                     </span>
                                                 </div>
                                                 <div id="skills_{{member.id}}" class="skills">
@@ -104,7 +104,11 @@
                 {% endif %}
             {% endif %}
         {% endfor %}
+        <div class="back-top-top">
+            <a class="to-top-btn" href="#top">{{__('Back to Top', 'crowd')}}</a>
+        </div>
     </div>
+   
 
 </section>
 

@@ -13,6 +13,7 @@
                 color: transparent;
                 -webkit-text-stroke: 1px var(--black);
                 margin-bottom: 0.3em;
+                line-height: 1;
                 span{
                     color: var(--black);
                 }
@@ -21,6 +22,7 @@
                 // font-family: Gotham-Book;
                 max-width: 750px;
                 margin: 0 auto;
+                line-height: 1.6;
             }
             
         }
@@ -30,7 +32,7 @@
             align-items: flex-end;
             label{
                 color: var(--orange);
-                
+                font-family: Gotham-Medium;
             }
             input[type="text"]{
                 font-family: Gotham-Book;
@@ -58,13 +60,14 @@
                 -moz-appearance: none;
                 appearance: none;
                 background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") #ffffff no-repeat 96% !important;
+                cursor: pointer;
                 &:focus-visible{
                     outline: none;
                 }
                 
             }
             .location-container{
-                width: 40%;
+                width: 35%;
             }
             .department-container,
             .skill-container{
@@ -73,7 +76,7 @@
             }
 
             button{
-                width: 10%;
+                width: 15%;
                 height: 50px;
                 padding: 6px 10px;
                 margin-top: 10px;
@@ -106,7 +109,8 @@
             padding-bottom: 2em;
             >label{
                 color: var(--orange);
-                
+                font-family: Gotham-Medium;
+
             }
             >input[type="text"]{
                 font-family: Gotham-Book;
@@ -128,7 +132,6 @@
                 float: right;
                 padding: 6px 10px;
                 margin-top: 10px;
-                // margin-right: 16px;
                 background: var(--white);
                 font-size: 17px;
                 border-radius: 0 4px 4px 0;
@@ -148,9 +151,6 @@
         overflow-x: hidden ;
         background-color: #F2F2F2;
         .team-row{
-            // &:has(.glide__slides:empty){
-            //     display: none !important;
-            // }
             display: flex;
             .team-name{
                 display: flex;
@@ -177,10 +177,12 @@
                         padding: 1em 0 0.2em;
                         text-transform: uppercase;
                         color: var(--orange);
+                        font-family: Gotham-Medium;
                     }
 
                     .job{
                         padding-bottom: 1em;
+                        font-family: Gotham-Medium;
                     }
                     .icons{
                         margin-left: -6px;
@@ -230,11 +232,29 @@
                         // display: none;
                         visibility: hidden;
                         padding-top: 1em;
+                        font-family: Gotham-Book;
                     }
                 }
                 
             }
             
+        }
+        .back-top-top{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4em 0;
+            .to-top-btn{
+                text-decoration: none;
+                color: var(--white);
+                background-color: var(--orange);
+                padding: 10px 20px;
+                border-radius: 4px;
+                font-family: Gotham-Book;
+                &:hover{
+                    filter: brightness(90%);
+                }
+            }
         }
         
     }
