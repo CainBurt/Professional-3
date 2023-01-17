@@ -6,6 +6,7 @@
             "key": "field_63bbf84077eb5",
             "label": "Latest Updates",
             "name": "",
+            "aria-label": "",
             "type": "accordion",
             "instructions": "",
             "required": 0,
@@ -23,6 +24,7 @@
             "key": "field_63b5ad1d6c7ee",
             "label": "Updates",
             "name": "updates",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -36,12 +38,13 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Row",
             "sub_fields": [
                 {
                     "key": "field_63b5ad266c7ef",
                     "label": "Update Text",
                     "name": "update_text",
+                    "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
@@ -55,12 +58,14 @@
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
-                    "delay": 0
+                    "delay": 0,
+                    "parent_repeater": "field_63b5ad1d6c7ee"
                 },
                 {
                     "key": "field_63b5ad7a6c7f0",
                     "label": "Date",
                     "name": "date",
+                    "aria-label": "",
                     "type": "date_picker",
                     "instructions": "",
                     "required": 0,
@@ -70,14 +75,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "d\/m\/Y",
-                    "first_day": 1
+                    "display_format": "d M Y",
+                    "return_format": "d M Y",
+                    "first_day": 1,
+                    "parent_repeater": "field_63b5ad1d6c7ee"
                 },
                 {
                     "key": "field_63b5ad956c7f1",
                     "label": "Link to Update",
                     "name": "link",
+                    "aria-label": "",
                     "type": "url",
                     "instructions": "",
                     "required": 0,
@@ -88,9 +95,11 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_63b5ad1d6c7ee"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         }
     ],
     "location": [
@@ -111,5 +120,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673263181
+    "modified": 1673954785
 }
