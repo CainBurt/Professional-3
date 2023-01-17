@@ -159,6 +159,8 @@
                 transform: rotate(-180deg);
                 padding: 0 50px;
                 text-transform: uppercase;
+                font-family: Gotham-Medium;
+                letter-spacing: 1px;
             }
             .members-list{
                 padding: 60px 0 30px;
@@ -169,6 +171,7 @@
                     img{
                         width: 264px;
                         height: 341px;
+                        object-fit: cover;
                     }
                     p{
                         margin: 0;
