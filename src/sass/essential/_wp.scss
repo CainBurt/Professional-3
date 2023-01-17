@@ -8,14 +8,20 @@
     h1{
         font-size: 44px;
         scroll-margin-top: 200px;
+        // font-family: Gotham-Book;
+        margin-bottom: 0.5em;
     }
     h2{
         font-size: 24px;
+        // font-family: Gotham-Book;
+    }
+    h3{
+        // font-family: Gotham-Book;
     }
 
     p{
-        font-family: Gotham-Book;
         line-height: 1.6;
+        opacity: 0.8;
     }
     ul{
         padding-left: 2%;

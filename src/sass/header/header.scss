@@ -30,11 +30,13 @@ header{
                 margin-left: 0.5em;
                 font-size: 21px;
                 letter-spacing: .3rem;
+                font-family: Gotham-Medium;
             }
             
         }
         .employee-name{
             color: var(--white);
+            font-family: Gotham-Medium;
         }
         .burger-menu{
             cursor: pointer;
@@ -99,6 +101,8 @@ header{
             h1{
                 margin: 0;
                 padding: 1em 10px;
+                font-family: Gotham-Book;
+                font-weight: 300;
             }
 
             select{
@@ -112,7 +116,6 @@ header{
                 -moz-appearance: none;
                 appearance: none;
                 background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") #EFEFEF no-repeat 96% !important;
-                
                 &::-ms-expand{
                     display: none;
                 }
