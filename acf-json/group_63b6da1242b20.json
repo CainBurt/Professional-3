@@ -6,6 +6,7 @@
             "key": "field_63b84bdd0fa1e",
             "label": "Resources",
             "name": "resources",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -19,40 +20,125 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_63b6da20b06ff",
-                    "label": "Icon",
-                    "name": "icon",
-                    "type": "font-awesome",
+                    "key": "field_63c6c0f6c3535",
+                    "label": "Icons",
+                    "name": "icons",
+                    "aria-label": "",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "10",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "icon_sets": [
-                        "solid",
-                        "regular",
-                        "brands"
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_63c6c127364ae",
+                            "label": "Icon Type",
+                            "name": "icon_type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Fontawesome": "Fontawesome",
+                                "Upload": "Upload"
+                            },
+                            "default_value": "",
+                            "return_format": "label",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_63c6c143364af",
+                            "label": "Fontawesome Icon",
+                            "name": "fontawesome_icon",
+                            "aria-label": "",
+                            "type": "font-awesome",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_63c6c127364ae",
+                                        "operator": "==",
+                                        "value": "Fontawesome"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "icon_sets": [
+                                "solid",
+                                "regular",
+                                "brands"
+                            ],
+                            "custom_icon_set": "",
+                            "default_label": "&lt;i class=\"fa-regular fa-folder fa-fw\"&gt;&lt;\/i&gt; Folder",
+                            "default_value": "{ \"style\" : \"regular\", \"id\" : \"folder\", \"label\" : \"Folder\", \"unicode\" : \"f07b\" }",
+                            "save_format": "class",
+                            "allow_null": 0,
+                            "show_preview": 1,
+                            "enqueue_fa": 0,
+                            "fa_live_preview": "",
+                            "choices": []
+                        },
+                        {
+                            "key": "field_63c6c163364b0",
+                            "label": "Upload Icon",
+                            "name": "upload_icon",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_63c6c127364ae",
+                                        "operator": "==",
+                                        "value": "Upload"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        }
                     ],
-                    "custom_icon_set": "",
-                    "default_label": "",
-                    "default_value": "",
-                    "save_format": "class",
-                    "allow_null": 0,
-                    "show_preview": 1,
-                    "enqueue_fa": 0,
-                    "fa_live_preview": "",
-                    "choices": []
+                    "parent_repeater": "field_63b84bdd0fa1e"
                 },
                 {
                     "key": "field_63b84c84ae505",
                     "label": "Content",
                     "name": "content",
+                    "aria-label": "",
                     "type": "group",
                     "instructions": "",
                     "required": 0,
@@ -68,6 +154,7 @@
                             "key": "field_63b6da87b0700",
                             "label": "Title",
                             "name": "title",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -87,6 +174,7 @@
                             "key": "field_63b6dabeb0701",
                             "label": "Body Text",
                             "name": "body_text",
+                            "aria-label": "",
                             "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
@@ -106,6 +194,7 @@
                             "key": "field_63b6dacfb0702",
                             "label": "Link",
                             "name": "link",
+                            "aria-label": "",
                             "type": "url",
                             "instructions": "",
                             "required": 0,
@@ -122,6 +211,7 @@
                             "key": "field_63b85236bc41e",
                             "label": "Link Text",
                             "name": "link_text",
+                            "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
@@ -137,9 +227,11 @@
                             "append": "",
                             "maxlength": ""
                         }
-                    ]
+                    ],
+                    "parent_repeater": "field_63b84bdd0fa1e"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         }
     ],
     "location": [
@@ -160,5 +252,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673024067
+    "modified": 1673973101
 }

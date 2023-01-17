@@ -1,14 +1,18 @@
 <section class="resources">
     <div class="inner-container">
         {% for resource in fields.resources %}
-        <div class="resource-container">
-            <i class="resource-icon {{resource.icon}} fa-2x"></i>
-            <div>
-                <h2>{{resource.content.title}}</h2>
-                <p>{{resource.content.body_text}}</p>
-                <a href="{{resource.content.link}}" >{{resource.content.link_text}}</a>
+            <div class="resource-container" onclick="window.open('{{resource.content.link}}','_blank');">
+                {% if resource.icons.icon_type == 'Fontawesome'%}
+                    <i class="resource-icon {{resource.icons.fontawesome_icon}} fa-2x"></i>
+                {% else %}
+                    <img class="resource-image-icon" height="32" width="32"src="{{resource.icons.upload_icon}}"/>
+                {% endif %}
+                <div>
+                    <h2>{{resource.content.title}}</h2>
+                    <p>{{resource.content.body_text}}</p>
+                    <p class="bottom-link">{{resource.content.link_text}}</p>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </section>

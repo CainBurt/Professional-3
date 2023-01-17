@@ -3,12 +3,18 @@
         .resource-container{
             display: flex;
             flex-direction: row;
-            padding-bottom: 4em;
-            &:first-child{
-                padding-top: 2em;
-            }
+            // justify-content: center;
+            padding: 2em 3em 1.5rem 3rem;
             .resource-icon{
                 color: var(--orange) ;
+                margin-top: 0.2em;
+            }
+            .resource-image-icon{
+                margin: 0.3em 0;
+                display: block;
+                width: 32px;
+                height: 32px;
+                // aspect-ratio: 1/1;
             }
             div{
                 padding-left: 1em;
@@ -16,29 +22,36 @@
                     font-size: 32px;
                     margin-top: 0;
                     margin-bottom: 0;
+                    color: black;
+                    font-family: Gotham-Medium;
+                    // font-weight: bolder;
                 }
                 p, p>a{
                     margin: 0.5em 0;
                     font-size: 16px;
                     font-family: Gotham-Book;
                     line-height: 1.5;
+                    color: black;
                     a{ 
                         text-decoration: underline;
-                        font-weight: bold;
-                        color: inherit;
+                        font-family: Gotham-Bold;
+                        color: black;
+                        z-index: 999999;
                         &:hover{
                             color: var(--orange);
                         }
                     }
                 }
-                a{
+                >.bottom-link{
                     color: var(--orange);
                     font-size: 20px;
                     text-decoration: none;
-                    &:hover{
-                        text-decoration: underline;
-                    }
+                    font-family: Gotham-Medium;
                 }
+            }
+            &:hover{
+                background-color: var(--grey);
+                cursor: pointer;
             }
         }
     }
