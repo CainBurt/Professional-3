@@ -27,8 +27,9 @@ header{
                 padding: 10px;
             }
             p{
-                // margin-left: 1em;
+                margin-left: 0.5em;
                 font-size: 21px;
+                letter-spacing: .3rem;
             }
             
         }
@@ -37,6 +38,10 @@ header{
         }
         .burger-menu{
             cursor: pointer;
+            margin-left: 2.5em;
+            &:hover{
+                color: var(--white);
+            }
         }
     }
 

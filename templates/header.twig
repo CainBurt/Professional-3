@@ -6,13 +6,13 @@
         </a>
         <p class="employee-name">{% if user %}{{ user }}{% endif %}</p>
         <a id="dropdown" class="burger-menu">
-            <i id="dropdown_icon" class="fa-solid fa-bars fa-2x"></i>
+            <i id="dropdown_icon" class="fa-light fa-bars fa-2x"></i>
         </a>
     </div>
     <div id='dropdown_menu' class="dropdown-menu dropdown-container">
         <ul>
         {% for item in menu.items %}
-            <li class=" {{ item.classes|join(' ') }}"><a href="{{item.link}}"><i class="fa-solid fa-chevron-right"></i>{{item.title}}</a></li>
+            <li class=" {{ item.classes|join(' ') }}"><a href="{{item.link}}"><i class="fa-light fa-chevrons-right fa-xs"></i></i>{{item.title}}</a></li>
         {% endfor %}
         </ul>
     </div>    
