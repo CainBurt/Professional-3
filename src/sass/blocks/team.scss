@@ -84,18 +84,31 @@
                 font-size: 17px;
                 border-radius: 4px;
                 border: 1px solid var(--orange);
+        
+                
 
-                background-image: 
+                background: 
                 linear-gradient(to top, var(--white) 50%, var(--orange) 50%),
                 linear-gradient(to top, var(--orange) 50%, var(--white) 50%);
+
+                // background: 
+                // -moz-linear-gradient(to top, var(--white) 50%, var(--orange) 50%),
+                // -moz-linear-gradient(to top, var(--orange) 50%, var(--white) 50%);
+
+                // background: 
+                // -webkit-gradient(to top, var(--white) 50%, var(--orange) 50%),
+                // -webkit-gradient(to top, var(--orange) 50%, var(--white) 50%);
+
+                
             
                 -webkit-background-clip: text,padding-box;
                 background-clip: text,padding-box;
-                -webkit-text-fill-color: transparent;
+                -webkit-text-fill-color: tr;
                 color: transparent;  
                 background-size: 100% 200%;
                 background-position: top;
                 transition: background-position 0.2s ease-in-out;
+                background-origin: border-box;
                 cursor: pointer;
                 &:hover{
                     background-position: bottom;
