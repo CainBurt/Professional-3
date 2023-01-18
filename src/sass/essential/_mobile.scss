@@ -1,6 +1,6 @@
 .mobile-body{
-    background-image: url('../images/crowd-background.png');
     background-color: #cccccc;
+    background-position: right !important;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,10 +20,11 @@
     h1{
         font-size: 47px;
         color: transparent;
-        -webkit-text-stroke: 1px var(--black);
+        -webkit-text-stroke: 1px var(--white);
         margin-bottom: 0.3em;
+        font-family: Gotham-Bold;
         span{
-            color: var(--black);
+            color: var(--white);
         }
     }
     p{
@@ -31,5 +32,6 @@
         width: 80%;
         text-align: center;
         margin: 0 auto;
+        color: var(--white);
     }
 }
