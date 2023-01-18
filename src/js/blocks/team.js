@@ -7,7 +7,7 @@ if(sliders){
             type: 'carousel',
             perView: 8,
             focusAt: 'center',
-            autoplay: 4000 + Math.floor(Math.random() * 2000),
+            autoplay: 10000 + Math.floor(Math.random() * 5000),
             breakpoints: {
             2000:{
                 perView: 7,

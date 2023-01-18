@@ -5,7 +5,6 @@
             <p>{{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'crowd')}}</p>
         </div>
         <div class="search-form">
-        {# TODO: SEARCH FORM HERE #}
         <form class="filter-form" action="">
             <div class="location-container">
                 <label for="location">{{__('Location', 'crowd')}}</label><br>
@@ -33,7 +32,7 @@
                 <label for="skill">{{__('Expert In', 'crowd')}}</label><br>
                 <input type="text" id="skill" name="skill" placeholder="All" value="{{request.get.skill}}">
             </div>
-            <button type="submit">{{__('Filter', 'crowd')}}</button>
+            <div class="btn-container"><button type="submit">{{__('Filter', 'crowd')}}</button></div>
         </form>
         <form class="search-form" action="">
             <label for="search">{{__('Staff Search', 'crowd')}}</label><br>
