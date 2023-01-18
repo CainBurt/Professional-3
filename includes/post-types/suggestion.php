@@ -19,7 +19,11 @@ $args = array(
 	'label' => __( 'Suggestion'),
 	'description'  => __( 'Suggestion'),
 	'labels'  => $labels,
-	'supports' => array('title','editor', 'author','revisions',),
+	'supports' => array(
+		'title',
+		'editor', 
+		// 'author',
+		'revisions',),
 	'public' => false,
 	'publicly_queryable' => true,
 	'show_ui' => true,
