@@ -114,24 +114,15 @@
 <script>
 
 function clickSkills(element, userId){
-    // var skills = document.getElementById('skills_' + userId.toString());
-    var skills = document.querySelectorAll('#skills_' + userId.toString());
+
+    var skills = element.parentElement.parentElement.lastChild.previousSibling
 
     if(!element.classList.contains('icon-clicked')){
         element.classList.add("icon-clicked")
-        Array.from(skills)
-            .forEach(function(val) {
-                val.style.visibility = 'visible';
-        });
-        // skills.style.display = 'block';
+        skills.style.visibility = 'visible';
     }else{
         element.classList.remove("icon-clicked")
-        Array.from(skills)
-            .forEach(function(val) {
-                val.style.visibility = 'hidden';
-        });
-        
-        // skills.style.display = 'none';
+        skills.style.visibility = 'hidden';
     }
     
 }
