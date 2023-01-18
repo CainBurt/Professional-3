@@ -4,10 +4,10 @@ var sliders = document.querySelectorAll('#team-sliders');
 if(sliders){
     for (var i = 0; i < sliders.length; i++) {
         var glide = new Glide(sliders[i], {
-            type: 'carousel',
+            type: 'slider',
             perView: 8,
-            focusAt: 'center',
-            autoplay: 10000 + Math.floor(Math.random() * 5000),
+            // focusAt: 'center',
+            autoplay: 30000 + Math.floor(Math.random() * 5000),
             breakpoints: {
             2000:{
                 perView: 7,
