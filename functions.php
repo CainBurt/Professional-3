@@ -780,7 +780,10 @@ function login_redirect() {
 }
 add_action( 'wp', 'login_redirect' );
 
+
+
 function save_posted_data( $posted_data ) {
+    
     $args = array(
       'post_type' => 'suggestion',
       'post_status'=>'publish',
@@ -802,3 +805,11 @@ function save_posted_data( $posted_data ) {
 }
 
 add_filter( 'wpcf7_posted_data', 'save_posted_data' );
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
