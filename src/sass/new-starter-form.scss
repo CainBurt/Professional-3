@@ -21,8 +21,10 @@
     background-repeat: space;
     label{
         position: relative;
-        display: inline-block;
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
         font-size: 32px;
         margin: 0.1em 0 0.5em;
@@ -94,8 +96,12 @@
         cursor: pointer;
     }
     p{
-        width: 1000px;
-        margin: 0
+        position: relative;
+        max-width: var(--inner-width);
+        width: 100%;
+        margin: 0 auto;
+        padding-left: 24px;
+        padding-right: 24px;
     }
     input[type="text"],
     input[type="date"]{
@@ -125,7 +131,7 @@
             input{
                 border-color: var(--orange);
                 color:var(--orange);
-                width: 83%;
+                width: 82%;
                 &::placeholder, &:focus-visible{
                     color: inherit;
                     outline-color: var(--orange);
@@ -172,7 +178,7 @@
             input{
                 border-color: #00D2E2;
                 color:#00D2E2;
-                width: 83%;
+                width: 82%;
                 &::placeholder, &:focus-visible{
                     color: inherit;
                     outline-color: #00D2E2;
