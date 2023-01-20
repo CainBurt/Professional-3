@@ -77,16 +77,21 @@
                                                             <i class="fa-light fa-envelope fa-stack-1x tooltip"></i>
                                                         </span>
                                                     </a>
+                                                    {% if(member.linkedin) %}
                                                     <a href="{{ member.linkedin }}" target="_BLANK">
                                                         <span id="linkedin_btn" class="fa-stack fa-lg" style="vertical-align: top;">
                                                             <i class="fa-solid fa-circle fa-stack-2x "></i>
                                                             <i class="fa-brands fa-linkedin-in fa-stack-1x tooltip"></i>
                                                         </span>
                                                     </a>
+                                                    {% endif %}
+                                                    {% if(member.skills) %}
                                                     <span id="skills_btn" class="fa-stack fa-lg" style="vertical-align: top;" onclick="clickSkills(this, {{member.id}})">
                                                         <i class="fa-solid fa-circle fa-stack-2x "></i>
                                                         <i class="fa-light fa-head-side-brain fa-stack-1x tooltip"></i>
                                                     </span>
+                                                     {% endif %}
+
                                                 </div>
                                                 <div id="skills_{{member.id}}" class="skills">
                                                     {{ member.skills }}
