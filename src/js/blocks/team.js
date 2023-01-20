@@ -13,7 +13,7 @@ if(sliders){
                 perView: 7,
             },
             1700:{
-                perView: 6,
+                perView: 5,
             },
             1400:{
                 perView: 5,
