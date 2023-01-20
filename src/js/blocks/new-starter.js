@@ -7,7 +7,10 @@ if(slider){
         type: 'carousel',
         perView: 9,
         focusAt: 'center',
-        autoplay: 2000,
+        autoplay: 1,
+        animationDuration: 3000,
+        animationTimingFunc: 'linear',
+        swipeThreshold: false,
         breakpoints:{
             1700:{
                 perView: 6,

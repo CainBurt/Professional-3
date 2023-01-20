@@ -27,7 +27,7 @@
             background-color: var(--orange);
             color: var(--white);
             text-decoration: none;
-            padding: 10px 30px;
+            padding: 15px 40px;
             margin-bottom: 2em;
             border-radius: 2px;
             width: 50px;
@@ -38,6 +38,7 @@
     }
 
     .start-slider{
+        cursor: default;
         padding: 5em 0;
         .glide__slide{
             &:nth-child(3n){
