@@ -5,6 +5,7 @@
     align-items: center;
     width: 100%;
     height: 86.7vh;
+    cursor: default;
     &::before{
         content: "";
         display: block;
@@ -26,10 +27,54 @@
         font-size: 32px;
         margin: 0.1em 0 0.5em;
         font-family: Gotham-Bold;
-        i{
-            // width: 10%;
+        .tooltip{
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 24px;
             float: right;
+            &:hover{
+                .tooltip__text{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .tooltip__text{
+                color: var(--black) !important;
+                font-family: Gotham-Book;
+                position: absolute;
+                z-index: 1;
+                visibility: hidden;
+                font-size: 14px;
+                line-height: 16px;
+                bottom: calc(100% + 5px);
+                padding: 9px 8px;
+                display: block;
+                background-color: #EDEDED;
+                right: 4px;
+                // min-width: calc(100% - 50px);
+                color: #fff;
+                opacity: 0;
+                transition: 0.3s ease-in-out;
+                &::after{
+                    content: "";
+                    width: 6px;
+                    background-color: #EDEDED;
+                    height: 6px;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    bottom: -3px;
+                    right: 5px;
+                }
+            }
         }
+        
+        // i{
+        //     // width: 10%;
+        //     float: right;
+        // }
     }
     .next-btn{
         width: 150px;
@@ -41,10 +86,12 @@
         text-align: center;
         cursor: pointer;
     }
+    .back_btn,
     #back_btn{
         position: relative;
         color: #838383;
         text-decoration: none;
+        cursor: pointer;
     }
     p{
         width: 1000px;
@@ -348,6 +395,3 @@
         }
     }
 }
-
-
-

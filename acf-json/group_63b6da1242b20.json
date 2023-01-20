@@ -122,6 +122,7 @@
                             },
                             "return_format": "url",
                             "library": "all",
+                            "default_value": 6,
                             "min_width": "",
                             "min_height": "",
                             "min_size": "",
@@ -252,5 +253,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673973101
+    "modified": 1674215737
 }
