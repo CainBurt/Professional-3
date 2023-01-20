@@ -780,8 +780,7 @@ function login_redirect() {
 }
 add_action( 'wp', 'login_redirect' );
 
-
-
+// save suggestions post
 function save_posted_data( $posted_data ) {
     
     $args = array(
@@ -806,10 +805,29 @@ function save_posted_data( $posted_data ) {
 
 add_filter( 'wpcf7_posted_data', 'save_posted_data' );
 
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+// ACF Default Image field
+function add_defult_image_field($field) {
+    acf_render_field_setting( $field, array(
+        'label'         => 'Default Image',
+        'instructions'      => 'Appears when creating a new post',
+        'type'          => 'image',
+        'name'          => 'default_value',
+    ));
 }
+add_action('acf/render_field_settings/type=image', 'add_defult_image_field');
+
+function reset_default_image($value, $post_id, $field) {
+    if (!$value) {
+      $value = $field['default_value'];
+    }
+    return $value;
+  }
+add_filter('acf/load_value/type=image', 'reset_default_image', 10, 3);
+
+// disable admin bar for all users not admin
+function remove_admin_bar() {
+    if (!current_user_can('administrator') && !is_admin()) {
+    show_admin_bar(false);
+    }
+}
+add_action('after_setup_theme', 'remove_admin_bar');
