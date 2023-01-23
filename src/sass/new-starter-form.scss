@@ -295,12 +295,14 @@
                                 margin: 15px 0;
                                 border-radius: 4px;
                                 text-decoration: none;
+                                cursor: pointer;
                                 &:hover{
-                                    color: var(--orange);
+                                    filter: brightness(90%);
                                 }
                             }
                             &:nth-child(2){
                                 text-align: right;
+                                font-family: Gotham-Bold;
                             }
                          
                             .link{
@@ -319,6 +321,7 @@
                     .subtext{
                         max-width: 750px;
                         padding-bottom: 1em;
+                        line-height: 1.5;
                     }
                     .wpcf7-checkbox{
                         color: var(--orange);
@@ -331,16 +334,32 @@
                             width: 750px !important;
                             
                             .wpcf7-submit{
+                                // all: unset;
+                                border-width: 0;
+                                border-style: none;
+
+                                font-size: 16px;
+                                font-family: Gotham-Book;
                                 display: block;
                                 margin: 0 auto;
                                 float: unset;
+                                width: 150px;
+                                padding: 10px 20px;
+                                margin-top: 5px;
+                                border-radius: 4px;
+                                color: var(--white);
+                                background-color: var(--orange);
+                                position: relative;
+                                text-align: center;
+                                cursor: pointer;
+
                             }
                             .wpcf7-form-control-wrap{
                                 >.wpcf7-acceptance{
                                     width: 100%;
                                     >.wpcf7-list-item{
                                         
-                                        margin: 0 18% 0 18%;
+                                        margin: 0 16% 0 16%;
                                         >label{
                                             display: inline-block ;
                                             font-size: 16px;

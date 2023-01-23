@@ -66,10 +66,10 @@ if(formSlider){
         input.addEventListener('change', function(){
             
             if(name.value == '' || address1.value == '' || city.value == '' || postcode.value == '' || country.value == ''){
-                detailsStatus.style.color = 'red';
+                detailsStatus.style.color = '#E30000';
                 document.getElementById('sub-status').innerHTML = 'Missing'             
             }else{
-                detailsStatus.style.color = 'Green';
+                detailsStatus.style.color = '#00E300';
                 document.getElementById('sub-status').innerHTML = 'Completed'
             }
 
@@ -86,10 +86,10 @@ if(formSlider){
             console.log(file)
             if(doc1.files.length == 0 || doc2.files.length == 0 || doc3.files.length == 0){
                 // console.log("some files are empty")
-                filesStatus.style.color = 'red';
+                filesStatus.style.color = '#E30000';
                 document.getElementById('file-status').innerHTML = 'Missing'
             }else{
-                filesStatus.style.color = 'Green';
+                filesStatus.style.color = '#00E300';
                 document.getElementById('file-status').innerHTML = 'Completed'
             }
             
