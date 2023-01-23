@@ -50,6 +50,8 @@ if(formSlider){
     var city = document.getElementById("city");
     var postcode = document.getElementById("postcode");
     var country = document.getElementById("country");
+    var dob = document.getElementById("dob")
+    var phone = document.getElementById("phone_number")
     var detailsStatus = document.getElementById("details_status");
 
     var file_fields = document.querySelectorAll(".wpcf7-file");
@@ -76,7 +78,7 @@ if(formSlider){
 
     var details_link = document.getElementById('details_link')
     details_link.addEventListener('click', function(){
-        sliderForm.go('=1')
+        sliderForm.go('=0')
     });
 
     file_fields.forEach(file => {
@@ -104,44 +106,41 @@ if(formSlider){
         var childBtn = name.parentElement.parentElement.querySelector('.next-btn')
         if(name.value == '' || name.value == null){
             childBtn.classList.add("disabled");
-        }else if (name.value != '') {
+        }else{
             childBtn.classList.remove("disabled");
         }
     });
     
     [address1, city, postcode, country].forEach(function(element){
         element.addEventListener('change', function(){
-        
             var childBtn = address1.parentElement.parentElement.querySelector('.next-btn');
-            console.log(childBtn)
             if(address1.value == '' || city.value == '' || postcode.value == '' || country.value == ''){
-                console.log("empty")
                 childBtn.classList.add("disabled");
             }else{
                 childBtn.classList.remove("disabled");
             }
-    
         });
     });
 
-    name.addEventListener('change', function(){
-        var childBtn = name.parentElement.parentElement.querySelector('.next-btn')
-        if(name.value == '' || name.value == null){
+    dob.addEventListener('change', function(){
+        var childBtn = dob.parentElement.parentElement.querySelector('.next-btn')
+        console.log(dob.value)
+        if(dob.value == '' || dob.value == null){
             childBtn.classList.add("disabled");
-        }else if (name.value != '') {
+        }else {
             childBtn.classList.remove("disabled");
         }
     });
-    
-    
-    // function allAddressFilled(){
-    //     if(address1.value == '' || city.value == '' || postcode.value == '' || country.value == ''){
-    //         return false
-    //     }else if (address1.value != '' && city.value != '' && postcode.value != '' && country.value != ''){
-    //         return true
-    //     }
-    // }
 
+    phone.addEventListener('change', function(){
+        var childBtn = phone.parentElement.parentElement.parentElement.querySelector('.next-btn')
+        console.log(phone.value.length)
+        if(phone.value.length <= 5 || phone.value == null){
+            childBtn.classList.add("disabled");
+        }else {
+            childBtn.classList.remove("disabled");
+        }
+    });
 
 }
     
