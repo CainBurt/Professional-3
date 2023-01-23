@@ -56,8 +56,11 @@ if(formSlider){
 
     var file_fields = document.querySelectorAll(".wpcf7-file");
     var doc1 = document.getElementById("file1");
+    var doc1Text = document.getElementById("file1_text")
     var doc2 = document.getElementById("file2");
+    var doc2Text = document.getElementById("file2_text")
     var doc3 = document.getElementById("file3");
+    var doc3Text = document.getElementById("file3_text")
     var filesStatus = document.getElementById("files_status");
 
 
@@ -140,6 +143,27 @@ if(formSlider){
         }else {
             childBtn.classList.remove("disabled");
         }
+    });
+
+    doc1.addEventListener('change', function(){
+        doc1Text.value = doc1.value.split("\\").pop();
+    });
+    doc2.addEventListener('change', function(){
+        doc2Text.value = doc2.value.split("\\").pop();
+    });
+    doc3.addEventListener('change', function(){
+        doc3Text.value = doc3.value.split("\\").pop();
+    });
+
+    [doc1, doc2, doc3].forEach(function(element){
+        element.addEventListener('change', function(){
+            var childBtn = doc1.parentElement.parentElement.parentElement.querySelector('.next-btn');
+            if(doc1.value == '' || doc2.value == '' || doc3.value == ''){
+                childBtn.classList.add("disabled");
+            }else{
+                childBtn.classList.remove("disabled");
+            }
+        });
     });
 
 }

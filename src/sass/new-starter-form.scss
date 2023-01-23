@@ -116,9 +116,6 @@
             
         }
     }
-    .file-title{
-        margin-bottom: 0;
-    }
 }
 
 .glide__slides{
@@ -210,35 +207,61 @@
             flex-direction: column;
             .file-title{
                 position: relative;
-                margin-top: 1em;
+                margin-top: 0.5em;
+                margin-bottom: 0.3em;
+                font-family: Gotham-Medium;
+                text-transform: uppercase;
             }
-            .wpcf7-file::-webkit-file-upload-button{
-                display: none;
+            
+            p:nth-child(2n-1):not(:first-child){
+                display: flex;
+                flex-wrap: wrap;
             }
-            .wpcf7-form-control-wrap::before {
-                content: "Upload";
+
+            span[data-name="file1-text"],
+            span[data-name="file2-text"],
+            span[data-name="file3-text"]{
+                width: calc(100% - 166px);
+            }
+            span[data-name="your-file-1"],
+            span[data-name="your-file-2"],
+            span[data-name="your-file-3"]{
+                order: 3;
+            }
+
+            .file-1-label,
+            .file-2-label,
+            .file-3-label{
+                text-align: center;
+                display: inline-block;
                 background-color: var(--black);
                 color: #00E300;
                 border-radius: 4px;
-                position: absolute;
-                padding: 15px 50px;
-                left: 0;
-                // top: 0;
+                padding: 15px 40px;
+                position: relative;
+                width: 150px;
+                font-family: Gotham-Book;
+                font-size: 16px;
+                margin-right: 1em;
+                height: 50px;
             }
 
+            input[type="file"] {
+                display: none;
+            }
             
-            input{
+            input[type="text"]{
+                pointer-events: none;
                 border-color: #00E300;
                 color:#00E300;
-                width: 82.5%;
+                width: 80.5%;
                 border: 1px solid #00E300;
                 background-color: var(--white);
                 border-radius: 4px;
                 padding: 15px 20px;
-                // margin-top: 15px;
                 position: relative;
-                margin-left: 175px;
                 margin-bottom: 1em;
+                width: 100%;
                 &::placeholder, &:focus-visible{
                     color: inherit;
                     outline-color: #00E300;
