@@ -27,6 +27,7 @@ if(formSlider){
         dragDistance: false,
         swipeThreshold: false,
         dragThreshold: false,
+        keyboard: false,
     })
     sliderForm.mount();
 
