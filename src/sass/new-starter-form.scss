@@ -244,6 +244,7 @@
                 font-size: 16px;
                 margin-right: 1em;
                 height: 50px;
+                cursor: pointer;
             }
 
             input[type="file"] {
@@ -313,11 +314,11 @@
                             a{  
                                 background-color: var(--orange);
                                 color: var(--white);
-                                font-weight: bold;
                                 padding: 5px 20px;
                                 margin: 15px 0;
                                 border-radius: 4px;
                                 text-decoration: none;
+                                font-family: Gotham-Book;
                                 cursor: pointer;
                                 &:hover{
                                     filter: brightness(90%);

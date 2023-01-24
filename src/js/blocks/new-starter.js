@@ -1,7 +1,6 @@
 import Glide from '@glidejs/glide'
 
 var slider = document.getElementById('start-slider');
-// for (var i = 0; i < sliders.length; i++) {
 if(slider){
     var glide = new Glide(slider, {
         type: 'carousel',
@@ -27,6 +26,7 @@ if(formSlider){
         focusAt: 'center',
         dragDistance: false,
         swipeThreshold: false,
+        dragThreshold: false,
     })
     sliderForm.mount();
 
@@ -145,6 +145,7 @@ if(formSlider){
         }
     });
 
+    // add file name into text field
     doc1.addEventListener('change', function(){
         doc1Text.value = doc1.value.split("\\").pop();
     });
@@ -155,16 +156,17 @@ if(formSlider){
         doc3Text.value = doc3.value.split("\\").pop();
     });
 
-    [doc1, doc2, doc3].forEach(function(element){
-        element.addEventListener('change', function(){
-            var childBtn = doc1.parentElement.parentElement.parentElement.querySelector('.next-btn');
-            if(doc1.value == '' || doc2.value == '' || doc3.value == ''){
-                childBtn.classList.add("disabled");
-            }else{
-                childBtn.classList.remove("disabled");
-            }
-        });
-    });
+    //next btn for file uploads
+    // [doc1, doc2, doc3].forEach(function(element){
+    //     element.addEventListener('change', function(){
+    //         var childBtn = doc1.parentElement.parentElement.parentElement.querySelector('.next-btn');
+    //         if(doc1.value == '' || doc2.value == '' || doc3.value == ''){
+    //             childBtn.classList.add("disabled");
+    //         }else{
+    //             childBtn.classList.remove("disabled");
+    //         }
+    //     });
+    // });
 
 }
     
