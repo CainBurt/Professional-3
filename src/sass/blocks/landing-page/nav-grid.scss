@@ -12,7 +12,8 @@
         ul{
             display: inline-flex;
             flex-wrap: wrap;
-            gap: 10px;
+            // gap: 10px;
+            gap: 11px;
             list-style: none;
             a{
                 display: flex;
@@ -23,7 +24,8 @@
                 text-decoration: none;
                 text-align: center;
                 background-color: var(--orange);
-                width: 24.3%;
+                // width: 24.3%;
+                width: 19.2%;
                 aspect-ratio: 1/1;
                 overflow: hidden;
                 
@@ -36,8 +38,10 @@
 
                 li{
                     h3{
-                        font-size: 24px;
-                        margin: 15% 20% 0;
+                        // font-size: 24px;
+                        // margin: 15% 16.5% 0;
+                        font-size: 20px;
+                        margin: 15% 15% 0;
                     }
                 }
             }
