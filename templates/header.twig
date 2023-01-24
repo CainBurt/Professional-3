@@ -22,7 +22,7 @@
             <h1>
                 {{ post.title }}
             </h1>
-                {% if post.title == 'Employee Handbook' %}
+                {% if 'Employee Handbook' in post.title %}
                     <select name="section" id="section">
                         {% for anchor in anchors %}
                             <option value="#{{anchor.anchor}}">{{"%02d"|format(loop.index)}} - {{anchor.heading}}</option>
