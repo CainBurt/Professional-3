@@ -9,9 +9,14 @@
         font-size: 44px;
         scroll-margin-top: 200px;
         margin-bottom: 0.5em;
+        font-style: normal;
+        font-weight: 500;
     }
     h2{
         font-size: 24px;
+    }
+    h4{
+        margin-top: 2em;
     }
 
     p{
@@ -69,6 +74,16 @@
                 }
             }
             
+        }
+    }
+    a{
+        color: var(--black);
+        font-family: 'Gotham-Medium';
+        &:hover{
+            text-decoration: none;
+        }
+        &:visited{
+            color: #afafaf;
         }
     }
 }
