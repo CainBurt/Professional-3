@@ -55,7 +55,7 @@ if(formSlider){
     };
 
     var back_btns = document.querySelectorAll('#back_btn');
-    for (var j = 0; j < back_btns.length; j++){
+    for (var j = 1; j < back_btns.length; j++){
         back_btns[j].addEventListener('click', function(){
             colorCover.classList.add("slideAnimationReverse")
             colorCover.style.background =`linear-gradient(to left, ${colours[--index]} 50%, transparent 50%)`;
