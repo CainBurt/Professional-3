@@ -98,6 +98,7 @@
         margin: 0 auto;
         padding-left: 24px;
         padding-right: 24px;
+        z-index: 2;
     }
     input[type="text"],
     input[type="date"]{
@@ -468,5 +469,57 @@
         position: absolute;
         bottom: 0;
         left: 0;
+    }
+}
+
+.color-cover{
+    overflow-x: hidden;
+    background: linear-gradient(to left, rgba(0, 227, 0, 1) 50%, transparent 50%);
+    background-size: 200% 100%;
+    transform: translateX(-210px) skew(-20deg) ;
+    position: absolute;
+    top: 0;
+    width: 120%;
+    height: 100%;
+    z-index: -2;
+    
+}
+form#new_starter_form {
+    position: relative;
+    overflow: hidden;
+}
+.slideAnimation{
+    animation: slideAnimation 1.5s;
+    z-index: 3;
+}
+
+@keyframes slideAnimation{
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 100% 0;
+    }
+    100%{
+        background-position: 200% 0;
+        // z-index: 0;
+    }
+}
+
+.slideAnimationReverse{
+    animation: slideAnimationReverse 1.5s;
+    z-index: 3;
+}
+
+@keyframes slideAnimationReverse{
+    0%{
+        background-position: 200% 0;
+    }
+    50%{
+        background-position: 100% 0;
+    }
+    100%{
+        background-position: 0% 0;
+        // z-index: 0;
     }
 }

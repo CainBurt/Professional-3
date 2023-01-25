@@ -15,12 +15,14 @@ if(slider){
                 perView: 6,
             },
         }
+        
     })
     glide.mount()
 }
 
 var formSlider = document.getElementById('new_starter_form');
 if(formSlider){
+    var ainmationLength = 1500;
     var sliderForm = new Glide(formSlider, {
         type: 'slider',
         focusAt: 'center',
@@ -28,20 +30,42 @@ if(formSlider){
         swipeThreshold: false,
         dragThreshold: false,
         keyboard: false,
+        animationDuration: ainmationLength/2,
     })
     sliderForm.mount();
+    
+    var index = 0
+    var colours = ["#00E300","#00D2E2","#FE5C01","#00E300","#00D2E2"]
 
     var next_btns = document.querySelectorAll('#next_btn');
     for (var i = 0; i < next_btns.length; i++){
         next_btns[i].addEventListener('click', function(){
-            sliderForm.go('>');
+            colorCover.classList.add("slideAnimation")
+            colorCover.style.background =`linear-gradient(to left, ${colours[index++]} 50%, transparent 50%)`;
+            colorCover.style.backgroundSize = '200% 100%';
+            setTimeout(function(){
+                colorCover.classList.remove("slideAnimation")
+            }, ainmationLength);
+            
+            setTimeout(function(){
+                sliderForm.go('>');
+            }, ainmationLength/2);
         });
     };
 
     var back_btns = document.querySelectorAll('#back_btn');
     for (var j = 0; j < back_btns.length; j++){
         back_btns[j].addEventListener('click', function(){
-            sliderForm.go('<');
+            colorCover.classList.add("slideAnimationReverse")
+            colorCover.style.background =`linear-gradient(to left, ${colours[index--]} 50%, transparent 50%)`;
+            colorCover.style.backgroundSize = '200% 100%';
+            setTimeout(function(){
+                colorCover.classList.remove("slideAnimationReverse")
+            }, ainmationLength);
+            setTimeout(function(){
+                sliderForm.go('<');
+            }, ainmationLength/2);
+            
         });
     };
     
@@ -65,16 +89,18 @@ if(formSlider){
     var filesStatus = document.getElementById("files_status");
 
 
+    var colorCover = document.getElementById("color_cover")
+
 
     input_fields.forEach(input => {
         input.addEventListener('change', function(){
             
-            if(name.value == '' || address1.value == '' || city.value == '' || postcode.value == '' || country.value == ''){
+            if(name.value == '' || address1.value == '' || city.value == '' || postcode.value == '' || country.value == '' || phone.value <= 5){
                 detailsStatus.style.color = '#E30000';
-                document.getElementById('sub-status').innerHTML = 'Missing'             
+                document.getElementById('sub-status').innerHTML = 'Missing';
             }else{
                 detailsStatus.style.color = '#00E300';
-                document.getElementById('sub-status').innerHTML = 'Completed'
+                document.getElementById('sub-status').innerHTML = 'Completed';
             }
 
         })
@@ -89,7 +115,6 @@ if(formSlider){
         file.addEventListener('input', function(){
             console.log(file)
             if(doc1.files.length == 0 || doc2.files.length == 0 || doc3.files.length == 0){
-                // console.log("some files are empty")
                 filesStatus.style.color = '#E30000';
                 document.getElementById('file-status').innerHTML = 'Missing'
             }else{
@@ -156,18 +181,6 @@ if(formSlider){
     doc3.addEventListener('change', function(){
         doc3Text.value = doc3.value.split("\\").pop();
     });
-
-    //next btn for file uploads
-    // [doc1, doc2, doc3].forEach(function(element){
-    //     element.addEventListener('change', function(){
-    //         var childBtn = doc1.parentElement.parentElement.parentElement.querySelector('.next-btn');
-    //         if(doc1.value == '' || doc2.value == '' || doc3.value == ''){
-    //             childBtn.classList.add("disabled");
-    //         }else{
-    //             childBtn.classList.remove("disabled");
-    //         }
-    //     });
-    // });
 
 }
     
