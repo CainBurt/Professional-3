@@ -34,9 +34,10 @@ if(formSlider){
     })
     sliderForm.mount();
     
+    // animation on slide changes
     var index = 0
-    var colours = ["#00E300","#00D2E2","#FE5C01","#00E300","#00D2E2"]
-
+    var colorCover = document.getElementById("color_cover")
+    var colours = ["#00E300","#00D2E2","#FE5C01","#00E300","#00D2E2","#FE5C01"]
     var next_btns = document.querySelectorAll('#next_btn');
     for (var i = 0; i < next_btns.length; i++){
         next_btns[i].addEventListener('click', function(){
@@ -49,7 +50,7 @@ if(formSlider){
             
             setTimeout(function(){
                 sliderForm.go('>');
-            }, ainmationLength/2);
+            }, ainmationLength/3);
         });
     };
 
@@ -57,14 +58,14 @@ if(formSlider){
     for (var j = 0; j < back_btns.length; j++){
         back_btns[j].addEventListener('click', function(){
             colorCover.classList.add("slideAnimationReverse")
-            colorCover.style.background =`linear-gradient(to left, ${colours[index--]} 50%, transparent 50%)`;
+            colorCover.style.background =`linear-gradient(to left, ${colours[--index]} 50%, transparent 50%)`;
             colorCover.style.backgroundSize = '200% 100%';
             setTimeout(function(){
                 colorCover.classList.remove("slideAnimationReverse")
             }, ainmationLength);
             setTimeout(function(){
                 sliderForm.go('<');
-            }, ainmationLength/2);
+            }, ainmationLength/3);
             
         });
     };
@@ -89,9 +90,7 @@ if(formSlider){
     var filesStatus = document.getElementById("files_status");
 
 
-    var colorCover = document.getElementById("color_cover")
-
-
+    // personal details validation
     input_fields.forEach(input => {
         input.addEventListener('change', function(){
             
@@ -106,11 +105,31 @@ if(formSlider){
         })
     });
 
+    // last slide buttons
     var details_link = document.getElementById('details_link')
     details_link.addEventListener('click', function(){
-        sliderForm.go('=0')
+        colorCover.classList.add("slideAnimationReverse")
+        setTimeout(function(){
+            colorCover.classList.remove("slideAnimationReverse")
+        }, ainmationLength);
+        setTimeout(function(){
+            sliderForm.go('=0');
+        }, ainmationLength/3);
+        index = 0;
     });
 
+    var files_link = document.getElementById('files_link')
+    files_link.addEventListener('click', function(){
+        colorCover.classList.add("slideAnimationReverse")
+        setTimeout(function(){
+            colorCover.classList.remove("slideAnimationReverse")
+        }, ainmationLength);
+        setTimeout(function(){
+            sliderForm.go('=4')
+        }, ainmationLength/3);
+    });
+
+    // file validation for last slide 
     file_fields.forEach(file => {
         file.addEventListener('input', function(){
             console.log(file)
@@ -125,12 +144,7 @@ if(formSlider){
         })
     });
 
-    var files_link = document.getElementById('files_link')
-    files_link.addEventListener('click', function(){
-        sliderForm.go('=4')
-    });
-
-    // Event listeners for buttons
+    // Event listeners for inputs to enable buttons
     name.addEventListener('change', function(){
         var childBtn = name.parentElement.parentElement.querySelector('.next-btn')
         if(name.value == '' || name.value == null){
