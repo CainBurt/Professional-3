@@ -8,16 +8,19 @@
             .resource-icon{
                 color: var(--orange) ;
                 margin-top: 0.2em;
+                // padding-right: 1em;
+                position: absolute;
             }
             .resource-image-icon{
                 margin: 0.3em 0;
                 display: block;
-                width: 32px;
+                width: 30px;
                 height: 32px;
-                // aspect-ratio: 1/1;
+                position: absolute;
+                aspect-ratio: 1/1;
             }
             div{
-                padding-left: 1em;
+                padding-left: 3.5em;
                 h2{
                     font-size: 32px;
                     margin-top: 0;
