@@ -8,6 +8,7 @@ if(sliders){
             perView: 8,
             // focusAt: 'center',
             autoplay: 30000 + Math.floor(Math.random() * 5000),
+            rewind: false,
             breakpoints: {
             2000:{
                 perView: 7,
