@@ -64,8 +64,8 @@
                             <ul class="glide__slides">
                                 {% for member in teams.team_members %}
                                     {% if (loc == member.location) or (loc == 'All') or (loc == '') %}
-                                        {% if (expert|lower in member.skills|lower) or (expert == '')%}
-                                            {% if (ser|lower in member.nickname|lower)%}
+                                        {% if (expert|lower in member.skills|lower) or (expert == '') %}
+                                            {% if (ser|lower in member.nickname|lower) %}
                                             <li id="slide" class="glide__slide team-member">
                                                 <img src="{{function('wp_get_attachment_image_url', member.image, 'full')}}" alt="">
                                                 <p class="name">{{member.nickname}}</p>
@@ -137,7 +137,6 @@ function hideEmptyParents(){
     parent.forEach(p => {
         const children = p.querySelectorAll('.glide__slide');
         if(children.length == 0){
-            console.log("CHILDREN EMPTY")
             p.style.display = 'none'
         }
     })
