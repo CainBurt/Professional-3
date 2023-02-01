@@ -16,7 +16,7 @@
         {% endfor %}
         </ul>
     </div>    
-    {% if (fn('get_post_field', 'post_parent') == 9) %}
+    {% if ((fn('get_post_field', 'post_parent') == 9) or (fn('get_post_field', 'post_parent') == 47)) %}
     <div class="sub-nav">
         <div class="container">
             <h1>
