@@ -21,6 +21,7 @@
             "max": 0,
             "layout": "table",
             "button_label": "Add Row",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_63c6c0f6c3535",
@@ -37,6 +38,7 @@
                         "id": ""
                     },
                     "layout": "block",
+                    "parent_repeater": "field_63b84bdd0fa1e",
                     "sub_fields": [
                         {
                             "key": "field_63c6c127364ae",
@@ -132,8 +134,7 @@
                             "mime_types": "",
                             "preview_size": "medium"
                         }
-                    ],
-                    "parent_repeater": "field_63b84bdd0fa1e"
+                    ]
                 },
                 {
                     "key": "field_63b84c84ae505",
@@ -150,6 +151,7 @@
                         "id": ""
                     },
                     "layout": "row",
+                    "parent_repeater": "field_63b84bdd0fa1e",
                     "sub_fields": [
                         {
                             "key": "field_63b6da87b0700",
@@ -227,12 +229,30 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": ""
+                        },
+                        {
+                            "key": "field_63da827de67ad",
+                            "label": "Open link in a new tab?",
+                            "name": "new_tab",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Tick for yes",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
-                    ],
-                    "parent_repeater": "field_63b84bdd0fa1e"
+                    ]
                 }
-            ],
-            "rows_per_page": 20
+            ]
         }
     ],
     "location": [
@@ -253,5 +273,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1674215737
+    "modified": 1675265169
 }

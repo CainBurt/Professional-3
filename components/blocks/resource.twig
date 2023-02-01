@@ -1,7 +1,14 @@
 <section class="resources">
     <div class="inner-container">
         {% for resource in fields.resources %}
-            <div class="resource-container" onclick="window.open('{{resource.content.link}}','_blank');">
+            <div class="resource-container" 
+            {{resource.content.new_tab}}
+                {% if resource.content.new_tab != True %}
+                    onclick="window.open('{{resource.content.link}}','_blank');" 
+                {% else %}
+                    onclick="window.open('{{resource.content.link}}','_self');" 
+                {% endif %}
+            >
                 {% if resource.icons.icon_type == 'Fontawesome'%}
                     <i class="resource-icon {{resource.icons.fontawesome_icon}} fa-2x"></i>
                 {% else %}
