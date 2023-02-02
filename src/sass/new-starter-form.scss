@@ -125,7 +125,7 @@
             input{
                 border-color: var(--orange);
                 color:var(--orange);
-                width: 82%;
+                width: 100%;
                 &::placeholder, &:focus-visible{
                     color: inherit;
                     outline-color: var(--orange);
@@ -133,6 +133,7 @@
 
             }
             .next-btn{
+                margin-top: 1em;
                 background-color: var(--orange);
             }
             .wpcf7-not-valid-tip{
@@ -271,6 +272,35 @@
             }
             .next-btn{
                 background-color: #00E300;
+            }
+        }
+        &:nth-child(6){
+            input{
+                border-color: #00D2E2;
+                color:#00D2E2;
+                &::placeholder, &:focus-visible{
+                    color: inherit;
+                    outline-color: #00D2E2;
+                }
+            }
+            input#contact_address1 {
+                margin-top: 1em;
+            }
+            span[data-name="contact-city"],
+            span[data-name="contact-post-code"]{
+                display: inline-flex;
+                flex-direction: column;
+                width: 49.7%;
+                >.wpcf7-not-valid-tip{
+                    display: inline-block;
+                    // width: 49.75%;
+                }
+            }
+            span[data-name="contact-city"]{
+                margin-right: 0.5%;
+            }
+            .next-btn{
+                background-color: #00D2E2;
             }
         }
         &:last-child{
@@ -487,7 +517,7 @@
 }
 form#new_starter_form {
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .slideAnimation{
     animation: slideAnimation 1.5s;

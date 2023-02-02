@@ -89,6 +89,13 @@ if(formSlider){
     var doc3Text = document.getElementById("file3_text")
     var filesStatus = document.getElementById("files_status");
 
+    var contact_name = document.getElementById("contact_name");
+    var contact_phone = document.getElementById("contact_phone");
+    var contact_address1 = document.getElementById("contact_address1");
+    var contact_city = document.getElementById("contact_city");
+    var contact_postcode = document.getElementById("contact_postcode");
+    var contact_country = document.getElementById("contact_country");
+
 
     // personal details validation
     input_fields.forEach(input => {
@@ -194,6 +201,19 @@ if(formSlider){
     });
     doc3.addEventListener('change', function(){
         doc3Text.value = doc3.value.split("\\").pop();
+    });
+
+    // emergency contact vaildation
+    [contact_name, contact_phone, contact_address1, contact_city, contact_postcode, contact_country].forEach(function(element){
+        element.addEventListener('change', function(){
+            var childBtn = contact_address1.parentElement.parentElement.querySelector('.next-btn');
+            console.log(childBtn)
+            if(contact_name.value == '' || contact_phone.value == '' || contact_address1.value == '' || contact_city.value == '' || contact_postcode.value == '' || contact_country.value == ''){
+                childBtn.classList.add("disabled");
+            }else{
+                childBtn.classList.remove("disabled");
+            }
+        });
     });
 
 }
