@@ -773,7 +773,7 @@ add_filter('render_block', 'custom_render_block_core_image', null, 2);
 function login_redirect() {
     global $pagenow;
     // $page_title = $post->post_title;
-    if((!is_user_logged_in() && $pagenow != 'wp-login.php') && !is_page('new-starter') && !is_page('new-starter-form') && !wp_is_mobile()){
+    if((!is_user_logged_in() && $pagenow != 'wp-login.php') && !is_page(105) && !is_page(129) && !wp_is_mobile()){
         auth_redirect();
     }
           
