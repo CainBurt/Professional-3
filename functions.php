@@ -834,13 +834,40 @@ function remove_admin_bar() {
 }
 add_action('after_setup_theme', 'remove_admin_bar');
 
-
-
+// send userdata to handbook.js
 function handbook_data_script() {
      wp_enqueue_script( 'wp12311-scripts', '/dist/js/handbook.js', array( 'jquery' ), false, true );
      wp_localize_script( 'wp12311-scripts', 'data', array(
          'current_user' => wp_get_current_user(),
+         'current_meta' => get_user_meta(get_current_user_id()),
          'current_page' => get_the_title(),
      ) );
 }
 add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
+
+// add handbook row to users
+function new_modify_user_table( $column ) {
+    $column['handbook'] = 'Read Employee Handbook?';
+    return $column;
+}
+add_filter( 'manage_users_columns', 'new_modify_user_table' );
+
+function new_modify_user_table_row( $val, $column_name, $user_id ) {
+    switch ($column_name) {
+        case 'handbook' :
+            return get_the_author_meta( 'read_handbook', $user_id );
+        default:
+    }
+    return $val;
+}
+add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
+
+// change read handbook to yes on button click
+function process_contact_form_data() {
+    $wpcf = WPCF7_ContactForm::get_current();
+    $form_id = $wpcf -> id;
+    if( $form_id == 932 ){
+        update_user_meta(get_current_user_id(), 'read_handbook', 'Yes' );
+    }
+}
+add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );

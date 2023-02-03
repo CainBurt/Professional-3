@@ -6,6 +6,7 @@
     background-color: var(--black);
     align-items: center;
     gap: 20px;
+    text-transform: uppercase;
     /* The switch - the box around the slider */
     .switch {
         position: relative;
@@ -66,6 +67,9 @@
     
     .pill-slider.round:before {
         border-radius: 50%;
+    }
+    >.wpcf7-response-output{
+        display: none;
     }
   
 }
