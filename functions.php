@@ -233,6 +233,7 @@ class StarterSite extends TimberSite {
         inline_script(get_template_directory_uri() . '/dist/js/nav-grid.js');
         inline_script(get_template_directory_uri() . '/dist/js/team.js');
         inline_script(get_template_directory_uri() . '/dist/js/new-starter.js');
+        inline_script(get_template_directory_uri() . '/dist/js/handbook.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');
@@ -245,6 +246,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/suggestions-form.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/handbook-form.css');
     }
 
     /**
@@ -831,3 +833,14 @@ function remove_admin_bar() {
     }
 }
 add_action('after_setup_theme', 'remove_admin_bar');
+
+
+
+function handbook_data_script() {
+     wp_enqueue_script( 'wp12311-scripts', '/dist/js/handbook.js', array( 'jquery' ), false, true );
+     wp_localize_script( 'wp12311-scripts', 'data', array(
+         'current_user' => wp_get_current_user(),
+         'current_page' => get_the_title(),
+     ) );
+}
+add_action( 'wp_enqueue_scripts', 'handbook_data_script' );

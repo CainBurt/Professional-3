@@ -81,6 +81,11 @@ const gulp = require('gulp'),
                 name: 'suggestions-form.css',
                 dist: 'dist/styles'
             },
+            handbook_form: {
+                src: 'src/sass/handbook-form.scss',
+                name: 'handbook-form.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [
@@ -123,6 +128,10 @@ const gulp = require('gulp'),
                 {
                     entryFiles: glob.sync('./src/js/blocks/new-starter.js'),
                     outputName: 'new-starter'
+                },
+                {
+                    entryFiles: glob.sync('./src/js/blocks/handbook.js'),
+                    outputName: 'handbook'
                 },
             ]
         },
