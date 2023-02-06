@@ -871,3 +871,15 @@ function process_contact_form_data() {
     }
 }
 add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
+
+// Remove Id from url for handbook form
+// function remove_unit_tag($url){
+//     $wpcf = WPCF7_ContactForm::get_current();
+//     $form_id = $wpcf -> id;
+//     if( $form_id == 932 ){
+//         $remove_unit_tag = explode('#',$url);
+//         $new_url = $remove_unit_tag[0];
+//         return $new_url;
+//     }
+// }
+// add_filter('wpcf7_form_action_url', 'remove_unit_tag');
