@@ -155,7 +155,8 @@ const gulp = require('gulp'),
             'dist/**/*',
             'components/**/*.twig',
             'templates/**/*.twig',
-            'login/**/*'
+            'login/**/*',
+            'includes/edit-strings/**/*',
         ],
         acf: {
             src: 'includes/toggle_acf_edit.php',
