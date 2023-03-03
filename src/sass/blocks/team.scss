@@ -1,8 +1,8 @@
 // Required Core Stylesheet
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
 
 // Optional Theme Stylesheet
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 .team{
     overflow-x: hidden ;
@@ -171,6 +171,7 @@
         background-color: #F2F2F2;
         .team-row{
             display: flex;
+            width: 100%;
             .team-name{
                 display: flex;
                 justify-content: center;
@@ -184,79 +185,86 @@
             .members-list{
                 padding: 60px 0 30px;
                 border-bottom: 2px solid #D3D2D2;
-                
-                .team-member{
-                    overflow: visible ;
-                    img{
-                        width: 264px;
-                        height: 341px;
-                        object-fit: cover;
-                    }
-                    p{
-                        margin: 0;
-                    }
-                    .name{
-                        padding: 1em 0 0.2em;
-                        text-transform: uppercase;
-                        color: var(--orange);
-                        font-family: Gotham-Medium;
-                    }
-
-                    .job{
-                        padding-bottom: 1em;
-                        font-family: Gotham-Medium;
-                    }
-                    .icons{
-                        margin-left: -6px;
-                        a{
-                            color: inherit;
-                            text-decoration: none;
+                flex: 1;
+                .glide__slides{
+                    display: flex;
+                    flex-wrap: wrap;
+                    .team-member{
+                        overflow: visible ;
+                        width: 264px;;
+                        margin-right: 1%;
+                        list-style-type: none;
+                        img{
+                            width: 264px;
+                            height: 341px;
+                            object-fit: cover;
                         }
-                        .fa-stack{
-                            cursor: pointer;
-                            i:first-child{
-                                color: var(--white);
+                        p{
+                            margin: 0;
+                        }
+                        .name{
+                            padding: 1em 0 0.2em;
+                            text-transform: uppercase;
+                            color: var(--orange);
+                            font-family: Gotham-Medium;
+                        }
+    
+                        .job{
+                            padding-bottom: 1em;
+                            font-family: Gotham-Medium;
+                        }
+                        .icons{
+                            margin-left: -6px;
+                            a{
+                                color: inherit;
+                                text-decoration: none;
                             }
-                            &:hover{
+                            .fa-stack{
+                                cursor: pointer;
+                                i:first-child{
+                                    color: var(--white);
+                                }
+                                &:hover{
+                                    i:first-child{
+                                        color: var(--orange);
+                                    }
+                                    i:last-child{
+                                        color: var(--white);
+                                    }
+                                }
+                            }
+    
+                            .icon-clicked{
                                 i:first-child{
                                     color: var(--orange);
+                                    &::after{
+                                        content:'';
+                                        position: absolute;
+                                        top: 100%;
+                                        left: 50%;
+                                        margin-top: -5px;
+                                        margin-left: -10px;
+                                        width: 0;
+                                        height: 0;
+                                        border-top: solid 10px var(--orange);
+                                        border-left: solid 10px transparent;
+                                        border-right: solid 10px transparent;
+                                    }
                                 }
                                 i:last-child{
                                     color: var(--white);
                                 }
                             }
                         }
-
-                        .icon-clicked{
-                            i:first-child{
-                                color: var(--orange);
-                                &::after{
-                                    content:'';
-                                    position: absolute;
-                                    top: 100%;
-                                    left: 50%;
-                                    margin-top: -5px;
-                                    margin-left: -10px;
-                                    width: 0;
-                                    height: 0;
-                                    border-top: solid 10px var(--orange);
-                                    border-left: solid 10px transparent;
-                                    border-right: solid 10px transparent;
-                                }
-                            }
-                            i:last-child{
-                                color: var(--white);
-                            }
+                        
+                        .skills{
+                            visibility: hidden;
+                            padding-top: 1em;
+                            font-family: Gotham-Book;
                         }
                     }
-                    
-                    .skills{
-                        // display: none;
-                        visibility: hidden;
-                        padding-top: 1em;
-                        font-family: Gotham-Book;
-                    }
                 }
+                
                 
             }
             
