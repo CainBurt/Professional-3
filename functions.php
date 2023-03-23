@@ -845,9 +845,45 @@ function handbook_data_script() {
 }
 add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
 
-// add handbook row to users
+// add new columns to users
 function new_modify_user_table( $column ) {
     $column['handbook'] = 'Read Employee Handbook?';
+
+     $pages = get_posts( array(
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    ) );
+
+    foreach ( $pages as $page ) {
+        $resources_blocks = parse_blocks( $page->post_content );
+
+        // Loop through all blocks on the page
+        foreach ( $resources_blocks as $block ) {
+            // get ones that are resource blocks
+            if ( $block['blockName'] === 'acf/resource-block' ) {
+                $resources_fields = $block['attrs']['data'];
+
+                //loop through each block and find any that have track_clicks set to true, if yes add to users table
+                foreach ( $resources_blocks as $block ) {
+                    if ( $block['blockName'] === 'acf/resource-block' ) {
+                        $resources_fields = $block['attrs']['data'];
+                        $block_title = '';
+                        foreach ( $resources_fields as $key => $value ) {
+                            if ( strpos( $key, 'title' ) !== false && strpos($key, '_') !== 0 ) {
+                                $block_title = $resources_fields[$key];    
+                            }
+                            elseif ( strpos( $key, 'track_clicks' ) !== false && $value == 1 ) {
+                                $column[$block_title] = "Clicked ". $block_title; 
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
     return $column;
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
@@ -857,6 +893,9 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
         case 'handbook' :
             return get_the_author_meta( 'read_handbook', $user_id );
         default:
+        if ( $value = get_user_meta( $user_id, $column_name, true ) ) {
+            return $value;
+        }
     }
     return $val;
 }
@@ -872,14 +911,48 @@ function process_contact_form_data() {
 }
 add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
 
-// Remove Id from url for handbook form
-// function remove_unit_tag($url){
-//     $wpcf = WPCF7_ContactForm::get_current();
-//     $form_id = $wpcf -> id;
-//     if( $form_id == 932 ){
-//         $remove_unit_tag = explode('#',$url);
-//         $new_url = $remove_unit_tag[0];
-//         return $new_url;
+// function test(){
+//      // Get all published pages
+//      $pages = get_posts( array(
+//         'post_type' => 'page',
+//         'post_status' => 'publish',
+//         'posts_per_page' => -1,
+//     ) );
+//     echo "<pre>";
+//     print_r("test");
+//     echo "</pre>";
+//     // Loop through each page and check for the resources block
+//     foreach ( $pages as $page ) {
+//         $resources_blocks = parse_blocks( $page->post_content );
+
+//         foreach ( $resources_blocks as $block ) {
+//             if ( $block['blockName'] === 'acf/resource-block' ) {
+//                 $resources_fields = $block['attrs']['data'];
+        
+//                 // Loop through the resource fields
+//                 foreach ( $resources_blocks as $block ) {
+//                     if ( $block['blockName'] === 'acf/resource-block' ) {
+//                         $resources_fields = $block['attrs']['data'];
+        
+//                         // Initialize the variable to store the title of the block
+//                         $block_title = '';
+//                         // print_r($resources_fields);
+//                         // Loop through each field in the resources block
+//                         foreach ( $resources_fields as $key => $value ) {
+//                             // Check if the key contains "track_clicks" or "title"
+//                             if ( strpos( $key, 'track_clicks' ) !== false && $value == 1 ) {
+//                                 // Output the title of the block and the track_clicks value
+//                                 echo "Block title: " . $block_title . " - Track clicks value: " . $value;
+//                             } elseif ( strpos( $key, 'title' ) !== false && strpos($key, '_') !== 0 ) {
+//                                 // Save the title of the block to the variable
+//                                 $block_title = $resources_fields[$key];
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
 //     }
 // }
-// add_filter('wpcf7_form_action_url', 'remove_unit_tag');
+
+// add_action( 'init', 'test' );
