@@ -845,6 +845,7 @@ function handbook_data_script() {
 }
 add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
 
+
 // add new columns to users
 function new_modify_user_table( $column ) {
     $column['handbook'] = 'Read Employee Handbook?';
@@ -874,7 +875,7 @@ function new_modify_user_table( $column ) {
                                 $block_title = $resources_fields[$key];    
                             }
                             elseif ( strpos( $key, 'track_clicks' ) !== false && $value == 1 ) {
-                                $column[$block_title] = "Clicked ". $block_title; 
+                                $column[$block_title] = "Clicked ". $block_title;                                 
                             } 
                         }
                     }
@@ -882,26 +883,24 @@ function new_modify_user_table( $column ) {
             }
         }
     }
-
-
     return $column;
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
 function new_modify_user_table_row( $val, $column_name, $user_id ) {
+    $new_col_name = "clicked_".$column_name;
     switch ($column_name) {
         case 'handbook' :
             return get_the_author_meta( 'read_handbook', $user_id );
+        case $column_name:
+            return get_the_author_meta( $new_col_name, $user_id );
         default:
-        if ( $value = get_user_meta( $user_id, $column_name, true ) ) {
-            return $value;
-        }
+            return $val;
     }
     return $val;
 }
 add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
 
-// change read handbook to yes on button click
 function process_contact_form_data() {
     $wpcf = WPCF7_ContactForm::get_current();
     $form_id = $wpcf -> id;
@@ -911,48 +910,21 @@ function process_contact_form_data() {
 }
 add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
 
-// function test(){
-//      // Get all published pages
-//      $pages = get_posts( array(
-//         'post_type' => 'page',
-//         'post_status' => 'publish',
-//         'posts_per_page' => -1,
-//     ) );
-//     echo "<pre>";
-//     print_r("test");
-//     echo "</pre>";
-//     // Loop through each page and check for the resources block
-//     foreach ( $pages as $page ) {
-//         $resources_blocks = parse_blocks( $page->post_content );
 
-//         foreach ( $resources_blocks as $block ) {
-//             if ( $block['blockName'] === 'acf/resource-block' ) {
-//                 $resources_fields = $block['attrs']['data'];
-        
-//                 // Loop through the resource fields
-//                 foreach ( $resources_blocks as $block ) {
-//                     if ( $block['blockName'] === 'acf/resource-block' ) {
-//                         $resources_fields = $block['attrs']['data'];
-        
-//                         // Initialize the variable to store the title of the block
-//                         $block_title = '';
-//                         // print_r($resources_fields);
-//                         // Loop through each field in the resources block
-//                         foreach ( $resources_fields as $key => $value ) {
-//                             // Check if the key contains "track_clicks" or "title"
-//                             if ( strpos( $key, 'track_clicks' ) !== false && $value == 1 ) {
-//                                 // Output the title of the block and the track_clicks value
-//                                 echo "Block title: " . $block_title . " - Track clicks value: " . $value;
-//                             } elseif ( strpos( $key, 'title' ) !== false && strpos($key, '_') !== 0 ) {
-//                                 // Save the title of the block to the variable
-//                                 $block_title = $resources_fields[$key];
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+function update_user_field() {
+  $user_id = intval( $_POST['user_id'] );
+  $field_name = sanitize_text_field( $_POST['field_key'] );
+  $field_value = sanitize_text_field( $_POST['field_value'] );
+  $send_request = sanitize_text_field( $_POST['send_request'] );
 
-// add_action( 'init', 'test' );
+  if ( current_user_can( 'edit_user', $user_id ) && !empty($send_request) ) {
+    update_user_meta( $user_id, 'clicked_'.$field_name, $field_value );
+    wp_send_json( array( 'status' => 'success' ) );
+  } else {
+    wp_send_json( array( 'status' => 'error' ) );
+  }
+
+  wp_die();
+}
+add_action( 'wp_ajax_update_user_field', 'update_user_field' );
+add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );

@@ -1,8 +1,7 @@
 <section class="resources">
     <div class="inner-container">
         {% for resource in fields.resources %}
-            <div class="resource-container" 
-            {{resource.content.new_tab}}
+            <div class="resource-container" data-resource-id="{{ resource.content.title }}" data-user-id="{{ user.id }}" data-send-request="{{ resource.content.track_clicks }}"
                 {% if resource.content.new_tab != True %}
                     onclick="window.open('{{resource.content.link}}','_blank');" 
                 {% else %}
@@ -23,3 +22,30 @@
         {% endfor %}
     </div>
 </section>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.resource-container').on('click', function(e) {
+            e.preventDefault();
+            var user_id = $(this).data('user-id');
+            var field_key = $(this).data('resource-id');
+            var field_value = 'Yes';
+            var send_request = $(this).data('send-request')
+            // Send AJAX request to update user meta
+            $.ajax({
+                method: 'POST',
+                url: "/wp-admin/admin-ajax.php",
+                data: {
+                    action: 'update_user_field',
+                    user_id: user_id,
+                    field_key: field_key,
+                    field_value: field_value,
+                    send_request: send_request
+                },
+                success: function(response) {
+                    console.log(response.status);
+                },
+            });
+        });
+    });
+</script>
