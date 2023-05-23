@@ -8,6 +8,10 @@
 			</div>
 		</div>
 	{% endif %} #}
+	{# {{ function('do_shortcode', '[contact-form-7 id="733" title="Handbook Form"]') }} #}
+	{% if post.form_shortcode %}
+		{{ function('do_shortcode', post.form_shortcode ) }}
+	{% endif %}
 	<div class="container">
 		{% if post.title == 'New Starter Form'%}
 			<div class="starter-form-footer">

@@ -849,6 +849,7 @@ add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
 // add new columns to users
 function new_modify_user_table( $column ) {
     $column['handbook'] = 'Read Employee Handbook?';
+    $column['security'] = 'Read Security Policy?';
 
      $pages = get_posts( array(
         'post_type' => 'page',
@@ -892,6 +893,8 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
     switch ($column_name) {
         case 'handbook' :
             return get_the_author_meta( 'read_handbook', $user_id );
+        case 'security' :
+            return get_the_author_meta( 'read_security', $user_id );
         case $column_name:
             return get_the_author_meta( $new_col_name, $user_id );
         default:
@@ -904,11 +907,19 @@ add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
 function process_contact_form_data() {
     $wpcf = WPCF7_ContactForm::get_current();
     $form_id = $wpcf -> id;
-    if( $form_id == 932 ){
+    if( $form_id == 932 || $form_id == 733){
         update_user_meta(get_current_user_id(), 'read_handbook', 'Yes' );
     }
 }
 add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
+function process_security_contact_form_data() {
+    $wpcf = WPCF7_ContactForm::get_current();
+    $form_id = $wpcf -> id;
+    if( $form_id == 927 || $form_id == 1499){
+        update_user_meta(get_current_user_id(), 'read_security', 'Yes' );
+    }
+}
+add_action( 'wpcf7_before_send_mail', 'process_security_contact_form_data' );
 
 
 function update_user_field() {
