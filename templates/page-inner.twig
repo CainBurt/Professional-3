@@ -1,5 +1,22 @@
 {% extends "base.twig" %}
 
+{% block headerTitle %}
+    <div class="sub-nav">
+        <div class="container">
+            <h1>
+                {{ post.title }}
+            </h1>
+                {% if ('Employee Handbook' in post.title) or ('Employee Wellbeing' in post.title) %}
+                    <select name="section" id="section">
+                        {% for anchor in anchors %}
+                            <option value="#{{anchor.anchor}}">{{"%02d"|format(loop.index)}} - {{anchor.heading}}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="wp-container inner-container">
 	    {{post.content}}

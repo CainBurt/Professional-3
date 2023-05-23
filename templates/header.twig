@@ -1,4 +1,4 @@
-<nav>
+
     <div class="header-row container">
         <a class="header-logo" href="/">
         {% set image = TimberImage(options.site_logo) %}
@@ -16,20 +16,3 @@
         {% endfor %}
         </ul>
     </div>    
-    {% if ((fn('get_post_field', 'post_parent') == 9) or (fn('get_post_field', 'post_parent') == 47)) %}
-    <div class="sub-nav">
-        <div class="container">
-            <h1>
-                {{ post.title }}
-            </h1>
-                {% if ('Employee Handbook' in post.title) or ('Employee Wellbeing' in post.title) %}
-                    <select name="section" id="section">
-                        {% for anchor in anchors %}
-                            <option value="#{{anchor.anchor}}">{{"%02d"|format(loop.index)}} - {{anchor.heading}}</option>
-                        {% endfor %}
-                    </select>
-                {% endif %}
-        </div>
-    </div>
-    {% endif %}
-</nav>

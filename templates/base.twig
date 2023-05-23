@@ -15,9 +15,14 @@
 		{% include 'mobile.twig'%}
 		
 		<header class="header" >
-			{% block header %}
-				{% include "header.twig" %}
-			{% endblock %}
+			<nav>
+				{% block header %}
+					{% include "header.twig" %}
+						{% block headerTitle %}
+			
+						{% endblock %}
+				{% endblock %}
+			</nav>
 		</header>
 
 		<section id="content" role="main">
