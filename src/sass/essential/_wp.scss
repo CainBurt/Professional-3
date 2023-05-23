@@ -195,3 +195,51 @@
 
     }
 }
+
+  
+ol { 
+    counter-reset: item -1;
+    // counter-set: item 0;
+    padding-left: 2%;
+    
+    li { 
+        display: block;
+        padding: 10px 0;
+        padding-left: 20px;
+        line-height: 1.45;
+        font-family: gotham-book;
+    
+        >ol { 
+            counter-reset: item;
+            padding-left: 30px;
+            >li:not(:nth-child(1)){
+                padding: 5px 0 10px 20px
+            }
+            >li:before{
+                left:64px
+            }
+        }
+    }
+    li:before {
+        content: counter(start)"." counters(item, ".")"." ; 
+        counter-increment: item;
+        color: var(--orange);
+        font-family: gotham;
+        padding-right: 10px;
+        position: absolute;
+        left: 24px
+        
+    }
+}
+
+ol {
+    list-style: none;
+  }
+
+  @for $i from 1 through 101 {
+    ol[start="#{$i}"] {
+        counter-set: start #{$i};
+    }
+  }
+  
+  

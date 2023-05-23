@@ -6,7 +6,7 @@
             <h1>
                 {{ post.title }}
             </h1>
-                {% if ('Employee Handbook' in post.title) or ('Employee Wellbeing' in post.title) %}
+                {% if ('Employee Handbook' in post.title) or ('Employee Wellbeing' in post.title) or ('Information Security Policy' in post.title) %}
                     <select name="section" id="section">
                         {% for anchor in anchors %}
                             <option value="#{{anchor.anchor}}">{{"%02d"|format(loop.index)}} - {{anchor.heading}}</option>
