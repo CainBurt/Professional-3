@@ -234,6 +234,7 @@ class StarterSite extends TimberSite {
         inline_script(get_template_directory_uri() . '/dist/js/team.js');
         inline_script(get_template_directory_uri() . '/dist/js/new-starter.js');
         inline_script(get_template_directory_uri() . '/dist/js/handbook.js');
+        inline_script(get_template_directory_uri() . '/dist/js/qsm.js');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/main.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/deferred.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/header.css');

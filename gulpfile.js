@@ -133,6 +133,10 @@ const gulp = require('gulp'),
                     entryFiles: glob.sync('./src/js/blocks/handbook.js'),
                     outputName: 'handbook'
                 },
+                {
+                    entryFiles: glob.sync('./src/js/qsm.js'),
+                    outputName: 'qsm'
+                },
             ]
         },
         images: {
