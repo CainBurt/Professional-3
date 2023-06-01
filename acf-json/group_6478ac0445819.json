@@ -1,11 +1,11 @@
 {
-    "key": "group_646cd777c669a",
-    "title": "Page Options",
+    "key": "group_6478ac0445819",
+    "title": "Header Button",
     "fields": [
         {
-            "key": "field_646cd7774b4b9",
-            "label": "Form Shortcode",
-            "name": "form_shortcode",
+            "key": "field_6478ac04e47e0",
+            "label": "Button Label",
+            "name": "button_label",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -23,9 +23,26 @@
             "append": ""
         },
         {
-            "key": "field_6478aca7afcac",
-            "label": "Show anchors in header?",
-            "name": "page_anchors",
+            "key": "field_6478ac1de47e1",
+            "label": "Button Link",
+            "name": "button_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6478ac25e47e2",
+            "label": "Show Button?",
+            "name": "button_toggle",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -47,19 +64,19 @@
         [
             {
                 "param": "page",
-                "operator": "!=",
-                "value": "9"
+                "operator": "==",
+                "value": "876"
             }
         ]
     ],
     "menu_order": 0,
     "position": "side",
-    "style": "seamless",
-    "label_placement": "top",
-    "instruction_placement": "field",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685630156
+    "modified": 1685631616
 }

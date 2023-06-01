@@ -14,6 +14,9 @@
                         {% endfor %}
                     </select>
                 {% endif %}
+            {% if (post.button_toggle) and (user.read_security == "Yes") %}
+                <a href="{{post.button_link}}" class="crowd-button header-button">{{post.button_label}}</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

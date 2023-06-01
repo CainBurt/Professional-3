@@ -110,6 +110,7 @@ header{
                 width: 40%;
                 height: 50px;
                 margin-left: 5%;
+                margin-right: 5%;
                 padding-left: 1%;
                 border: 1.5px solid #A0A0A0;
                 border-radius: 4px;
@@ -123,6 +124,15 @@ header{
                 &:focus-visible{
                     outline: none;
                 }
+            }
+
+            .header-button{
+                margin-left: auto;
+                text-align: center;
+                padding: 0 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
         }
