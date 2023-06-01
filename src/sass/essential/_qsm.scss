@@ -11,7 +11,6 @@
 .mlw_qmn_quiz_link,
 .qsm-submit-btn,
 .qsm_retake_button{
-    width: 13% !important;
     height: 50px !important;
     padding: 14px 13px !important;
     margin-top: 10px !important;
@@ -77,13 +76,7 @@
     
 }
 
-.qmn_mc_answer_wrap{
-    font-family: gotham-book;
-    padding: 5px 0;
-    >input{
-        accent-color: var(--orange);
-    }
-}
+
 
 .data-correct-answer {
     color: #00E300;
@@ -92,11 +85,12 @@
 
 .qmn_results_page{
     >.qsm-results-page{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-size: 24px;
         padding-bottom: 3rem;
+        font-family: gotham-book;
+        strong{
+            font-family: gotham;
+        }
     }
     >form{
         display: flex;
@@ -109,10 +103,38 @@
 
 .qmn_radio_answers {
     padding-left: 3.5%;
+    >.qmn_mc_answer_wrap{
+        font-family: gotham-book;
+        padding: 5px 0;
+        >input{
+            accent-color: var(--orange);
+            float: left;
+        }
+        >label{
+            display: block;
+            margin-left: 20px;
+        }
+    }
 }
 
 .qsm-inline-correct-info{
     >b{
         display: none;
     }
+}
+
+.qsm-inline-correct-info{
+    font-family: gotham-book;
+    >strong{
+        font-family: gotham;
+    }
+}
+
+.qsm-error-message{
+    color: red !important;
+    font-family: gotham;
+    padding-top: 1%;
+}
+#mlw_error_message{
+    display: none;
 }

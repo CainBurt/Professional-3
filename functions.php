@@ -785,25 +785,29 @@ add_action( 'wp', 'login_redirect' );
 
 // save suggestions post
 function save_posted_data( $posted_data ) {
-    
-    $args = array(
-      'post_type' => 'suggestion',
-      'post_status'=>'publish',
-      'post_title'=>$posted_data['your-name'],
-      'post_content'=>$posted_data['your-message'],
-    );
-    $post_id = wp_insert_post($args);
+    // Check the form ID
+    $form_id = 'suggestions'; // Replace with your specific form ID
+    if ( isset( $posted_data['form-id'] ) && $posted_data['form-id'] == $form_id ) {
+        $args = array(
+            'post_type'    => 'suggestion',
+            'post_status'  => 'publish',
+            'post_title'   => $posted_data['your-name'],
+            'post_content' => $posted_data['your-message'],
+        );
+        $post_id = wp_insert_post( $args );
 
-    if(!is_wp_error($post_id)){
-      if( isset($posted_data['your-name']) ){
-        update_post_meta($post_id, 'your-name', $posted_data['your-name']);
-      }
+        if ( ! is_wp_error( $post_id ) ) {
+            if ( isset( $posted_data['your-name'] ) ) {
+                update_post_meta( $post_id, 'your-name', $posted_data['your-name'] );
+            }
 
-      if( isset($posted_data['your-message']) ){
-        update_post_meta($post_id, 'your-message', $posted_data['your-message']);
-      }
-   return $posted_data;
-  }
+            if ( isset( $posted_data['your-message'] ) ) {
+                update_post_meta( $post_id, 'your-message', $posted_data['your-message'] );
+            }
+            return $posted_data;
+        }
+    }
+    return $posted_data;
 }
 
 add_filter( 'wpcf7_posted_data', 'save_posted_data' );
