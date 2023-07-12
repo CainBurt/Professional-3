@@ -16,6 +16,9 @@ footer{
     }
     .container{
         padding: 20px 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         .bottom{
         
             max-height: 66px;
@@ -28,6 +31,10 @@ footer{
                     filter: grayscale(0%); 
                 }
             }
+        }
+        >p{
+            color: var(--orange);
+            font-family: Gotham-Bold;
         }
         .starter-form-footer{
             color: var(--orange);

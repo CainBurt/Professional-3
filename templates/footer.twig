@@ -23,7 +23,9 @@
 				{% set image = TimberImage(options.site_logo) %}
 					<img src='{{ image.src }}' alt='{{ image.alt }}' />
 				</a>
+				
 			</div>
+			<p>{{__('COMPANY CONFIDENTIAL', 'crowd')}}</p>
 		{% endif %}
 	</div>
 </div>
