@@ -6,7 +6,7 @@
         input[type="date"],
         textarea{
             background-color: (--white);
-            font-family: Gotham-Book;
+            font-weight: 300;
             width: 100%;
             border: 1px solid var(--black);
             border-radius: 4px;
@@ -73,7 +73,7 @@
         justify-content: center;
         border-radius: 4px;
         padding: 15px;
-        font-family: Gotham-Book;
+        font-weight: 300;
         color: var(--white);
     }
     
@@ -88,14 +88,14 @@
         justify-content: center;
         border-radius: 4px;
         padding: 15px;
-        font-family: Gotham-Book;
+        font-weight: 300;
     }
     
 }
 
 #suggestions_form{
     .wpcf7-not-valid-tip{
-        font-family: Gotham-Bold;
+        font-weight: bold;
         color: #E30000;
         &::before{
             display: inline-block;

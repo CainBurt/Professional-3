@@ -18,18 +18,18 @@
             align-items: center;
             justify-content: space-between;
             border-top: 1.5px solid #D3D2D2;
-            font-family: Gotham-Book;
+            font-weight: bold;
             padding: 5px 0;
             &:last-child{
                 padding-bottom: 3%;
             }
             p{
                 strong{
-                    font-family: Gotham-Bold;
+                    font-weight: bold;
                 }
                 a{
                     color: var(--black);
-                    font-family: Gotham-Bold;
+                    font-weight: bold;
                     &:hover{
                         color: var(--orange);
                     }

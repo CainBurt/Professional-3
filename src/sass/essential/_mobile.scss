@@ -25,13 +25,13 @@
         color: transparent;
         -webkit-text-stroke: 1px var(--white);
         margin-bottom: 0.3em;
-        font-family: Gotham-Bold;
+        font-weight: bold;
         span{
             color: var(--white);
         }
     }
     p{
-        font-family: Gotham-Book;
+        font-weight: 300;
         width: 80%;
         text-align: center;
         margin: 0 auto;

@@ -14,7 +14,7 @@
                 -webkit-text-stroke: 1px var(--black);
                 margin-bottom: 0.3em;
                 line-height: 1;
-                font-family: Gotham-Bold;
+                font-weight: bold;
                 span{
                     color: var(--black);
                 }
@@ -33,10 +33,10 @@
             align-items: flex-end;
             label{
                 color: var(--orange);
-                font-family: Gotham-Medium;
+                font-weight: 500;
             }
             input[type="text"]{
-                font-family: Gotham-Book;
+                font-weight: 300;
                 width: 100%;
                 border: 1px solid var(--black);
                 border-radius: 4px;
@@ -49,7 +49,7 @@
                 }
             }
             select{
-                font-family: Gotham-Book;
+                font-weight: 300;
                 width: 100%;
                 border: 1px solid var(--black);
                 border-radius: 4px;
@@ -128,11 +128,11 @@
             padding-bottom: 2em;
             >label{
                 color: var(--orange);
-                font-family: Gotham-Medium;
+                font-weight: 500;
 
             }
             >input[type="text"]{
-                font-family: Gotham-Book;
+                font-weight: 300;
                 width: 100%;
                 border: 1px solid var(--black);
                 border-radius: 4px 0 0 4px;
@@ -183,7 +183,7 @@
                 transform: rotate(-180deg);
                 padding: 0 50px;
                 text-transform: uppercase;
-                font-family: Gotham-Medium;
+                font-weight: 500;
                 letter-spacing: 1px;
                 padding-top: 47px;
                 padding-bottom: 47px;
@@ -214,12 +214,12 @@
                             padding: 1em 0 0.2em;
                             text-transform: uppercase;
                             color: var(--orange);
-                            font-family: Gotham-Medium;
+                            font-weight: 500;
                         }
     
                         .job{
                             padding-bottom: 1em;
-                            font-family: Gotham-Medium;
+                            font-weight: 500;
                         }
                         .icons{
                             margin-left: -6px;
@@ -268,7 +268,7 @@
                         .skills{
                             visibility: hidden;
                             padding-top: 1em;
-                            font-family: Gotham-Book;
+                            font-weight: 300;
                         }
                     }
                 }
@@ -288,7 +288,7 @@
                 background-color: var(--orange);
                 padding: 10px 20px;
                 border-radius: 4px;
-                font-family: Gotham-Book;
+                font-weight: 300;
                 &:hover{
                     filter: brightness(90%);
                 }

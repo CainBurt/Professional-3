@@ -26,23 +26,23 @@
                     margin-top: 0;
                     margin-bottom: 0;
                     color: black;
-                    font-family: Gotham-Medium;
+                    font-weight: 500;
                     // font-weight: bolder;
                 }
                 p{
                     strong{
-                        font-family: Gotham-Bold;
+                        font-weight: bold;
                     }
                 }
                 p, p>a{
                     margin: 0.5em 0;
                     font-size: 16px;
-                    font-family: Gotham-Book;
+                    font-weight: bold;
                     line-height: 1.5;
                     color: black;
                     a{ 
                         text-decoration: underline;
-                        font-family: Gotham-Bold;
+                        font-weight: bold;
                         color: black;
                         z-index: 999999;
                         &:hover{
@@ -54,7 +54,7 @@
                     color: var(--orange);
                     font-size: 20px;
                     text-decoration: none;
-                    font-family: Gotham-Medium;
+                    font-weight: 500;
                 }
             }
             &:hover{

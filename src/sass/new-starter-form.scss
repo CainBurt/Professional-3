@@ -29,7 +29,7 @@
         width: 100%;
         font-size: 32px;
         margin: 0.1em 0 0.5em;
-        font-family: Gotham-Bold;
+        font-weight: bold;
         .tooltip{
             display: inline-flex;
             align-items: center;
@@ -46,7 +46,7 @@
             }
             .tooltip__text{
                 color: var(--black) !important;
-                font-family: Gotham-Book;
+                font-weight: 300;
                 position: absolute;
                 z-index: 1;
                 visibility: hidden;
@@ -104,7 +104,7 @@
     input[type="text"],
     input[type="date"]{
         background-color: (--white);
-        font-family: Gotham-Book;
+        font-weight: 300;
         width: 100%;
         border: 1px solid var(--black);
         border-radius: 4px;
@@ -212,7 +212,7 @@
                 position: relative;
                 margin-top: 0.5em;
                 margin-bottom: 0.3em;
-                font-family: Gotham-Medium;
+                font-weight: 500;
                 text-transform: uppercase;
             }
             
@@ -243,7 +243,7 @@
                 padding: 15px 40px;
                 position: relative;
                 width: 150px;
-                font-family: Gotham-Book;
+                font-weight: 300;
                 font-size: 16px;
                 margin-right: 1em;
                 height: 50px;
@@ -336,7 +336,7 @@
                         align-items: center;
                         justify-content: space-between;
                         border-top: 1.5px solid #D3D2D2;
-                        font-family: Gotham-Book;
+                        font-weight: 300;
                         padding: 5px 0;
                         &:last-child{
                             padding-bottom: 3%;
@@ -350,7 +350,7 @@
                                 margin: 15px 0;
                                 border-radius: 4px;
                                 text-decoration: none;
-                                font-family: Gotham-Book;
+                                font-weight: 300;
                                 cursor: pointer;
                                 &:hover{
                                     filter: brightness(90%);
@@ -358,7 +358,7 @@
                             }
                             &:nth-child(2){
                                 text-align: right;
-                                font-family: Gotham-Bold;
+                                font-weight: bold;
                             }
                          
                             .link{
@@ -395,7 +395,7 @@
                                 border-style: none;
 
                                 font-size: 16px;
-                                font-family: Gotham-Book;
+                                font-weight: 300;
                                 display: block;
                                 margin: 0 auto;
                                 float: unset;
@@ -454,7 +454,7 @@
         justify-content: center;
         border-radius: 4px;
         padding: 15px;
-        font-family: Gotham-Book;
+        font-weight: 300;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -463,7 +463,7 @@
 
 #new_starter_form{
     .wpcf7-not-valid-tip{
-        font-family: Gotham-Bold;
+        font-weight: bold;
         color: #E30000;
         padding-bottom: 1em;
         &::before{
@@ -496,7 +496,7 @@
         justify-content: center;
         border-radius: 4px;
         padding: 15px;
-        font-family: Gotham-Book;
+        font-weight: 300;
         position: absolute;
         bottom: 0;
         left: 0;

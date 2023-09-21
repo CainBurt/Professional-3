@@ -30,13 +30,13 @@ header{
                 margin-left: 0.5em;
                 font-size: 21px;
                 letter-spacing: .3rem;
-                font-family: Gotham-Medium;
+                font-weight: 500;
             }
             
         }
         .employee-name{
             color: var(--white);
-            font-family: Gotham-Book;
+            font-weight: 300;
             text-transform: uppercase;
         }
         .burger-menu{
@@ -61,7 +61,7 @@ header{
             display: flex;
             flex-wrap: wrap;
             margin: -10px;
-            font-family: Gotham-Bold;
+            font-weight: bold;
             li{
                 flex: 1 1 400px;
                 margin: 10px;
@@ -103,7 +103,7 @@ header{
             h1{
                 margin: 0;
                 padding: 1em 10px;
-                font-family: Gotham-Book;
+                font-weight: 300;
             }
 
             select{

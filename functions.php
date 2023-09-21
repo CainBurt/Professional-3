@@ -1,5 +1,7 @@
 <?php
 
+//include_once 'includes/classes/class.cron.php';
+
 /**
  * Registers any plugin dependancies the theme has.
  *

@@ -87,9 +87,9 @@
     >.qsm-results-page{
         font-size: 24px;
         padding-bottom: 3rem;
-        font-family: gotham-book;
+        font-weight: 300;
         strong{
-            font-family: gotham;
+            font-weight: normal;
         }
     }
     >form{
@@ -104,7 +104,7 @@
 .qmn_radio_answers {
     padding-left: 3.5%;
     >.qmn_mc_answer_wrap{
-        font-family: gotham-book;
+        font-weight: 300;
         padding: 5px 0;
         >input{
             accent-color: var(--orange);
@@ -124,15 +124,15 @@
 }
 
 .qsm-inline-correct-info{
-    font-family: gotham-book;
+    font-weight: 300;
     >strong{
-        font-family: gotham;
+        font-weight: normal;
     }
 }
 
 .qsm-error-message{
     color: red !important;
-    font-family: gotham;
+    font-weight: normal;
     padding-top: 1%;
 }
 #mlw_error_message{
