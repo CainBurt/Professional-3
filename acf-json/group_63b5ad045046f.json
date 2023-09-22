@@ -39,6 +39,7 @@
             "max": 0,
             "layout": "table",
             "button_label": "Add Row",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_63b5ad266c7ef",
@@ -68,7 +69,7 @@
                     "aria-label": "",
                     "type": "date_picker",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "25",
@@ -101,8 +102,7 @@
                     "allow_null": 0,
                     "parent_repeater": "field_63b5ad1d6c7ee"
                 }
-            ],
-            "rows_per_page": 20
+            ]
         }
     ],
     "location": [
@@ -123,5 +123,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1674059061
+    "modified": 1695388321
 }
