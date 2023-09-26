@@ -6,6 +6,7 @@
             "key": "field_63bbf7f79efb0",
             "label": "Navigation Grid",
             "name": "",
+            "aria-label": "",
             "type": "accordion",
             "instructions": "",
             "required": 0,
@@ -23,6 +24,7 @@
             "key": "field_63b5862cfcc69",
             "label": "Grid",
             "name": "grid",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -36,13 +38,15 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_63b58641fcc6a",
-                    "label": "Icon",
-                    "name": "icon",
-                    "type": "image",
+                    "key": "field_6512f57085702",
+                    "label": "Icons",
+                    "name": "icons",
+                    "aria-label": "",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -51,21 +55,114 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "url",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6512f59d85703",
+                            "label": "Icon Type",
+                            "name": "icon_type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Fontawesome": "Fontawesome",
+                                "Upload": "Upload"
+                            },
+                            "default_value": "",
+                            "return_format": "label",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_6512f5ad85704",
+                            "label": "Fontawesome Icon",
+                            "name": "fontawesome_icon",
+                            "aria-label": "",
+                            "type": "font-awesome",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6512f59d85703",
+                                        "operator": "==",
+                                        "value": "Fontawesome"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "icon_sets": [
+                                "solid",
+                                "regular",
+                                "light",
+                                "thin",
+                                "duotone",
+                                "fak",
+                                "brands"
+                            ],
+                            "custom_icon_set": "",
+                            "default_label": "",
+                            "default_value": "",
+                            "save_format": "class",
+                            "allow_null": 0,
+                            "show_preview": 1,
+                            "enqueue_fa": 0,
+                            "fa_live_preview": "",
+                            "choices": []
+                        },
+                        {
+                            "key": "field_63b58641fcc6a",
+                            "label": "Upload Icon",
+                            "name": "upload_icon",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6512f59d85703",
+                                        "operator": "==",
+                                        "value": "Upload"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "default_value": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        }
+                    ],
+                    "parent_repeater": "field_63b5862cfcc69"
                 },
                 {
                     "key": "field_63b5870c5e27a",
                     "label": "Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -79,12 +176,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_63b5862cfcc69"
                 },
                 {
                     "key": "field_63b587135e27b",
                     "label": "Link",
                     "name": "link",
+                    "aria-label": "",
                     "type": "page_link",
                     "instructions": "",
                     "required": 0,
@@ -100,7 +199,8 @@
                     "taxonomy": "",
                     "allow_null": 0,
                     "allow_archives": 1,
-                    "multiple": 0
+                    "multiple": 0,
+                    "parent_repeater": "field_63b5862cfcc69"
                 }
             ]
         }
@@ -123,5 +223,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673284315
+    "modified": 1695741600
 }

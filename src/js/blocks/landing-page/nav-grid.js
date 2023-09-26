@@ -7,8 +7,8 @@
         item.addEventListener('mouseover', (event => {
             item.classList.add('dehover-shrink')
             var list = item.querySelector("li")
-            var image = list.querySelector("img")
-            image.classList.add('dehover-image')
+            var icon = list.querySelector("#icon")
+            icon.classList.add('dehover-image')
         }));
     })
 })();

@@ -324,4 +324,4 @@ function disableAcf() {
 
 gulp.task('default', gulp.series(fonts, images, styles, scripts, watch));
 
-gulp.task('package', gulp.series(fonts, images, styles, scripts, deploy, disableAcf));
+gulp.task('package', gulp.series(fonts, images, styles, scripts, deploy));

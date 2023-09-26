@@ -31,7 +31,7 @@
 
                 &:hover{
                     animation: shrink .3s ease-in-out;
-                    li > img {
+                    li > #icon {
                         animation: image-hover .5s ease-in-out;
                     }
                 }
