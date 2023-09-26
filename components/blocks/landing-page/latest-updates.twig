@@ -4,7 +4,7 @@
             {% for update in fields.updates %}
                 <div class="row">
                    {{update.update_text}}
-                    <p>{{update.date}}</p>
+                    {% if update.date %}<p>{{update.date}}</p> {% else %} <p>{{ post.modified|date("d M Y") }}</p> {% endif %}
                     {% if update.link %}
                         <a class="link" href="{{update.link}}">{{__('View', 'crowd')}}</a>
                     {% endif %}
