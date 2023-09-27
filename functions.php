@@ -136,7 +136,7 @@ class StarterSite extends TimberSite {
         add_action( 'init', array( $this, 'register_acf_blocks' ) );
 
         add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
-
+        add_action('admin_enqueue_scripts', array( $this, 'assets' ));
         // First party actions
         add_action('inline_file', array($this, 'inline_file'));
         add_action('admin_head', array($this, 'fix_svg_thumb_display'));
@@ -190,6 +190,7 @@ class StarterSite extends TimberSite {
         require_once('includes/blocks/team.php');
         require_once('includes/blocks/hero.php');
         require_once('includes/blocks/start.php');
+        require_once('includes/blocks/download-list.php');
     }
 
     function add_to_context( $context ) {
@@ -250,6 +251,7 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/suggestions-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/handbook-form.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/download-list.css');
     }
 
     /**
@@ -342,6 +344,7 @@ class StarterSite extends TimberSite {
     }
 
 }
+
 
 new StarterSite();
 
@@ -946,3 +949,6 @@ function update_user_field() {
 }
 add_action( 'wp_ajax_update_user_field', 'update_user_field' );
 add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
+
+
+

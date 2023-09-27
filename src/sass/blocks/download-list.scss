@@ -1,0 +1,49 @@
+.download-list{
+    h2{
+        font-size: 44px;
+        scroll-margin-top: 200px;
+        margin-bottom: 0.5em;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 53px;
+    }
+
+    h3{
+        font-size: 24px;
+        color: var(--orange);
+    }
+    .single-download{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-top: 1.5px solid #D3D2D2;
+        .download-title{
+            text-decoration: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;text-decoration: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;text-decoration: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            color: var(--black);
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+        .crowd-button{
+            color: var(--orange);
+            &:hover{
+                color: var(--white);
+            }
+        }
+    }
+    
+}

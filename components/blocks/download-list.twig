@@ -1,0 +1,18 @@
+<section class="download-list">
+    {% if fields.title %}<h2>{{ fields.title }}</h2>{% endif %}
+    {% if fields.subtitle %}<h3>{{ fields.subtitle }}</h3>{% endif %}
+    {% if fields.text %}<p>{{ fields.text }}</p>{% endif %}
+    {% for item in fields.downloads %}
+        <div class="single-download">
+            <a class="download-title" 
+            href="{{ item.link.url }}"
+            {% if item.download_or_link == 'Download'%}download{% endif %}
+            target="{{item.target}}"
+            >{{ item.download_title }}</a>
+            <a class="crowd-button" href="{{ item.link.url }}"
+            {% if item.download_or_link == 'Download'%}download{% endif %}
+            target="{{item.target}}"
+            >{{ item.link.title }}</a>
+        </div>
+    {% endfor %}
+</section>

@@ -86,6 +86,11 @@ const gulp = require('gulp'),
                 name: 'handbook-form.css',
                 dist: 'dist/styles'
             },
+            download_list: {
+                src: 'src/sass/blocks/download-list.scss',
+                name: 'download-list.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [

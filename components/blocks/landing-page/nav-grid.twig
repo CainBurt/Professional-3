@@ -6,7 +6,7 @@
             <a id="grid-item" href="{{item.link}}" data-id="{{loop.index}}">
                 <li class=" {{ item.classes|join(' ') }}">
                         {% if item.icons.icon_type == 'Upload'%}
-                            <img id="icon" class="" src="{{item.icons.upload_icon}}" alt=""/>
+                            <img id="icon" class="" src="{{item.icons.upload_icon}}" alt="" style="width: 264px; height: 120px"/>
                         {% else %}
                             <i id="icon" class="resource-icon {{item.icons.fontawesome_icon}} fa-7x" style="width: 264px"></i>
                         {% endif %}

@@ -282,4 +282,21 @@ ol {
     }
 }
   
-  
+// Admin CMS styles
+.block-editor-block-list__block[data-type="core/spacer"] {
+    background-color: var(--bs-gray-100); /* Change this to your desired background color */
+}
+
+.block-editor-block-list__block[data-type="core/list"] ::before{
+    left: -15px;
+}
+
+.block-editor-block-list__block[data-type="core/file"]{
+    >div{
+        display: flex;
+        justify-content: space-between;
+    }
+    .wp-element-button{
+        width: unset;
+    }
+}

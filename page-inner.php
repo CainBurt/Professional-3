@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Sub Page
+ * Template Name: Subpage Template
  *
  * @package  WordPress
  * @subpackage  Timber
