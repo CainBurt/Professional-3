@@ -5,7 +5,7 @@
             <p>{{__('The perfect place to get to know the talented and dedicated individuals who make up Crowd!', 'crowd')}}</p>
         </div>
         <div class="search-form">
-        <form class="filter-form" action="">
+        <form class="filter-form" action="" id="filter-form">
             <div class="location-container">
                 <label for="location">{{__('Location', 'crowd')}}</label><br>
                 {# {% set selectedIdItems = pageTemplate.pageHeader.pageValue.comp1X|split('|') %}
@@ -32,12 +32,16 @@
                 <label for="skill">{{__('Expert In', 'crowd')}}</label><br>
                 <input type="text" id="skill" name="skill" placeholder="All" value="{{request.get.skill}}">
             </div>
-            <div class="btn-container"><button type="submit">{{__('Filter', 'crowd')}}</button></div>
+            <div class="btn-container">
+                <!--<button type="submit">{{__('Filter', 'crowd')}}</button>-->
+                <button type="button" id="reset-button">{{__('Reset', 'crowd')}}</button>
+
+            </div>
         </form>
-        <form class="search-form" action="">
+        <form class="search-form" action="" id="search-form">
             <label for="search">{{__('Staff Search', 'crowd')}}</label><br>
             <input type="text" id="search" name="search" placeholder="Name goes here" value="{{request.get.search}}">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <button type="submit" disabled><i class="fa fa-search"></i></button>
         </form>
         </div>
     </div>
@@ -51,8 +55,10 @@
     {% set ser = request.get.search %}
     {% set expert = request.get.skill %}
 
+    <div class="results-message" id="results-message"> {{__('No Staff Members Found', 'crowd')}}</div>
 
-    <div class="team-section">
+
+    <div class="team-section" id="team-section">
         {% for teams in fields.teams %}
             {% if (depart == teams.team_name) or (depart == 'All') or (depart == '')%}
                 {% if (teams.team_members) %}
@@ -143,8 +149,5 @@ function hideEmptyParents(){
 }
 
 hideEmptyParents()
-    
-
-
 
 </script>

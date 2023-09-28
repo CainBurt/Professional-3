@@ -156,7 +156,9 @@
                 border-radius: 0 4px 4px 0;
                 border: 1px solid var(--black);
                 border-left: none;
-                cursor: pointer;
+                cursor: default !important;
+                // cursor: pointer;
+                // pointer-events: none;
                 &:hover{
                     i{
                         color: var(--orange);
@@ -164,6 +166,14 @@
                 }
             }
         }
+    }
+
+    .results-message{
+        background-color: #F2F2F2;
+        font-size: 44px;
+        padding: 50px 20px;
+        text-align: center;
+        display: none;
     }
 
     .team-section{
