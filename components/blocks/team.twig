@@ -32,17 +32,21 @@
                 <label for="skill">{{__('Expert In', 'crowd')}}</label><br>
                 <input type="text" id="skill" name="skill" placeholder="All" value="{{request.get.skill}}">
             </div>
+            
+        </form>
+        <form class="search-form" action="" id="search-form">
+            <div>
+                <label for="search">{{__('Staff Search', 'crowd')}}</label><br>
+                <input type="text" id="search" name="search" placeholder="Name goes here" value="{{request.get.search}}">
+                <button type="submit" disabled><i class="fa fa-search"></i></button>
+            </div>
             <div class="btn-container">
                 <!--<button type="submit">{{__('Filter', 'crowd')}}</button>-->
-                <button type="button" id="reset-button">{{__('Reset', 'crowd')}}</button>
+                <button type="button" id="reset-button" class="crowd-button">{{__('Reset', 'crowd')}}</button>
 
             </div>
         </form>
-        <form class="search-form" action="" id="search-form">
-            <label for="search">{{__('Staff Search', 'crowd')}}</label><br>
-            <input type="text" id="search" name="search" placeholder="Name goes here" value="{{request.get.search}}">
-            <button type="submit" disabled><i class="fa fa-search"></i></button>
-        </form>
+        
         </div>
     </div>
     {# <h1>LOCATION:{{ request.get.location }}</h1>

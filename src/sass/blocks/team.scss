@@ -43,7 +43,6 @@
                 height: 50px;
                 padding-left: 15px;
                 margin: 10px 0 0;
-                width: 95%;
                 &:focus-visible{
                     outline: none;
                 }
@@ -68,13 +67,67 @@
                 
             }
             .location-container{
-                width: 35%;
+                width: 33.4%;
             }
             .department-container,
             .skill-container{
-                width: 25%;
+                width: 33.3%;
                 
             }
+
+        }
+        form.search-form{
+            padding-top: 2em;
+            padding-bottom: 2em;
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: flex-end;
+            >div{
+                width:83.5%;
+
+                >label{
+                    color: var(--orange);
+                    font-weight: 500;
+    
+                }
+                >input[type="text"]{
+                    width: 95%;
+                    font-weight: 300;
+                    width: 100%;
+                    border: 1px solid var(--black);
+                    border-radius: 4px 0 0 4px;
+                    height: 50px;
+                    padding-left: 15px;
+                    margin: 10px 0 0;
+                    width: 95%;
+                    border-right: none;
+                    &:focus-visible{
+                        outline: none;
+                    }
+                }
+                >button{
+                    width: 5%;
+                    height: 50px;
+                    float: right;
+                    padding: 6px 10px;
+                    margin-top: 10px;
+                    background: var(--white);
+                    font-size: 17px;
+                    border-radius: 0 4px 4px 0;
+                    border: 1px solid var(--black);
+                    border-left: none;
+                    cursor: default !important;
+                    // cursor: pointer;
+                    // pointer-events: none;
+                    &:hover{
+                        i{
+                            color: var(--orange);
+                        }
+                    }
+                }
+            }
+            
             .btn-container{
                 width: 15%;
                 button{
@@ -119,51 +172,6 @@
                     }
             }
             
-            }
-            
-
-        }
-        .search-form{
-            padding-top: 2em;
-            padding-bottom: 2em;
-            >label{
-                color: var(--orange);
-                font-weight: 500;
-
-            }
-            >input[type="text"]{
-                font-weight: 300;
-                width: 100%;
-                border: 1px solid var(--black);
-                border-radius: 4px 0 0 4px;
-                height: 50px;
-                padding-left: 15px;
-                margin: 10px 0 0;
-                width: 95%;
-                border-right: none;
-                &:focus-visible{
-                    outline: none;
-                }
-            }
-            >button{
-                width: 5%;
-                height: 50px;
-                float: right;
-                padding: 6px 10px;
-                margin-top: 10px;
-                background: var(--white);
-                font-size: 17px;
-                border-radius: 0 4px 4px 0;
-                border: 1px solid var(--black);
-                border-left: none;
-                cursor: default !important;
-                // cursor: pointer;
-                // pointer-events: none;
-                &:hover{
-                    i{
-                        color: var(--orange);
-                    }
-                }
             }
         }
     }
