@@ -91,6 +91,11 @@ const gulp = require('gulp'),
                 name: 'download-list.css',
                 dist: 'dist/styles'
             },
+            tracking_table: {
+                src: 'src/sass/tracking-table.scss',
+                name: 'tracking-table.css',
+                dist: 'dist/styles'
+            },
         },
         js: {
             src: [

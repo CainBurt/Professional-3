@@ -1,0 +1,33 @@
+.tracking-table{
+  table-layout: fixed;
+    th{
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        &:not(:first-child){
+            width: 100px;
+
+        }
+    }
+    tr{
+
+        &:hover{
+            
+            background-color: var(--grey);
+        }
+        td{
+            &:not(:first-child){
+                width: 50px;
+
+            }
+        }
+        .yes-cell{
+            // background-color: green;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+    }
+}

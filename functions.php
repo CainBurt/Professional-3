@@ -252,6 +252,8 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/suggestions-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/handbook-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/download-list.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/tracking-table.css');
+
     }
 
     /**
@@ -950,5 +952,6 @@ function update_user_field() {
 add_action( 'wp_ajax_update_user_field', 'update_user_field' );
 add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
 
+require('includes/tracking/tracking.php');
 
 
