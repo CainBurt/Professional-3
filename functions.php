@@ -898,7 +898,7 @@ function new_modify_user_table( $column ) {
     }
     return $column;
 }
-add_filter( 'manage_users_columns', 'new_modify_user_table' );
+// add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
 function new_modify_user_table_row( $val, $column_name, $user_id ) {
     $new_col_name = "clicked_".$column_name;
@@ -953,5 +953,7 @@ add_action( 'wp_ajax_update_user_field', 'update_user_field' );
 add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
 
 require('includes/tracking/tracking.php');
+require('includes/tracking/download-list.php');
+
 
 

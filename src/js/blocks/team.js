@@ -97,46 +97,63 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Event listeners for input fields
-    searchInput.addEventListener('input', filterMembers);
-    locationInput.addEventListener('input', function () {
-        filters.location = locationInput.value.toLowerCase();
-        if (filters.location.trim() === '') {
-            filters.location = '';
+        // Wrap event listeners in conditional checks
+        if (searchInput) {
+            searchInput.addEventListener('input', filterMembers);
         }
-        filterMembers();
-    });
-    departmentInput.addEventListener('input', function () {
-        filters.department = departmentInput.value.toLowerCase();
-        if (filters.department.trim() === '') {
-            filters.department = '';
+    
+        if (locationInput) {
+            locationInput.addEventListener('input', function () {
+                filters.location = locationInput.value.toLowerCase();
+                if (filters.location.trim() === '') {
+                    filters.location = '';
+                }
+                filterMembers();
+            });
         }
-        filterMembers();
-    });
-    skillsInput.addEventListener('input', function () {
-        filters.skills = skillsInput.value.toLowerCase();
-        if (filters.skills.trim() === '') {
-            filters.skills = '';
+    
+        if (departmentInput) {
+            departmentInput.addEventListener('input', function () {
+                filters.department = departmentInput.value.toLowerCase();
+                if (filters.department.trim() === '') {
+                    filters.department = '';
+                }
+                filterMembers();
+            });
         }
-        filterMembers();
-    });
-
-    resetButton.addEventListener('click', function () {
-        filterForm.reset();
-        searchForm.reset();
-        filters.location = '';
-        filters.department = '';
-        filters.skills = '';
-        filterMembers();
-    });
-
-    filterForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-    });
-
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-    });
+    
+        if (skillsInput) {
+            skillsInput.addEventListener('input', function () {
+                filters.skills = skillsInput.value.toLowerCase();
+                if (filters.skills.trim() === '') {
+                    filters.skills = '';
+                }
+                filterMembers();
+            });
+        }
+    
+        if (resetButton) {
+            resetButton.addEventListener('click', function () {
+                filterForm.reset();
+                searchForm.reset();
+                filters.location = '';
+                filters.department = '';
+                filters.skills = '';
+                filterMembers();
+            });
+        }
+    
+        if (filterForm) {
+            filterForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+            });
+        }
+    
+        if (searchForm) {
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+            });
+        }
 });
 
 
