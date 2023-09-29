@@ -7,11 +7,11 @@
             <a class="download-title" 
             href="{{ item.link.url }}"
             {% if item.download_or_link == 'Download'%}download{% endif %}
-            target="{{item.target}}"
+            target="{{item.link.target}}"
             >{{ item.download_title }}</a>
             <a class="crowd-button" href="{{ item.link.url }}"
             {% if item.download_or_link == 'Download'%}download{% endif %}
-            target="{{item.target}}"
+            target="{{item.link.target}}"
             >{{ item.link.title }}</a>
         </div>
     {% endfor %}
