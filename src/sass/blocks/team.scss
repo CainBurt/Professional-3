@@ -121,9 +121,11 @@
                     border-radius: 0 4px 4px 0;
                     border: 1px solid var(--black);
                     border-left: none;
-                    cursor: default !important;
+                    cursor: pointer !important;
                     // cursor: pointer;
                     // pointer-events: none;
+                    z-index: unset;
+
                     &:hover{
                         i{
                             color: var(--orange);
