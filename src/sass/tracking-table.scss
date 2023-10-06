@@ -1,5 +1,11 @@
+
+.tracking-wrap{
+    width: 100%;
+    overflow-x: scroll;
+}
 .tracking-table{
   table-layout: fixed;
+  max-width: fit-content;
     th{
         font-weight: bold;
         text-transform: uppercase;

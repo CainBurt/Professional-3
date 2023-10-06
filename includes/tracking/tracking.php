@@ -47,7 +47,8 @@ function display_tracking_page() {
     ?>
     <div class="wrap">
         <h2>Tracking Page</h2>
-        <a class="button" href="<?php echo admin_url('admin.php?page=export-csv'); ?>">Export to CSV</a>
+        <!-- <a class="button" href="<?php echo admin_url('admin.php?page=export-csv'); ?>">Export to CSV</a> -->
+        <div class="tracking-wrap">
         <table class="tracking-table fixed striped">
             <thead>
                 <tr>
@@ -110,7 +111,7 @@ function display_tracking_page() {
                 ?>
             </tbody>
         </table>
-        
+        </div>
     </div>
     <?php
 }
