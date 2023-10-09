@@ -54,8 +54,7 @@ add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
 
 
 function export_tracking_data_to_csv() {
-
-    $filename = date('Y-m-d').'_tracking_data.csv';
+    $filename = date('Y-m-d') . '_tracking_data.csv';
 
     $file = fopen('php://output', 'w');
     header('Content-Type: text/csv');
@@ -63,13 +62,21 @@ function export_tracking_data_to_csv() {
 
     $users = get_users();
     $allUserMetaKeys = array();
+    $addedColumns = array(); // Array to track added columns
 
     foreach ($users as $user) {
         $user_meta = get_user_meta($user->ID);
 
         foreach ($user_meta as $meta_key => $meta_value) {
             if (strpos($meta_key, 'clicked_') === 0) {
-                $allUserMetaKeys[] = $meta_key;
+                if (!in_array($meta_key, $allUserMetaKeys)) {
+                    $allUserMetaKeys[] = $meta_key;
+                    $column_name = str_replace('_', ' ', ucwords(str_replace('clicked_', 'Clicked ', $meta_key)));
+                    if (strpos($column_name, '(SOPs)') !== false) {
+                        $column_name = str_replace('Clicked ', '', $column_name);
+                    }
+                    $addedColumns[] = $column_name;
+                }
             }
         }
     }
@@ -81,7 +88,9 @@ function export_tracking_data_to_csv() {
         if (strpos($column_name, '(SOPs)') !== false) {
             $column_name = str_replace('Clicked ', '', $column_name);
         }
-        $header[] = $column_name;
+        if (in_array($column_name, $addedColumns)) {
+            $header[] = $column_name;
+        }
     }
 
     fputcsv($file, $header);
@@ -92,7 +101,7 @@ function export_tracking_data_to_csv() {
             $user->display_name,
             $user->user_email,
             (get_user_meta($user->ID, 'read_handbook', true) === 'Yes' ? 'Yes' : ''),
-            (get_user_meta($user->ID, 'read_security', true)  === 'Yes' ? 'Yes' : ''),
+            (get_user_meta($user->ID, 'read_security', true) === 'Yes' ? 'Yes' : ''),
         );
 
         foreach ($allUserMetaKeys as $meta_key) {
@@ -100,8 +109,10 @@ function export_tracking_data_to_csv() {
             if ($data === 'No') {
                 $data = '';
             }
-    
-            $user_data[] = $data;
+
+            if (in_array($column_name, $addedColumns)) {
+                $user_data[] = $data;
+            }
         }
 
         fputcsv($file, $user_data);
@@ -110,6 +121,7 @@ function export_tracking_data_to_csv() {
     fclose($file);
     exit;
 }
+
 
 
 // Hook to add the CSV export action
