@@ -1,30 +1,109 @@
 <?php
-// Function to export tracking data to CSV
+// add tracking to user table in db
+function new_modify_user_table_row( $val, $column_name, $user_id ) {
+    $new_col_name = "clicked_".$column_name;
+    switch ($column_name) {
+        case 'handbook' :
+            return get_the_author_meta( 'read_handbook', $user_id );
+        case 'security' :
+            return get_the_author_meta( 'read_security', $user_id );
+        case $column_name:
+            return get_the_author_meta( $new_col_name, $user_id );
+        default:
+            return $val;
+    }
+    return $val;
+}
+add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
+
+function process_contact_form_data() {
+    $wpcf = WPCF7_ContactForm::get_current();
+    $form_id = $wpcf -> id;
+    if( $form_id == 932 || $form_id == 733){
+        update_user_meta(get_current_user_id(), 'read_handbook', 'Yes' );
+    }
+}
+add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
+
+function process_security_contact_form_data() {
+    $wpcf = WPCF7_ContactForm::get_current();
+    $form_id = $wpcf -> id;
+    if( $form_id == 927 || $form_id == 1499){
+        update_user_meta(get_current_user_id(), 'read_security', 'Yes' );
+    }
+}
+add_action( 'wpcf7_before_send_mail', 'process_security_contact_form_data' );
+
+function update_user_field() {
+  $user_id = intval( $_POST['user_id'] );
+  $field_name = sanitize_text_field( $_POST['field_key'] );
+  $field_value = sanitize_text_field( $_POST['field_value'] );
+  $send_request = sanitize_text_field( $_POST['send_request'] );
+
+  if ( current_user_can( 'edit_user', $user_id ) && !empty($send_request) ) {
+    update_user_meta( $user_id, 'clicked_'.$field_name, $field_value );
+    wp_send_json( array( 'status' => 'success' ) );
+  } else {
+    wp_send_json( array( 'status' => 'error' ) );
+  }
+
+  wp_die();
+}
+add_action( 'wp_ajax_update_user_field', 'update_user_field' );
+add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
+
+
 function export_tracking_data_to_csv() {
-    // Define the CSV filename and headers
 
-    $filename = 'tracking_data.csv';
+    $filename = date('Y-m-d').'_tracking_data.csv';
 
-    // Create a file pointer and write CSV data
     $file = fopen('php://output', 'w');
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="' . $filename . '"');
 
-    // Add the header row
-    fputcsv($file, array('User', 'Read Employee Handbook', 'Read Security Policy', /* Add more columns here */));
+    $users = get_users();
+    $allUserMetaKeys = array();
 
-    // Retrieve actual tracking data from your database
-    $users = get_users(array('role' => 'subscriber')); // Adjust the query as needed
+    foreach ($users as $user) {
+        $user_meta = get_user_meta($user->ID);
 
+        foreach ($user_meta as $meta_key => $meta_value) {
+            if (strpos($meta_key, 'clicked_') === 0) {
+                $allUserMetaKeys[] = $meta_key;
+            }
+        }
+    }
+
+    // Header
+    $header = array('Name', 'Email', 'Read Employee Handbook', 'Read Security Policy');
+    foreach ($allUserMetaKeys as $meta_key) {
+        $column_name = str_replace('_', ' ', ucwords(str_replace('clicked_', 'Clicked ', $meta_key)));
+        if (strpos($column_name, '(SOPs)') !== false) {
+            $column_name = str_replace('Clicked ', '', $column_name);
+        }
+        $header[] = $column_name;
+    }
+
+    fputcsv($file, $header);
+
+    // User Data
     foreach ($users as $user) {
         $user_data = array(
             $user->display_name,
-            get_user_meta($user->ID, 'read_handbook', true),
-            get_user_meta($user->ID, 'read_security', true),
-            // Add more data retrieval here for additional columns
+            $user->user_email,
+            (get_user_meta($user->ID, 'read_handbook', true) === 'Yes' ? 'Yes' : ''),
+            (get_user_meta($user->ID, 'read_security', true)  === 'Yes' ? 'Yes' : ''),
         );
 
-        // Add the user data to the CSV
+        foreach ($allUserMetaKeys as $meta_key) {
+            $data = get_user_meta($user->ID, $meta_key, true);
+            if ($data === 'No') {
+                $data = '';
+            }
+    
+            $user_data[] = $data;
+        }
+
         fputcsv($file, $user_data);
     }
 
@@ -36,7 +115,7 @@ function export_tracking_data_to_csv() {
 // Hook to add the CSV export action
 add_action('admin_init', 'register_csv_export_action');
 function register_csv_export_action() {
-    if (isset($_POST['export_csv'])) {
+    if (isset($_GET['report'])) {
         export_tracking_data_to_csv();
     }
 }
@@ -46,8 +125,8 @@ function register_csv_export_action() {
 function display_tracking_page() {
     ?>
     <div class="wrap">
-        <h2>Tracking Page</h2>
-        <!-- <a class="button" href="<?php echo admin_url('admin.php?page=export-csv'); ?>">Export to CSV</a> -->
+        <h2 style="display: inline; padding-right: 25px">Tracking Page</h2>
+        <a class="button" href="<?php echo admin_url('admin.php?page=tracking-page&report=1'); ?>">Export to CSV</a>
         <div class="tracking-wrap">
         <table class="tracking-table fixed striped">
             <thead>
@@ -119,8 +198,8 @@ function display_tracking_page() {
 // Function to add the menu page
 function add_tracking_menu_page() {
     add_menu_page('Tracking Page', 'Tracking Page', 'manage_options', 'tracking-page', 'display_tracking_page');
-    add_submenu_page('tracking-page', 'Export to CSV', 'Export to CSV', 'manage_options', 'export-csv', 'export_tracking_data_to_csv');
-
+    // TODO: Export History
+    // add_submenu_page('tracking-page', 'Export to CSV', 'Export to CSV', 'manage_options', 'export-csv', 'export_tracking_data_to_csv');
 }
 
 // Hook to add the menu page

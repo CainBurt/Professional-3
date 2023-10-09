@@ -858,102 +858,10 @@ function handbook_data_script() {
 add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
 
 
-// add new columns to users
-function new_modify_user_table( $column ) {
-    $column['handbook'] = 'Read Employee Handbook?';
-    $column['security'] = 'Read Security Policy?';
-
-     $pages = get_posts( array(
-        'post_type' => 'page',
-        'post_status' => 'publish',
-        'posts_per_page' => -1,
-    ) );
-
-    foreach ( $pages as $page ) {
-        $resources_blocks = parse_blocks( $page->post_content );
-
-        // Loop through all blocks on the page
-        foreach ( $resources_blocks as $block ) {
-            // get ones that are resource blocks
-            if ( $block['blockName'] === 'acf/resource-block' ) {
-                $resources_fields = $block['attrs']['data'];
-
-                //loop through each block and find any that have track_clicks set to true, if yes add to users table
-                foreach ( $resources_blocks as $block ) {
-                    if ( $block['blockName'] === 'acf/resource-block' ) {
-                        $resources_fields = $block['attrs']['data'];
-                        $block_title = '';
-                        foreach ( $resources_fields as $key => $value ) {
-                            if ( strpos( $key, 'title' ) !== false && strpos($key, '_') !== 0 ) {
-                                $block_title = $resources_fields[$key];    
-                            }
-                            elseif ( strpos( $key, 'track_clicks' ) !== false && $value == 1 ) {
-                                $column[$block_title] = "Clicked ". $block_title;                                 
-                            } 
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return $column;
-}
-// add_filter( 'manage_users_columns', 'new_modify_user_table' );
-
-function new_modify_user_table_row( $val, $column_name, $user_id ) {
-    $new_col_name = "clicked_".$column_name;
-    switch ($column_name) {
-        case 'handbook' :
-            return get_the_author_meta( 'read_handbook', $user_id );
-        case 'security' :
-            return get_the_author_meta( 'read_security', $user_id );
-        case $column_name:
-            return get_the_author_meta( $new_col_name, $user_id );
-        default:
-            return $val;
-    }
-    return $val;
-}
-add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
-
-function process_contact_form_data() {
-    $wpcf = WPCF7_ContactForm::get_current();
-    $form_id = $wpcf -> id;
-    if( $form_id == 932 || $form_id == 733){
-        update_user_meta(get_current_user_id(), 'read_handbook', 'Yes' );
-    }
-}
-add_action( 'wpcf7_before_send_mail', 'process_contact_form_data' );
-function process_security_contact_form_data() {
-    $wpcf = WPCF7_ContactForm::get_current();
-    $form_id = $wpcf -> id;
-    if( $form_id == 927 || $form_id == 1499){
-        update_user_meta(get_current_user_id(), 'read_security', 'Yes' );
-    }
-}
-add_action( 'wpcf7_before_send_mail', 'process_security_contact_form_data' );
-
-
-function update_user_field() {
-  $user_id = intval( $_POST['user_id'] );
-  $field_name = sanitize_text_field( $_POST['field_key'] );
-  $field_value = sanitize_text_field( $_POST['field_value'] );
-  $send_request = sanitize_text_field( $_POST['send_request'] );
-
-  if ( current_user_can( 'edit_user', $user_id ) && !empty($send_request) ) {
-    update_user_meta( $user_id, 'clicked_'.$field_name, $field_value );
-    wp_send_json( array( 'status' => 'success' ) );
-  } else {
-    wp_send_json( array( 'status' => 'error' ) );
-  }
-
-  wp_die();
-}
-add_action( 'wp_ajax_update_user_field', 'update_user_field' );
-add_action( 'wp_ajax_nopriv_update_user_field', 'update_user_field' );
 
 require('includes/tracking/tracking.php');
-require('includes/tracking/download-list.php');
+require('includes/tracking/admin/resource.php');
+require('includes/tracking/admin/download-list.php');
 
 
 
