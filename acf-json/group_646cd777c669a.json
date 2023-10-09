@@ -49,6 +49,16 @@
                 "param": "page",
                 "operator": "!=",
                 "value": "9"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "suggestion"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "qsm_quiz"
             }
         ]
     ],
@@ -61,5 +71,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685630156
+    "modified": 1696858369
 }

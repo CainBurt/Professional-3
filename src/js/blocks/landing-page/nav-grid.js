@@ -1,6 +1,6 @@
 ;(function(){
 
-    var gridItems = document.querySelectorAll("[data-id]")
+    var gridItems = document.querySelectorAll("#grid-item")
 
     gridItems.forEach(item => {
         
