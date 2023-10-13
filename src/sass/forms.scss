@@ -1,9 +1,18 @@
-.suggestions-form{
+.suggestions-form,
+.incident-form{
+        .inline{
+            display: flex;
+            justify-content: space-between;
+            p{
+                width: 49%;
+            }
+        }
         p{
             opacity: 1;
         }
         input[type="text"],
         input[type="date"],
+        select,
         textarea{
             font-family: "Aeonik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             background-color: (--white);
@@ -19,7 +28,8 @@
         }
     
         input[type="text"],
-        input[type="date"]{
+        input[type="date"],
+        select{
             height: 50px;
             padding-left: 15px;
             padding-right: 15px;
@@ -66,7 +76,8 @@
     
 }
 // errors
-#suggestions_form.sent{
+#suggestions_form.sent,
+#incidents.sent{
     .wpcf7-response-output{
         content: "Your suggestion has been submitted";
         border: 1px solid #00E300 !important;
@@ -81,7 +92,8 @@
     
 }
 
-#suggestions_form.invalid{
+#suggestions_form.invalid,
+#incidents.invalid{
     .wpcf7-response-output{
         border: 1px solid #E30000 !important;
         background-color: #E30000;
@@ -95,7 +107,8 @@
     
 }
 
-#suggestions_form{
+#suggestions_form,
+#incidents{
     .wpcf7-not-valid-tip{
         font-weight: bold;
         color: #E30000;
@@ -110,5 +123,12 @@
             font-size: 20px;
             content: "\f071\00a0";
         }
+    }
+}
+
+// CMS
+#acf-group_652573b60156b{
+    .acf-input{
+        pointer-events: none;
     }
 }

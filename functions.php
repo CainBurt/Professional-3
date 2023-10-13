@@ -171,6 +171,8 @@ class StarterSite extends TimberSite {
         // require_once custom post types here
         // require_once('includes/post-types/form.php');
         require_once('includes/post-types/suggestion.php');
+        require_once('includes/post-types/incident.php');
+
     }
 
     function register_taxonomies() {
@@ -249,10 +251,11 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/hero.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/start-form.css');
-        inline_style(get_template_directory_uri(  ) . '/dist/styles/suggestions-form.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/forms.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/handbook-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/download-list.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/tracking-table.css');
+
 
     }
 
@@ -790,11 +793,9 @@ function login_redirect() {
 }
 add_action( 'wp', 'login_redirect' );
 
-// save suggestions post
 function save_posted_data( $posted_data ) {
-    // Check the form ID
-    $form_id = 'suggestions'; // Replace with your specific form ID
-    if ( isset( $posted_data['form-id'] ) && $posted_data['form-id'] == $form_id ) {
+    // save suggestions post
+    if ( isset( $posted_data['form-id'] ) && $posted_data['form-id'] == 'suggestions' ) {
         $args = array(
             'post_type'    => 'suggestion',
             'post_status'  => 'publish',
@@ -814,6 +815,70 @@ function save_posted_data( $posted_data ) {
             return $posted_data;
         }
     }
+    //save incidents
+    if (isset($posted_data['form-id']) && $posted_data['form-id'] == "incidents") {
+    
+        $args = array(
+            'post_type' => 'incident',
+            'post_status' => 'publish',
+            'numberposts' => 1,
+            'orderby' => 'title',
+            'order' => 'DESC',
+            'fields' => 'ids',
+        );
+    
+        $latest_incident = get_posts($args);
+        $latest_incident_number = 1;
+    
+        if (!empty($latest_incident)) {
+            $post_title = get_the_title($latest_incident[0]);
+            $matches = array();
+            if (preg_match('/Incident #(\d+)/', $post_title, $matches)) {
+                $latest_incident_number = intval($matches[1]);
+            }
+        }
+    
+        $new_incident_number = $latest_incident_number + 1;
+        $number = 'Incident #' . $new_incident_number;
+    
+        $acf_fields = array(
+            'date_of_incident' => 'incident-date',
+            'personal_info_affected' => 'personal-info',
+            'asset_affected' => 'assets-affected',
+            'asset_owner' => 'incident-owner',
+            'details_of_the_incident' => 'incident-details',
+            'threat' => 'incident-threat',
+            'vulnerability' => 'incident-vulnerability',
+            'short_term_containment_action' => 'incident-action',
+            'action_responsibility' => 'incident-responsibility',
+            'target_completion_date' => 'incident-completion',
+            'date_notified' => 'incident-notified',
+            'method_of_notification' => 'incident-Notification',
+        );
+    
+        $args = array(
+            'post_type' => 'incident',
+            'post_status' => 'publish',
+            'post_title' => $number,
+        );
+    
+        $post_id = wp_insert_post($args);
+    
+        if (!is_wp_error($post_id)) {
+            foreach ($acf_fields as $acf_field => $posted_key) {
+                if (isset($posted_data[$posted_key])) {
+                    if( $posted_key == 'personal-info' || $posted_key == 'incident-threat'){
+                        update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
+
+                    }else{
+                        update_field($acf_field, sanitize_text_field($posted_data[$posted_key]), $post_id);
+                    }
+                }
+            }
+            return $posted_data;
+        }
+    }
+    
     return $posted_data;
 }
 
@@ -857,11 +922,11 @@ function handbook_data_script() {
 }
 add_action( 'wp_enqueue_scripts', 'handbook_data_script' );
 
-
-
+require('includes/incidents.php');
 require('includes/tracking/tracking.php');
 require('includes/tracking/admin/resource.php');
 require('includes/tracking/admin/download-list.php');
+
 
 
 

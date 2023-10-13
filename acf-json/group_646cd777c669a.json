@@ -59,6 +59,11 @@
                 "param": "post_type",
                 "operator": "!=",
                 "value": "qsm_quiz"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "incident"
             }
         ]
     ],
@@ -71,5 +76,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696858369
+    "modified": 1696953380
 }

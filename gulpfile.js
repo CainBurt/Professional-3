@@ -76,9 +76,9 @@ const gulp = require('gulp'),
                 name: 'start-form.css',
                 dist: 'dist/styles'
             },
-            suggest_form: {
-                src: 'src/sass/suggestions-form.scss',
-                name: 'suggestions-form.css',
+            form: {
+                src: 'src/sass/forms.scss',
+                name: 'forms.css',
                 dist: 'dist/styles'
             },
             handbook_form: {
@@ -96,6 +96,8 @@ const gulp = require('gulp'),
                 name: 'tracking-table.css',
                 dist: 'dist/styles'
             },
+
+        
         },
         js: {
             src: [
