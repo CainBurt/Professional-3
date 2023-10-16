@@ -1,5 +1,4 @@
 <?php
-// Hook to add the CSV export action
 add_action('admin_init', 'register_csv_incident_export');
 function register_csv_incident_export()
 {
@@ -10,22 +9,20 @@ function register_csv_incident_export()
 
 function add_custom_admin_page() {
     add_submenu_page(
-        'edit.php?post_type=incident', // Parent menu (post type archive page)
-        'Export Incidents',            // Page title
-        'Export Incidents',            // Menu title
-        'manage_options',              // Capability required to access
-        'export-incidents',            // Menu slug
-        'display_custom_page'          // Callback function to display the page
+        'edit.php?post_type=incident',
+        'Export Incidents',            
+        'Export Incidents',            
+        'manage_options',              
+        'export-incidents',            
+        'display_custom_page'          
     );
 }
 
 function export_incidents_to_csv() 
 {
-    ob_start(); // Start output buffering
+    ob_start();
     $filename = date('Y-m-d') . '_incidents.csv';
 
-
-    // Define the post type and ACF field keys
     $file = fopen('php://output', 'w');
 
     $post_type = 'incident';
@@ -45,23 +42,15 @@ function export_incidents_to_csv()
         'Method of Information Subject Notification',
     );
 
-    // Create an empty CSV file
-    // $csv_file = fopen(__DIR__ . '/exported_data.csv', 'w');
-
-    // Write the CSV header
     fputcsv($file, $csv_header);
 
-    // Query the posts
     $args = array(
         'post_type' => $post_type,
         'posts_per_page' => -1,
     );
 
     $posts = get_posts($args);
-    // error_log($posts);
 
-
-    // Loop through the posts and export ACF data
     foreach ($posts as $post) {
         $post_data = array(
             get_the_title($post),
@@ -81,27 +70,32 @@ function export_incidents_to_csv()
         fputcsv($file, $post_data);
     }
 
-    // Close the CSV file
     fclose($file);
-    // Get the output buffer and clean it
+
     $output = ob_get_clean();
 
-    // Set headers to force download
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="' . $filename . '"');
 
-    // Output the CSV
     echo $output;
     exit;
 }
 
-function display_custom_page() {
-    ?>
-    <div class="wrap">
-        <h2>Export Incidents</h2>
-        <a class="button" href="<?php echo admin_url('admin.php?incident=1'); ?>">Export to CSV</a>
-    </div>
-    <?php
+// function add_export_to_csv_button_to_posts_archive() {
+//     if (is_admin() && get_current_screen()->post_type == 'incident') {
+//         echo '<a style="position: absolute; transform: -100px "class="button" href="' . admin_url("admin.php?incident=1") . '">Export to CSV</a>';
+//     }
+// }
+
+// add_action('admin_notices', 'add_export_to_csv_button_to_posts_archive');
+
+
+
+function enqueue_custom_admin_script() {
+    if (isset($_GET['post_type']) && $_GET['post_type'] == 'incident') {
+        wp_enqueue_script('incident-admin', get_template_directory_uri() . '/dist/js/incident-admin.js', array('jquery'), '1.0', true);
+    }
 }
-add_action('admin_menu', 'add_custom_admin_page', 11);
+add_action('admin_enqueue_scripts', 'enqueue_custom_admin_script');
+
 

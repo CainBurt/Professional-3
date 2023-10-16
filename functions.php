@@ -793,6 +793,14 @@ function login_redirect() {
 }
 add_action( 'wp', 'login_redirect' );
 
+function get_incident_number_from_title($title) {
+    $matches = array();
+    if (preg_match('/Incident #(\d+)/', $title, $matches)) {
+        return intval($matches[1]);
+    }
+    return 0;
+}
+
 function save_posted_data( $posted_data ) {
     // save suggestions post
     if ( isset( $posted_data['form-id'] ) && $posted_data['form-id'] == 'suggestions' ) {
@@ -828,18 +836,14 @@ function save_posted_data( $posted_data ) {
         );
     
         $latest_incident = get_posts($args);
-        $latest_incident_number = 1;
     
         if (!empty($latest_incident)) {
-            $post_title = get_the_title($latest_incident[0]);
-            $matches = array();
-            if (preg_match('/Incident #(\d+)/', $post_title, $matches)) {
-                $latest_incident_number = intval($matches[1]);
-            }
+            $latest_incident_number = get_incident_number_from_title(get_the_title($latest_incident[0])) + 1;
+        } else {
+            $latest_incident_number = 1;
         }
     
-        $new_incident_number = $latest_incident_number + 1;
-        $number = 'Incident #' . $new_incident_number;
+        $number = 'Incident #' . $latest_incident_number;
     
         $acf_fields = array(
             'date_of_incident' => 'incident-date',

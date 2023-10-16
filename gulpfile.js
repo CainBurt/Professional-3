@@ -149,6 +149,10 @@ const gulp = require('gulp'),
                     entryFiles: glob.sync('./src/js/qsm.js'),
                     outputName: 'qsm'
                 },
+                {
+                    entryFiles: glob.sync('./src/js/incident-admin.js'),
+                    outputName: 'incident-admin'
+                },
             ]
         },
         images: {
