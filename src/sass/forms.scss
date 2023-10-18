@@ -73,6 +73,53 @@
                 cursor: pointer;
             }
         }
+
+        label{
+            .tooltip{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                cursor: pointer;
+                font-weight: 500;
+                // font-size: 24px;
+                line-height: 24px;
+                float: right;
+                &:hover{
+                    .tooltip__text{
+                        opacity: 1 !important;
+                        visibility: visible;
+                    }
+                }
+                .tooltip__text{
+                    color: var(--black) !important;
+                    font-weight: 300;
+                    position: absolute;
+                    z-index: 1;
+                    visibility: hidden;
+                    font-size: 14px;
+                    line-height: 16px;
+                    bottom: calc(100% + 5px);
+                    padding: 9px 8px;
+                    display: block;
+                    background-color: #EDEDED;
+                    right: 4px;
+                    // min-width: calc(100% - 50px);
+                    color: #fff;
+                    opacity: 0;
+                    transition: 0.3s ease-in-out;
+                    &::after{
+                        content: "";
+                        width: 6px;
+                        background-color: #EDEDED;
+                        height: 6px;
+                        transform: rotate(45deg);
+                        position: absolute;
+                        bottom: -3px;
+                        right: 5px;
+                    }
+                }
+            }
+        }
     
 }
 // errors
@@ -131,4 +178,8 @@
     .acf-input{
         pointer-events: none;
     }
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
 }
