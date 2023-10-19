@@ -6,7 +6,7 @@
                    {{update.update_text}}
                     {% if update.date %}<p>{{update.date}}</p> {% else %} <p>{{ post.modified|date("d M Y") }}</p> {% endif %}
                     {% if update.link %}
-                        <a class="link" href="{{update.link}}">{{__('View', 'crowd')}}</a>
+                        <a class="link" href="{{update.link.url}}" target="{{update.link.target ? '_BLANK' : '_SELF' }}">{{ update.link.title }}</a>
                     {% endif %}
                 </div>  
             {% endfor %}
