@@ -1,34 +1,43 @@
 <section class="download-list">
-    {% if current_page_title == 'SOPs'%}
-        {% set page_title = current_page_title %}
-    {% endif %}
-    {% if fields.title %}<h2>{{ fields.title }}</h2>{% endif %}
-    {% if fields.subtitle %}<h3>{{ fields.subtitle }}</h3>{% endif %}
-    {% if fields.text %}<p>{{ fields.text }}</p>{% endif %}
-    {% for item in fields.downloads %}
-        <div class="single-download" data-download-id="({{ page_title }}) {{ item.download_title }}" data-user-id="{{ user.id }}" data-send-request="{{ item.track_clicks }}">
-            <a class="download-title" 
-            href="{{ item.link.url }}"
-            {% if item.download_or_link == 'Download'%}download{% endif %}
-            target="{{item.link.target}}"
-            >{{ item.download_title }}</a>
-            <a class="crowd-button" href="{{ item.link.url }}"
-            {% if item.download_or_link == 'Download'%}download{% endif %}
-            target="{{item.link.target}}"
-            >{{ item.link.title }}</a>
-        </div>
-    {% endfor %}
+	{% if current_page_title == 'SOPs'%}
+		{% set page_title = "(" ~ current_page_title ~ ") " %}
+	{% endif %}
+	{% if fields.title %}
+		<h2>{{ fields.title }}</h2>
+	{% endif %}
+	{% if fields.subtitle %}
+		<h3>{{ fields.subtitle }}</h3>
+	{% endif %}
+	{% if fields.text %}
+		<p>{{ fields.text }}</p>
+	{% endif %}
+	{% for item in fields.downloads %}
+		<div class="single-download">
+			<a class="download-title" href="{{ item.link.url }}" {% if item.download_or_link == 'Download'%} download {% endif %} target="{{item.link.target}}">{{ item.download_title }}</a>
+			{% if item.track_clicks %}
+                <span class="tooltip"><span class="tooltip__text">I have read and understand the <strong>{{item.download_title}}</strong> SOP</span>
+                    <label id="download-switch" class="switch download-switch" data-download-id="{{ page_title }}{{ item.download_title }}" data-user-id="{{ user.id }}" data-send-request="{{ item.track_clicks }}">
+                        <input type="checkbox" name="pill-checkbox" value="1" class="pill-checkbox handbook-pill-checkbox" id="download-pill-checkbox" aria-invalid="false">
+                        <span class="pill-slider round"></span>
+                    </label>
+                </span>
+			{% endif %}
+			<a class="crowd-button" href="{{ item.link.url }}" {% if item.download_or_link == 'Download'%} download {% endif %} target="{{item.link.target}}">{{ item.link.title }}</a>
+		</div>
+	{% endfor %}
 </section>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        $('.single-download').on('click', function(e) {
+        $('.download-switch').on('click', function(e) {
             // e.preventDefault();
+            $(this).off('click');
+
+            const date = new Date().toISOString().split('T')[0]
             var user_id = $(this).data('user-id');
             var field_key = $(this).data('download-id');
-            var field_value = 'Yes';
+            var field_value = date;
             var send_request = $(this).data('send-request')
-            // Send AJAX request to update user meta
             $.ajax({
                 method: 'POST',
                 url: "/wp-admin/admin-ajax.php",
@@ -41,8 +50,46 @@
                 },
                 success: function(response) {
                     console.log(response.status);
+                    $('.download-switch').on('click');
                 },
             });
         });
     });
+
+    var downloadSwitches = document.querySelectorAll('.download-switch');
+
+    jQuery(document).ready(function($) {
+        $('.download-switch').each(function() {
+            var user_id = $(this).data('user-id');
+            var field_key = $(this).data('download-id');
+            var $label = $(this).closest('.download-switch'); 
+
+            $.ajax({
+                method: 'GET',
+                url: "/wp-admin/admin-ajax.php",
+                data: {
+                    action: 'get_user_meta',
+                    user_id: user_id,
+                    field_key: field_key,
+                },
+                success: function(response) {
+                    var userMeta = response.user_meta;
+                    if (response.status === 'success') {
+                            $label.addClass('checked');
+                            console.log("TEST")
+                    }
+                },
+                error: function(error) {
+                    console.error('Error fetching meta data:', error);
+                },
+            });
+        });
+
+        
+        $('.download-switch input[type="checkbox"]').on('change', function() {
+            var $label = $(this).closest('.download-switch');
+            $label.toggleClass('checked', this.checked);
+        });
+    });
+
 </script>

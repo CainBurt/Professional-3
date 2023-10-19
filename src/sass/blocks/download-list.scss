@@ -1,5 +1,5 @@
-.download-list{
-    h2{
+.download-list {
+    h2 {
         font-size: 44px;
         scroll-margin-top: 200px;
         margin-bottom: 0.5em;
@@ -8,43 +8,153 @@
         line-height: 53px;
     }
 
-    h3{
+    h3 {
         font-size: 24px;
         color: var(--orange);
     }
-    .single-download{
+
+    .single-download {
         display: flex;
         justify-content: space-between;
         padding: 10px 0;
         border-top: 1.5px solid #D3D2D2;
-        .download-title{
+
+        .download-title {
             text-decoration: none;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;text-decoration: none;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;text-decoration: none;
             font-size: 24px;
             display: flex;
             align-items: center;
             margin-top: 10px;
             color: var(--black);
-
-            &:hover{
+            margin-right: auto;
+            &:hover {
                 text-decoration: underline;
             }
         }
+        .tooltip{
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            // font-size: 24px;
+            line-height: 24px;
+            float: right;
+            &:hover{
+                .tooltip__text{
+                    opacity: 1 !important;
+                    visibility: visible;
+                }
+            }
+            .tooltip__text{
+                color: var(--black) !important;
+                font-weight: 300;
+                position: absolute;
+                z-index: 1;
+                visibility: hidden;
+                font-size: 14px;
+                line-height: 16px;
+                bottom: calc(100% + 5px);
+                padding: 9px 8px;
+                display: block;
+                background-color: #EDEDED;
+                right: 4px;
+                min-width: 250px;
+                color: #fff;
+                opacity: 0;
+                transition: 0.3s ease-in-out;
+                border-radius: 4px;
+                &::after{
+                    content: "";
+                    width: 6px;
+                    background-color: #EDEDED;
+                    height: 6px;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    bottom: -3px;
+                    right: 5px;
+                }
+            }
 
-        .crowd-button{
+            .download-switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 34px;
+                margin: auto 0 auto auto;
+                justify-content: center;
+                /* Hide default HTML checkbox */
+                .pill-checkbox {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+
+                /* The slider */
+                .pill-slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                    height: 100%;
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        height: 26px;
+                        width: 26px;
+                        left: 4px;
+                        bottom: 4px;
+                        background-color: white;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                    }
+                }
+
+                &.checked {
+                    .pill-slider {
+                        background-color: var(--orange);
+
+                        &::before {
+                            -webkit-transform: translateX(26px);
+                            -ms-transform: translateX(26px);
+                            transform: translateX(26px);
+                        }
+
+                        // &.round{
+                        //     border-radius: 34px;
+                        //     &::before{
+                        //         border-radius: 50%;
+                        //     }
+                        // }
+                    }
+                }
+                
+            }
+        }
+        .crowd-button {
             color: var(--orange);
             z-index: unset;
-            &:hover{
+            margin-left: 20px;
+            &:hover {
                 color: var(--white);
             }
         }
     }
-    
+
+}
+
+
+
+/* Rounded sliders */
+.pill-slider.round {
+    border-radius: 34px;
+}
+
+.pill-slider.round:before {
+    border-radius: 50%;
 }

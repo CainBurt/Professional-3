@@ -56,6 +56,28 @@ function update_user_field()
 add_action('wp_ajax_update_user_field', 'update_user_field');
 add_action('wp_ajax_nopriv_update_user_field', 'update_user_field');
 
+function get_user_meta_callback() {
+    $user_id = $_GET['user_id'];
+    $field_key ='clicked_'.$_GET['field_key'];
+    $user_meta = get_user_meta($user_id, $field_key, true);
+    error_log($user_meta);
+    if (strtotime($user_meta)) {
+        wp_send_json(array(
+            'status' => 'success',
+            'user_meta' => $user_meta,
+        ));
+    } else {
+        wp_send_json(array(
+            'status' => 'error',
+            'user_meta' => $user_meta,
+        ));
+    }
+
+    wp_die();
+}
+add_action('wp_ajax_get_user_meta', 'get_user_meta_callback');
+add_action('wp_ajax_nopriv_get_user_meta', 'get_user_meta_callback');
+
 
 function export_tracking_data_to_csv()
 {
@@ -195,7 +217,7 @@ function display_tracking_page()
                         foreach ($column_keys as $column_key => $value) {
                             if (isset($user_meta[$column_key])) {
                                 $cell_content = esc_html($user_meta[$column_key][0]);
-                                echo '<td class="' . ($cell_content === 'Yes' ? 'yes-cell' : '') . '">' . ($cell_content === 'Yes' ? '&#9989;' : '') . '</td>';
+                                echo '<td class="' . ($cell_content === 'Yes' || strtotime($cell_content) ? 'yes-cell' : '') . '">' . ($cell_content === 'Yes' || strtotime($cell_content) ? '&#9989;' : '') . '</td>';
                             } else {
                                 echo '<td></td>';
                             }
