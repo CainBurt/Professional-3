@@ -76,7 +76,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -106,6 +106,27 @@
                     "parent_repeater": "field_6514039cff805"
                 },
                 {
+                    "key": "field_65140baa72c07",
+                    "label": "Download on click?",
+                    "name": "download_or_link",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_6514039cff805"
+                },
+                {
                     "key": "field_651403d1e93e0",
                     "label": "Link",
                     "name": "link",
@@ -123,48 +144,98 @@
                     "parent_repeater": "field_6514039cff805"
                 },
                 {
-                    "key": "field_65140baa72c07",
-                    "label": "Download\/Link",
-                    "name": "download_or_link",
+                    "key": "field_6532809527d7b",
+                    "label": "Tracking",
+                    "name": "tracking",
                     "aria-label": "",
-                    "type": "button_group",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "100",
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "Download": "Download",
-                        "Link": "Link"
-                    },
-                    "default_value": "",
-                    "return_format": "value",
-                    "allow_null": 0,
-                    "layout": "horizontal",
-                    "parent_repeater": "field_6514039cff805"
-                },
-                {
-                    "key": "field_6516cb92d81a2",
-                    "label": "Track Clicks",
-                    "name": "track_clicks",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "Tick to track who has clicked",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6516cb92d81a2",
+                            "label": "Track Clicks",
+                            "name": "track_clicks",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Tick to track who has clicked",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_653280c95169f",
+                            "label": "Record Block Click or Button Click",
+                            "name": "click_or_toggle",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6516cb92d81a2",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "Button",
+                            "ui_off_text": "Container",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_653280fd516a0",
+                            "label": "Tooltip Text",
+                            "name": "toggle_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_653280c95169f",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "I have read and understand the <strong>{{item.download_title}}<\/strong> SOP",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
                     "parent_repeater": "field_6514039cff805"
                 }
             ]
@@ -188,5 +259,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695992792
+    "modified": 1697811114
 }

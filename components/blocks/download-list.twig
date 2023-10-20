@@ -12,11 +12,11 @@
 		<p>{{ fields.text }}</p>
 	{% endif %}
 	{% for item in fields.downloads %}
-		<div class="single-download">
-			<a class="download-title" href="{{ item.link.url }}" {% if item.download_or_link == 'Download'%} download {% endif %} target="{{item.link.target}}">{{ item.download_title }}</a>
-			{% if item.track_clicks %}
-                <span class="tooltip"><span class="tooltip__text">I have read and understand the <strong>{{item.download_title}}</strong> SOP</span>
-                    <label id="download-switch" class="switch download-switch" data-download-id="{{ page_title }}{{ item.download_title }}" data-user-id="{{ user.id }}" data-send-request="{{ item.track_clicks }}">
+		<div class="single-download" {% if item.tracking.click_or_toggle == false and item.tracking.track_clicks %} data-download-id="{{ page_title }}{{ item.download_title }}" data-user-id="{{ user.id }}" data-send-request="{{ item.tracking.track_clicks }}" {% endif %}>
+			<a class="download-title" href="{{ item.link.url }}" {% if item.download_or_link %} download {% endif %} target="{{item.link.target}}">{{ item.download_title }}</a>
+			{% if item.tracking.click_or_toggle %}
+                <span class="tooltip"><span class="tooltip__text">{{ item.tracking.toggle_text }}</span>
+                    <label id="download-switch" class="switch download-switch" data-download-id="{{ page_title }}{{ item.download_title }}" data-user-id="{{ user.id }}" data-send-request="{{ item.tracking.track_clicks }}">
                         <input type="checkbox" name="pill-checkbox" value="1" class="pill-checkbox handbook-pill-checkbox" id="download-pill-checkbox" aria-invalid="false">
                         <span class="pill-slider round"></span>
                     </label>
@@ -29,34 +29,65 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        $('.download-switch').on('click', function(e) {
-            // e.preventDefault();
-            $(this).off('click');
 
-            const date = new Date().toISOString().split('T')[0]
-            var user_id = $(this).data('user-id');
-            var field_key = $(this).data('download-id');
-            var field_value = date;
-            var send_request = $(this).data('send-request')
-            $.ajax({
-                method: 'POST',
-                url: "/wp-admin/admin-ajax.php",
-                data: {
-                    action: 'update_user_field',
-                    user_id: user_id,
-                    field_key: field_key,
-                    field_value: field_value,
-                    send_request: send_request,
-                },
-                success: function(response) {
-                    console.log(response.status);
-                    $('.download-switch').on('click');
-                },
-            });
+        // button/toggle click
+        $('.download-switch').on('click', function(e) {
+            if($(this).data('send-request')){
+                $(this).off('click');
+        
+                const date = new Date().toISOString().split('T')[0]
+                var user_id = $(this).data('user-id');
+                var field_key = $(this).data('download-id');
+                var field_value = date;
+                var send_request = $(this).data('send-request')
+                $.ajax({
+                    method: 'POST',
+                    url: "/wp-admin/admin-ajax.php",
+                    data: {
+                        action: 'update_user_field',
+                        user_id: user_id,
+                        field_key: field_key,
+                        field_value: field_value,
+                        send_request: send_request,
+                    },
+                    success: function(response) {
+                        console.log(response.status);
+                        $('.download-switch').on('click');
+                    },
+                });
+            }
+            
+        });
+
+        // block click
+        $('.single-download').on('click', function(e) {
+            if($(this).data('send-request')){
+
+                $(this).off('click');
+                const date = new Date().toISOString().split('T')[0]
+                var user_id = $(this).data('user-id');
+                var field_key = $(this).data('download-id');
+                var field_value = date;
+                var send_request = $(this).data('send-request')
+                // Send AJAX request to update user meta
+                $.ajax({
+                    method: 'POST',
+                    url: "/wp-admin/admin-ajax.php",
+                    data: {
+                        action: 'update_user_field',
+                        user_id: user_id,
+                        field_key: field_key,
+                        field_value: field_value,
+                        send_request: send_request,
+                    },
+                    success: function(response) {
+                        console.log(response.status);
+                        $('.single-download').on('click');
+                    },
+                });
+            }
         });
     });
-
-    var downloadSwitches = document.querySelectorAll('.download-switch');
 
     jQuery(document).ready(function($) {
         $('.download-switch').each(function() {
@@ -76,7 +107,6 @@
                     var userMeta = response.user_meta;
                     if (response.status === 'success') {
                             $label.addClass('checked');
-                            console.log("TEST")
                     }
                 },
                 error: function(error) {

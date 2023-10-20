@@ -31,6 +31,6 @@ $args = array(
 	'show_in_nav_menus' => false,
 	'has_archive' => false,
 	'rewrite' => false,
-	'menu_icon' => 'dashicons-welcome-write-blog',
+	'menu_icon' => 'dashicons-awards',
 );
 register_post_type( 'nominations', $args );

@@ -888,8 +888,9 @@ function save_posted_data( $posted_data ) {
         }
     }
 
-    if (isset($posted_data['form-id']) && $posted_data['form-id'] == "nomination") {
-    
+    if (isset($posted_data['form-id']) && $posted_data['form-id'] == "nomination" && isset($posted_data['criteria'][0]) && !empty($posted_data['criteria'][0])) {
+
+        error_log($posted_data['criteria']);
         $args = array(
             'post_type' => 'nominations',
             'post_status' => 'publish',
@@ -927,6 +928,7 @@ function save_posted_data( $posted_data ) {
             }
             return $posted_data;
         }
+    
     }
     
     return $posted_data;
