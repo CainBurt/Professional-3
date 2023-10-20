@@ -96,6 +96,11 @@ const gulp = require('gulp'),
                 name: 'tracking-table.css',
                 dist: 'dist/styles'
             },
+            download_list: {
+                src: 'src/sass/blocks/free-text.scss',
+                name: 'free-text.css',
+                dist: 'dist/styles'
+            },
 
         
         },
@@ -153,6 +158,7 @@ const gulp = require('gulp'),
                     entryFiles: glob.sync('./src/js/incident-admin.js'),
                     outputName: 'incident-admin'
                 },
+                
             ]
         },
         images: {

@@ -172,6 +172,7 @@ class StarterSite extends TimberSite {
         // require_once('includes/post-types/form.php');
         require_once('includes/post-types/suggestion.php');
         require_once('includes/post-types/incident.php');
+        require_once('includes/post-types/nominations.php');
 
     }
 
@@ -193,6 +194,8 @@ class StarterSite extends TimberSite {
         require_once('includes/blocks/hero.php');
         require_once('includes/blocks/start.php');
         require_once('includes/blocks/download-list.php');
+        require_once('includes/blocks/free-text.php');
+
     }
 
     function add_to_context( $context ) {
@@ -255,6 +258,8 @@ class StarterSite extends TimberSite {
         inline_style(get_template_directory_uri(  ) . '/dist/styles/handbook-form.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/download-list.css');
         inline_style(get_template_directory_uri(  ) . '/dist/styles/tracking-table.css');
+        inline_style(get_template_directory_uri(  ) . '/dist/styles/free-text.css');
+
 
 
     }
@@ -872,6 +877,47 @@ function save_posted_data( $posted_data ) {
             foreach ($acf_fields as $acf_field => $posted_key) {
                 if (isset($posted_data[$posted_key])) {
                     if( $posted_key == 'personal-info' || $posted_key == 'incident-threat'){
+                        update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
+
+                    }else{
+                        update_field($acf_field, sanitize_text_field($posted_data[$posted_key]), $post_id);
+                    }
+                }
+            }
+            return $posted_data;
+        }
+    }
+
+    if (isset($posted_data['form-id']) && $posted_data['form-id'] == "nomination") {
+    
+        $args = array(
+            'post_type' => 'nominations',
+            'post_status' => 'publish',
+            'numberposts' => 1,
+            'orderby' => 'title',
+            'order' => 'DESC',
+            'fields' => 'ids',
+        );
+    
+        $acf_fields = array(
+            'nominator' => 'nominator',
+            'nominee' => 'nominee',
+            'criteria' => 'criteria',
+            'reason' => 'reason',
+        );
+    
+        $args = array(
+            'post_type' => 'nominations',
+            'post_status' => 'publish',
+            'post_title' => $posted_data['nominee'],
+        );
+    
+        $post_id = wp_insert_post($args);
+    
+        if (!is_wp_error($post_id)) {
+            foreach ($acf_fields as $acf_field => $posted_key) {
+                if (isset($posted_data[$posted_key])) {
+                    if( $posted_key == 'criteria'){
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
 
                     }else{

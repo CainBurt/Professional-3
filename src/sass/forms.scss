@@ -124,7 +124,8 @@
 }
 // errors
 #suggestions_form.sent,
-#incidents.sent{
+#incidents.sent,
+#nominations.sent{
     .wpcf7-response-output{
         content: "Your suggestion has been submitted";
         border: 1px solid #00E300 !important;
@@ -140,7 +141,8 @@
 }
 
 #suggestions_form.invalid,
-#incidents.invalid{
+#incidents.invalid,
+#nominations.invalid{
     .wpcf7-response-output{
         border: 1px solid #E30000 !important;
         background-color: #E30000;
@@ -155,7 +157,8 @@
 }
 
 #suggestions_form,
-#incidents{
+#incidents,
+#nominations{
     .wpcf7-not-valid-tip{
         font-weight: bold;
         color: #E30000;

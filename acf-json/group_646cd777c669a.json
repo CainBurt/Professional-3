@@ -64,6 +64,11 @@
                 "param": "post_type",
                 "operator": "!=",
                 "value": "incident"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "nominations"
             }
         ]
     ],
@@ -76,5 +81,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696953380
+    "modified": 1697795007
 }
