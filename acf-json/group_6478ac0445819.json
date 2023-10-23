@@ -63,9 +63,9 @@
     "location": [
         [
             {
-                "param": "page",
+                "param": "page_template",
                 "operator": "==",
-                "value": "876"
+                "value": "page-security-policy.php"
             }
         ]
     ],
@@ -78,5 +78,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1685631616
+    "modified": 1698073190
 }

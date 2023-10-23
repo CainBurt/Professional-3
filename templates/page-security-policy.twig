@@ -10,6 +10,7 @@
             <h1>
                 {{ post.title }}
             </h1>
+            
                 {% if post.page_anchors %}
                     <select name="section" id="section">
                         {% for anchor in anchors %}
@@ -17,6 +18,9 @@
                         {% endfor %}
                     </select>
                 {% endif %}
+            {% if (post.button_toggle) and (user.read_security == "Yes") %}
+                <a href="{{post.button_link}}" class="crowd-button header-button">{{post.button_label}}</a>
+            {% endif %}
         </div>
     </div>
     <style> #content{ padding-top: 164px;} </style>
