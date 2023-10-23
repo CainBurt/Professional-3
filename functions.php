@@ -853,7 +853,7 @@ function save_posted_data( $posted_data ) {
         $acf_fields = array(
             'date_of_incident' => 'incident-date',
             'personal_info_affected' => 'personal-info',
-            'asset_affected' => 'assets-affected',
+            'asset_affected' => 'category',
             'asset_owner' => 'incident-owner',
             'details_of_the_incident' => 'incident-details',
             'threat' => 'incident-threat',
@@ -876,7 +876,7 @@ function save_posted_data( $posted_data ) {
         if (!is_wp_error($post_id)) {
             foreach ($acf_fields as $acf_field => $posted_key) {
                 if (isset($posted_data[$posted_key])) {
-                    if( $posted_key == 'personal-info' || $posted_key == 'incident-threat'){
+                    if( $posted_key == 'personal-info' || $posted_key == 'incident-threat' || $posted_key == 'category' || $posted_key == 'incident-Notification'){
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
 
                     }else{

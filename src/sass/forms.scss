@@ -103,10 +103,11 @@
                     display: block;
                     background-color: #EDEDED;
                     right: 4px;
-                    // min-width: calc(100% - 50px);
+                    min-width: 200px;
                     color: #fff;
                     opacity: 0;
                     transition: 0.3s ease-in-out;
+                    border-radius: 4px;
                     &::after{
                         content: "";
                         width: 6px;
