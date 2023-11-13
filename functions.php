@@ -1,6 +1,6 @@
 <?php
 
-//include_once 'includes/classes/class.cron.php';
+include_once 'includes/classes/class.cron.php';
 
 /**
  * Registers any plugin dependancies the theme has.
@@ -711,7 +711,9 @@ function inline_style($src) {
     if ( $src ) {
         wp_register_style( $src, '' );
         wp_enqueue_style( $src, '', array(), get_cache_ver(), 'all' );
-        wp_add_inline_style( $src, file_get_contents($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path']) );
+        if(file_exists($_SERVER['DOCUMENT_ROOT'] . parse_url($src)['path'])) {
+            wp_add_inline_style( $src, file_get_contents( $_SERVER['DOCUMENT_ROOT'] . parse_url( $src )['path'] ) );
+        }
     }
 }
 
@@ -978,3 +980,14 @@ require('includes/incidents.php');
 require('includes/tracking/tracking.php');
 require('includes/tracking/admin/resource.php');
 require('includes/tracking/admin/download-list.php');
+
+/**
+ * Create custom user roles
+ *
+ * @return void
+ */
+function hub_user_roles() {
+    remove_role( 'unapproved' );
+    add_role( 'action_required', 'HUB: Action Required' );
+}
+add_action( 'admin_init', 'hub_user_roles' );

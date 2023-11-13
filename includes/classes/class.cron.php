@@ -1,6 +1,14 @@
-<?php class HubCron {
+<?php
+class HubCron {
     public function __construct() {
-        $this->get_members();
+        if ( ! wp_next_scheduled( 'schedule_check_new_users' ) ) {
+            wp_schedule_event(strtotime('09:00:00'), 'daily', 'schedule_check_new_users');
+        }
+
+        add_action( 'schedule_check_new_users', array( $this, 'get_members' ) );
+
+        // DEBUG
+        //add_action('init', array($this, 'get_members'));
     }
 
     public function get_members() {
@@ -14,24 +22,15 @@
         if ( ! empty( $body ) ) {
             $data = json_decode( $body );
 
-            //$test = array_chunk($data,3);
-
-            //echo '<pre>';print_r($test);echo '</pre>';
-
-            echo '<br>';echo '<br>';echo '<br>';echo '<br>';
+            //echo '<pre>';print_r($data);echo '</pre>';die;
 
             foreach ($data as $member) {
-                $member_position = $member->designation;
-                $member_linkedin = $member->linkedin;
+                //$member_position = $member->designation;
+                //$member_linkedin = $member->linkedin;
                 $user            = get_user_by( 'login', $member->name );
-
-                //echo '<pre>';print_r($user);echo '</pre>';
 
                 if(!$user) {
                     $split_name = explode( ' ', $member->name );
-
-                    echo '<pre>';print_r($member->name);echo '</pre>';
-                    echo '<br>';
 
                     $user_data = [
                         'user_login'    => $member->name,
@@ -40,20 +39,32 @@
                         'display_name'  => $member->name,
                         'first_name'    => ! empty( $split_name ) && sizeof( $split_name ) == 2 ? $split_name[0] : '',
                         'last_name'     => ! empty( $split_name ) && sizeof( $split_name ) == 2 ? $split_name[1] : '',
-                        'user_pass'     => wp_generate_password()
+                        'user_pass'     => wp_generate_password(),
+                        'role'          => 'action_required'
                     ];
-                    /*$user_id = wp_insert_user([
 
-                    ]);*/
-
-                    /*if( ! is_wp_error( $user_id ) ){
-                        return true;
-                    }*/
+                    $user_id = wp_insert_user($user_data);
                 } else {
                     $user_id = $user->ID;
                 }
 
                 //$this->save_user_image('',$member->image);
+            }
+
+            $this->clear_users($data);
+        }
+    }
+
+    public function clear_users($remote_users) {
+        $users_query = new WP_User_Query( [
+            'role__in' => [ 'subscriber', 'action_required' ]
+        ] );
+
+        if(!empty($users_query->get_results())) {
+            foreach ( $users_query->get_results() as $user ) {
+                if ( ! in_array( $user->user_login, array_column( $remote_users, 'nickname' ) ) ) {
+                    wp_delete_user( $user->user_id );
+                }
             }
         }
     }
@@ -83,7 +94,7 @@
             'post_status' => 'inherit'
         );
 
-        $attachment_check = new Wp_Query( $attachment );
+        $attachment_check = new WP_Query( $attachment );
         if($attachment_check->have_posts()) {
             $attach_id = $attachment_check->post->ID;
         } else {
