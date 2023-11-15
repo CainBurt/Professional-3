@@ -8,7 +8,9 @@ class HubCron {
         add_action( 'schedule_check_new_users', array( $this, 'get_members' ) );
 
         // DEBUG
-        //add_action('init', array($this, 'get_members'));
+        if(isset($_GET['schedule_check_new_users'])) {
+            add_action('init', array($this, 'get_members'));
+        }
     }
 
     public function get_members() {
@@ -62,8 +64,9 @@ class HubCron {
 
         if(!empty($users_query->get_results())) {
             foreach ( $users_query->get_results() as $user ) {
-                if ( ! in_array( $user->user_login, array_column( $remote_users, 'nickname' ) ) ) {
-                    wp_delete_user( $user->user_id );
+                if ( ! in_array( $user->nickname, array_column( $remote_users, 'name' ) ) ) {
+                    //echo '<pre>';print_r($user->nickname);echo '</pre>';
+                    wp_delete_user( $user->ID );
                 }
             }
         }
