@@ -188,19 +188,26 @@ input::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-input[type="file"]{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-    background-color: #ffffff;
-    padding: 20px;
-    place-items: center;
-    border: 2px dashed #cacaca;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    margin-bottom: 1em;
+// input[type="file"]{
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     border-radius: 10px;
+//     width: 100%;
+//     height: auto;
+//     background-color: #ffffff;
+//     padding: 20px;
+//     place-items: center;
+//     border: 2px dashed #cacaca;
+//     border-radius: 5px;
+//     margin-bottom: 5px;
+//     cursor: pointer;
+//     margin-bottom: 1em;
+// }
+
+.codedropz-upload-inner{
+    h3{
+        margin: 0 !important;
+        font-size: 20px !important;
+    }
 }

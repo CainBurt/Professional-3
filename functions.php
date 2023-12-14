@@ -808,6 +808,17 @@ function get_incident_number_from_title($title) {
     return 0;
 }
 
+function get_image_ids_from_urls($image_urls) {
+    $attachment_ids = array();
+    foreach ($image_urls as $image_url) {
+        $attachment_id = media_sideload_image($image_url, 0, '', 'id');
+        if (!is_wp_error($attachment_id)) {
+            $attachment_ids[] = $attachment_id;
+        }
+    }
+    return $attachment_ids;
+}
+
 function save_posted_data( $posted_data ) {
     // save suggestions post
     if ( isset( $posted_data['form-id'] ) && $posted_data['form-id'] == 'suggestions' ) {
@@ -860,7 +871,7 @@ function save_posted_data( $posted_data ) {
             'details_of_the_incident' => 'incident-details',
             'threat' => 'incident-threat',
             'vulnerability' => 'incident-vulnerability',
-            'screenshot' => 'incident-screenshot',
+            'screenshots' => 'incident-screenshot',
             'short_term_containment_action' => 'incident-action',
             'action_responsibility' => 'incident-responsibility',
             'target_completion_date' => 'incident-completion',
@@ -878,13 +889,19 @@ function save_posted_data( $posted_data ) {
     
         if (!is_wp_error($post_id)) {
             foreach ($acf_fields as $acf_field => $posted_key) {
+
                 if (isset($posted_data[$posted_key])) {
+                    error_log("------------TEST-------------");
                     if( $posted_key == 'personal-info' || $posted_key == 'incident-threat' || $posted_key == 'category' || $posted_key == 'incident-Notification'){
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
-
                     }elseif( $posted_key == 'incident-screenshot'){
-                        $attachment_id = media_handle_upload('incident-screenshot', $post_id);
-                        update_field($acf_field, $attachment_id, $post_id);
+                        $screenshots = array();
+                        $image_ids = get_image_ids_from_urls($posted_data[$posted_key]);
+                        foreach($image_ids as $id ){
+                            $screenshots[] = array('screenshot' => $id);
+                        }
+                        update_field($acf_field, $screenshots, $post_id);
+
                     }
                     else{
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key]), $post_id);

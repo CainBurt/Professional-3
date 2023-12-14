@@ -34,7 +34,7 @@ function export_incidents_to_csv()
         'Details of the Incident',
         'Threat',
         'Vulnerability',
-        'Screenshot',
+        'Screenshots',
         'Short Term Containment Action',
         'Action Responsibility',
         'Target Completion Date',
@@ -52,6 +52,18 @@ function export_incidents_to_csv()
     $posts = get_posts($args);
 
     foreach ($posts as $post) {
+        $screenshots = get_field('screenshots', $post->ID);
+        if (is_array($screenshots)) {
+            $screenshots_urls = array();
+            foreach ($screenshots as $screenshot) {
+                if (is_array($screenshot) && isset($screenshot['screenshot']['url'])) {
+                    $screenshots_urls[] = $screenshot['screenshot']['url'];
+                }
+            }
+            $screenshots_string = implode(', ', $screenshots_urls);
+        } else {
+            $screenshots_string = $screenshots; 
+        }
         $post_data = array(
             get_the_title($post),
             get_field('date_of_incident', $post->ID),
@@ -60,7 +72,7 @@ function export_incidents_to_csv()
             get_field('details_of_the_incident', $post->ID),
             get_field('threat', $post->ID),
             get_field('vulnerability', $post->ID),
-            get_field('screenshot', $post->ID),
+            $screenshots_string,
             get_field('short_term_containment_action', $post->ID),
             get_field('action_responsibility', $post->ID),
             get_field('target_completion_date', $post->ID),
