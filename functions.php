@@ -848,7 +848,7 @@ function save_posted_data( $posted_data ) {
             'post_type' => 'incident',
             'post_status' => 'publish',
             'numberposts' => 1,
-            'orderby' => 'title',
+            'orderby' => 'ID',
             'order' => 'DESC',
             'fields' => 'ids',
         );
@@ -891,7 +891,6 @@ function save_posted_data( $posted_data ) {
             foreach ($acf_fields as $acf_field => $posted_key) {
 
                 if (isset($posted_data[$posted_key])) {
-                    error_log("------------TEST-------------");
                     if( $posted_key == 'personal-info' || $posted_key == 'incident-threat' || $posted_key == 'category' || $posted_key == 'incident-Notification'){
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
                     }elseif( $posted_key == 'incident-screenshot'){
