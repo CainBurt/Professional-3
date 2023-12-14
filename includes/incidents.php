@@ -30,11 +30,11 @@ function export_incidents_to_csv()
         'Incident ID',
         'Date of Incident',
         'Personal Information Affected?',
-        'Category of incident',
         'Asset Owner',
         'Details of the Incident',
         'Threat',
         'Vulnerability',
+        'Screenshot',
         'Short Term Containment Action',
         'Action Responsibility',
         'Target Completion Date',
@@ -56,16 +56,16 @@ function export_incidents_to_csv()
             get_the_title($post),
             get_field('date_of_incident', $post->ID),
             get_field('personal_info_affected', $post->ID),
-            get_field('category', $post->ID),
             get_field('asset_owner', $post->ID),
             get_field('details_of_the_incident', $post->ID),
             get_field('threat', $post->ID),
             get_field('vulnerability', $post->ID),
+            get_field('screenshot', $post->ID),
             get_field('short_term_containment_action', $post->ID),
             get_field('action_responsibility', $post->ID),
             get_field('target_completion_date', $post->ID),
             get_field('date_notified', $post->ID),
-            get_field('method_of_notification', $post->ID)
+            get_field('method_of_notification', $post->ID),
         );
         fputcsv($file, $post_data);
     }

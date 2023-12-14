@@ -860,6 +860,7 @@ function save_posted_data( $posted_data ) {
             'details_of_the_incident' => 'incident-details',
             'threat' => 'incident-threat',
             'vulnerability' => 'incident-vulnerability',
+            'screenshot' => 'incident-screenshot',
             'short_term_containment_action' => 'incident-action',
             'action_responsibility' => 'incident-responsibility',
             'target_completion_date' => 'incident-completion',
@@ -881,7 +882,11 @@ function save_posted_data( $posted_data ) {
                     if( $posted_key == 'personal-info' || $posted_key == 'incident-threat' || $posted_key == 'category' || $posted_key == 'incident-Notification'){
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key][0]), $post_id);
 
-                    }else{
+                    }elseif( $posted_key == 'incident-screenshot'){
+                        $attachment_id = media_handle_upload('incident-screenshot', $post_id);
+                        update_field($acf_field, $attachment_id, $post_id);
+                    }
+                    else{
                         update_field($acf_field, sanitize_text_field($posted_data[$posted_key]), $post_id);
                     }
                 }
