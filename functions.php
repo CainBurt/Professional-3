@@ -792,13 +792,17 @@ add_filter('render_block', 'custom_render_block_core_image', null, 2);
 
 function login_redirect() {
     global $pagenow;
-    // $page_title = $post->post_title;
-    if((!is_user_logged_in() && $pagenow != 'wp-login.php') && !is_page(105) && !is_page(129) && !wp_is_mobile()){
+
+    $current_page_id = get_queried_object_id();
+
+    if (!is_user_logged_in() && $pagenow != 'wp-login.php' && get_post_meta($current_page_id, 'login_required', true) && !wp_is_mobile()) {
         auth_redirect();
     }
-          
 }
-add_action( 'wp', 'login_redirect' );
+add_action('wp', 'login_redirect');
+
+
+
 
 function get_incident_number_from_title($title) {
     $matches = array();
