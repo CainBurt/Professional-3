@@ -1,8 +1,3 @@
-# Crowd base build
-
-This version of the Crowd Base Build includes Gulp version 4.
-This means you must be using the latest version of Node (or at lease version 10).
-
 ---
 ## Setup
 
@@ -13,7 +8,7 @@ This means you must be using the latest version of Node (or at lease version 10)
 5. Have a kitkat 🍫
 
 ---
-## Crowd's standard tasks
+## standard tasks
 
 `gulp` Will run and then watch sass, js, and images tasks.
 
@@ -72,49 +67,3 @@ You might want to create or include many extra directories in the theme - that's
 But remember to add anything you'll need in your packaged theme into the `packageWhitelist` constant in `gulpfile.js`, otherwise it'll be ignored in the build process.
 
 ---
-## Setting up CI (Bitbucket Pipelines) for your project
-
-The Crowd base build now comes with a `bitbucket-pipelines.yml` file which is a
-YAML config for Continuous Integration. It has some sensible defaults, and some
-areas which will need to be uncommented + configured for your repository.
-
-By default you'll need to add the following environment variables to your
-bitbucket repo in the repository settings.
-
-The environment variable `LFTP_infrastructure_user_string` holds the SFTP
-connection details to your destination server. __It is very important to click
-the 'padlock' icon when adding this environment variable to your repository.__
-This will mask and encrypt the sensitive information detailed below (SFTP
-usernames/passwords).
-
-
-For TSO, this could look like the following:
-```
-sftp://sftp-username:sftp-password@shell.gridhost.co.uk
-```
-
-For SiteGround, LFTP does not quite work, so we use rsync.
-This means using the THEME_DIR environment variable like so:
-```
-u278-z85k9umvk5y4@thisiscrowdlab.com:/home/customer/www/{ SITE FOLDER }/public_html/wp-content/themes/{ PACKAGE NAME }
-```
-Make sure that your Pipeline's SSH key (Settings -> SSH Keys) is imported to Siteground in SSH Keys Manager.
-
-For Flywheel, it would look similar to the following:
-```
-sftp://crowdinfrastructure:crowd-infra-pass@sftp.flywheelsites.com
-```
-
-The flywheel deployment uses our `crowdinfrastructure` Flywheel account. You'll
-need to contact Nathan to get the password for this account.
-
-### Known Hosts
-
-To run successful deployments, you'll need to add your destination SFTP servers
-to the repo's "known hosts" area.
-
-1. Go to your repo in bitbucket
-2. Find the repo settings (cog icon)
-3. Go to 'SSH Keys'
-4. Enter the 'host address' (e.g. `sftp.flywheelsites.com` or
-   `shell.gridhost.co.uk`) and click `Fetch`.
